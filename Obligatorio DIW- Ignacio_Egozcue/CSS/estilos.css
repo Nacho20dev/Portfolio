@@ -1,0 +1,572 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  background-color: rgb(7, 7, 28);
+  scroll-behavior: smooth;
+}
+
+header figure img {
+  height: 60px;
+  width: auto;
+  margin-left: 25px;
+}
+
+/* MIS FUENTES EXTERNAS */
+@font-face {
+  font-family: "Graduate-Regular";
+  src: url(..//FONTS/Graduate/Graduate-Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url(..//FONTS/Outfit/Outfit-VariableFont_wght.ttf);
+  font-weight: normal;
+}
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  height: 70px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: aliceblue;
+}
+
+/* CONTAINER PRINCIPAL */
+.containerAll {
+  max-width: 1440px;
+  min-width: 1200px;
+  margin: 0 auto;
+
+  overflow: hidden;
+}
+
+/* CONTAINER DE CADA SECTION */
+.container {
+  margin: 0 auto;
+  position: relative;
+}
+
+/* MENU DE NAVEGACIÓN */
+nav ul {
+  list-style-type: none;
+  display: flex;
+  font-family: "Outfit", "Sans Serif";
+}
+
+nav ul li {
+  width: 130px;
+  margin: 3px;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: rgb(29, 66, 138);
+  font-size: 18px;
+  padding: 7px;
+}
+
+nav ul li a:hover {
+  color: red;
+  text-transform: uppercase;
+}
+
+.destaque:active {
+  background-color: rgb(72, 70, 204);
+  color: white;
+  box-shadow: 0 0 0 4px rgb(104, 50, 255);
+}
+
+.destaque:hover {
+  background-color: rgb(127, 125, 255);
+  color: white;
+  box-shadow: 0 0 0 2px rgb(143, 142, 247);
+  border-radius: 20px;
+}
+
+/* SECCIÓN PRINCIPAL */
+
+main #principal {
+  background: url(../IMG/Asg.Original.Court.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 675px;
+}
+
+figure {
+  position: relative;
+  height: 100%;
+}
+
+figure h1 {
+  font-family: "Graduate-Regular";
+  font-size: 32px;
+  height: 90px;
+  width: auto;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+figure p {
+  color: white;
+  font-family: "Outfit";
+  font-size: 16px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+main section {
+  margin: 0 auto;
+
+  margin-bottom: 30px;
+}
+
+.container h2,
+#Contacto {
+  text-align: center;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0px;
+  color: red;
+  font-family: "Outfit";
+}
+
+/* SECCIÓN NOTICIAS */
+
+#Noticias {
+  background-color: rgb(5, 5, 17);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+.contenedorImgNoticias {
+  height: 150px;
+  overflow: hidden;
+  width: 100%;
+}
+.contenedorImgNoticias img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.containerArt {
+  width: 100%;
+  height: auto;
+  padding: 0 40px;
+
+  display: flex;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+span {
+  display: block;
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: black;
+  color: white;
+  font-family: "Outfit";
+}
+
+span img {
+  width: 20px;
+}
+
+.btn {
+  background-color: rgb(255, 162, 0);
+  color: black;
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: 2px solid rgb(68, 0, 255);
+  font-family: "Outfit";
+  text-decoration: none;
+  position: relative;
+  top: 65px;
+}
+
+.btn:hover {
+  background-color: rgb(143, 95, 7);
+  color: white;
+  border: 2px solid rgb(104, 50, 255);
+}
+.btn:active {
+  background-color: rgb(83, 54, 1);
+  color: white;
+  box-shadow: 0 0 0 4px rgb(104, 50, 255);
+}
+
+.button-vermas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* SECCIÓN GRILLA */
+
+#Grilla {
+  padding-top: 12px;
+  background-color: rgb(9, 2, 13);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#Noticias article,
+#Grilla article,
+#Grilla table {
+  width: 250px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  font-family: "Outfit";
+  font-size: 13px;
+  vertical-align: baseline;
+  color: white;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 10px;
+  height: 10%;
+  margin-right: 65px;
+}
+
+td,
+th {
+  border: 1px solid black;
+  padding: 10px;
+}
+.evento {
+  min-width: 200px;
+}
+
+#Grilla article {
+  margin-bottom: 100px;
+  margin-left: 40px;
+}
+.containerGota {
+  overflow: hidden;
+  width: 200px;
+  height: 160px;
+  border-radius: 160px 0px/50px 10px;
+}
+
+.contenedorArtGota {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* SECCIÓN ENTRADAS */
+
+#Entradas {
+  background-color: rgb(14, 0, 23);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  padding: 10px 40px;
+  width: 100%;
+}
+
+.container h3,
+ul {
+  font-family: "Outfit";
+}
+.containerRedondo {
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contenedorArt {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.imgEntrada {
+  width: 50%;
+  height: 310px;
+  justify-content: space-between;
+}
+
+.entrada,
+.entrada2 {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#Entradas article {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn2 {
+  background-color: rgb(255, 162, 0);
+  color: black;
+  border-radius: 20px;
+  padding: 5px 20px;
+  border: 2px solid rgb(68, 0, 255);
+
+  font-family: "Outfit";
+  text-decoration: none;
+  position: relative;
+}
+
+/* SECCIÓN GALERIA */
+
+#Galeria {
+  display: grid;
+
+  grid-template-columns: 280px 280px 280px;
+  grid-template-rows: auto 160px 10px 600px;
+
+  grid-template-areas:
+    "titulo titulo titulo"
+    "uno tres cuatro"
+    "dos tres cinco";
+
+  gap: 25px 25px;
+
+  justify-content: center;
+
+  align-items: centers;
+
+  margin-bottom: -200px;
+}
+
+#Galeria h2 {
+  grid-area: titulo;
+}
+
+#fotoUno {
+  grid-area: uno;
+  width: 300px;
+  height: 160px;
+}
+
+#fotoDos {
+  grid-area: dos;
+  width: 300px;
+  height: 415px;
+}
+
+#fotoTres {
+  grid-area: tres;
+  width: 300px;
+  height: 600px;
+}
+
+#fotoCuatro {
+  grid-area: cuatro;
+  width: 300px;
+  height: 300px;
+}
+
+#fotoCinco {
+  grid-area: cinco;
+  width: 300px;
+  height: 280px;
+  margin-top: 135px;
+}
+
+/* SECCIÓN CONTACTO */
+#Contacto {
+  background-color: rgb(14, 0, 23);
+}
+form fieldset {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-areas:
+    "ln le ls"
+    "in ie se";
+  gap: 81px;
+  width: 774px;
+  padding: 0 81px;
+}
+
+#labelNombre {
+  grid-area: ln;
+  font-family: "Outfit";
+  color: white;
+}
+
+#labelEmail {
+  grid-area: le;
+  font-family: "Outfit";
+  color: white;
+}
+
+#labelSelect {
+  grid-area: ls;
+  font-family: "Outfit";
+  color: white;
+}
+
+#txtNombre {
+  grid-area: in;
+  border-radius: 10px;
+  outline: 2px solid royalblue;
+  margin-top: 3px;
+}
+
+#txtemail {
+  grid-area: ie;
+  border-radius: 10px;
+  outline: 2px solid royalblue;
+  margin-top: 3px;
+}
+
+#slcCantidadEntradas {
+  grid-area: se;
+  border-radius: 10px;
+  outline: 2px solid royalblue;
+  margin-top: 3px;
+}
+
+.container fieldset {
+  border: none;
+  width: 120px;
+  max-height: 120px;
+}
+
+input,
+select {
+  height: 30px;
+}
+
+.btnExpand {
+  width: 774px;
+  height: 40px;
+
+  justify-content: center;
+
+  background-color: RGB(200, 16, 51);
+  color: white;
+  margin-top: 30px;
+  align-items: center;
+  font-family: "Outfit";
+}
+
+.btnExpand:hover {
+  background-color: RGB(220, 132, 148);
+}
+
+.btnExpand:active {
+  background-color: white;
+}
+
+/* REDES SOCIALES */
+
+i {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  display: inline-block;
+  background-image: url(../img/Sm_sprites.png);
+  background-size: auto 50px;
+}
+
+i:hover {
+  transform: translateY(-10px);
+}
+
+i.facebook {
+  background-position: 3px;
+}
+
+i.twitter {
+  background-position: 172px;
+}
+
+i.instagram {
+  background-position: 115px;
+}
+
+i.youtube {
+  background-position: 57px;
+}
+
+/* FLECHA CON ANCLA PARA IR AL TOP */
+.flecha {
+  width: 32px;
+  border-radius: 30%;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: white;
+}
+
+/* FOOTER */
+
+footer p {
+  background-color: black;
+  font-family: "Graduate";
+  color: white;
+  text-align: center;
+}
+
+#formu fieldset {
+  border: none;
+  height: 70px;
+}
