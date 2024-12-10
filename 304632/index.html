@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longride</title>
+
+    <!-- Enlaces a CSS -->
+    <!-- CSS Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- MI propio CSS -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Enlaces a JS -->
+    <script src="js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+   
+
+      <header>
+        <div class="container-fluid">  
+            <div class="row d-flex justify-content-center justify-content-lg-between align-items-center"> 
+                <figure class="col-4 col-lg-3 text-center"> 
+                    <img src="img/logo_longride.svg" alt="Logo Longride">
+                </figure>
+                <nav class="nav col-9 d-flex justify-content-around align-items-lg-end text-center"> 
+                       
+                            <a href="#tablas" class="nav-link col-8 col-md-4">TABLAS</a>
+                       
+                      
+                            <a href="#nuestroEquipo" class="nav-link col-8 col-md-4">EQUIPO</a>
+                        
+                            <a href="#rides" class="nav-link col-8 col-md-4">RIDES</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header> 
+ 
+    <section class=" hero container-fluid d-flex justify-content-end align-items-end align-items-lg-start"> 
+        <div class="row col-12 col-md-6"> 
+            <h1>TOMÁ LAS CALLES</h1>
+           
+        </div>
+    </section>
+
+    <main>
+
+        <section id="tablas" class="row container justify-content-center align-items-stretch ">
+
+            <div class="col-12 ">
+                <h2>Tablas</h2>
+                <p>Conoce nuestras tablas realizadas artesanalmente por nuestro equipo de técnicos.
+                </p>
+            </div>
+
+            <article class="col-8 col-md-6 col-lg-4  d-block text-center "> 
+               
+                <img src="img/tabla1.png" alt="Chingona" class="img-fluid">
+                <div>
+                    <h3>Chingona</h3>
+                    <p>No apta para tímidos, tan rápida como colorida</p>
+                </div>
+                <a href="#" class="btn btn-primary">Conocela</a>
+            </article>
+
+            <article class="col-8 col-md-6 col-lg-4  d-block text-center"> 
+               
+                <img src="img/tabla2.png" alt="Naked" class="img-fluid">
+                <div>
+                    <h3>Naked</h3>
+                    <p>Nuestro clásico old school, asi como vino al mundo</p>
+                </div>
+                <a href="#" class="btn btn-primary">Conocela</a>
+            </article>
+
+            <article class="col-8 col-md-6 col-lg-4  d-block d-md-none d-lg-block text-center"> 
+               
+                <img src="img/tabla3.png" alt="Rustik" class="img-fluid">
+                <div>
+                    <h3>Rustik</h3>
+                    <p>Nuestra long de entrada, más dura que nuestras cabezas</p>
+                </div>
+                <a href="#" class="btn btn-primary ">Conocela</a>
+            </article>
+
+
+        </section>
+
+        <section id="nuestroEquipo" class="row container-fluid d-flex justify-content-start align-items-stretch">
+
+            <div class="col-12">
+            <h2>Nuestro equipo</h2>
+            <p>Conoce a quienes con sus manos, visión y piernas que hacen sentir las calles cada día más propias.</p>
+        </div>
+
+        <article class="col-12 col-lg-4 "> 
+            <img src="img/equipo1.png" alt="Tomasito" class="img-fluid rounded col-6 col-lg-12">
+            <div class="col-6 col-lg-12">
+                <h3>
+                    Tomasito</h3>
+                <p>El joven manos de sierras, el creador de toda nuestra linea artesanal</p>
+                <ul>
+                    <li>Curador</li>
+                    <li>Maestro de tablas</li>
+                    <li>Senior Rider</li>
+                </ul>
+            </div>
+
+        </article>
+
+            <article class="col-12 col-md-6 col-lg-4 ">
+            <img src="img/equipo2.png" alt="Erika" class="img-fluid rounded col-6 col-lg-12">
+            <div class="col-6 col-lg-12">
+                <h3>
+                    Erika</h3>
+                <p>La mano mágica que hace nuestros sueños realidad</p>
+                <ul>
+                    <li>Arte y Stencils</li>
+                    <li>Talleres</li>
+                    <li>Soft Rider</li>
+                </ul>
+
+
+                
+            </div>
+            </article>
+
+            <article class="col-12 col-md-6 col-lg-4 "> 
+                <div class="col-6 col-lg-12">   
+                <img src="img/equipo3.png" alt="Carleta" class="img-fluid rounded col-6 col-lg-12">
+                
+                    <h3>
+                        Carleta</h3>
+                    <p>Lider suprema de nuestras rides, ella marca el camino y las tablas la siguen</p>
+                    <ul>
+                        <li>Guía y clases</li>
+                        <li>Senior Rider</li>
+                        
+                    </ul>
+                </div>
+    
+            </article>
+
+        </section>
+
+        
+
+        <section id="rides" class="row container-fluid d-flex justify-content-end align-items-stretch">
+<div class="col-12 col-md-6">
+    <h2>Rides</h2>
+    <p>Acompañanos a nuestra salidas grupales, suscribite a nuestra lista de riders dejandonos tu email.</p>
+    
+        <form>
+
+            <label class="form-label">Email</label>
+            <input type="text" required class="form-control">
+            <div class="guardarTarjeta">
+                <input type="checkbox" id="promo">
+                <label for="promo">Quiero recibir promociones</label>
+              </div>
+            <a href="" class="btn btn-danger btn.outline mt-3 mb-3">Suscribite</a>
+
+        </form>
+
+
+   
+</div>
+            
+        </section>
+
+<footer class="container-fluid text-center py-2">
+<p>Ignacio Egozcue 304632</p>
+</footer>
+
+    </main>
+</body>
+
+</html>

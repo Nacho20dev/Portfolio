@@ -1,0 +1,133 @@
+@font-face {
+  font-family: BowlbyOne;
+  src: url(../fonts/BowlbyOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../fonts/Montserrat-Light.ttf);
+}
+
+/* no es necesario * margin 0 padding... / no hacer reset */
+/* usar este css para SOBREESCRIBIR ASUNTOS DE BOOTSTRAP q necesito q sean diferentes */
+
+/* VARIABLES DE COLOR */
+:root {
+  --Gris: #151c1e;
+  --Naranja: #ff4800;
+  --Blanco: #e8e8e8;
+}
+
+header {
+  background-color: var(--Gris);
+}
+
+.logo,
+article,
+footer {
+  padding-top: 1rem;
+}
+
+nav {
+  padding-top: 1rem;
+  font-family: BowlbyOne;
+  color: var(--Blanco);
+}
+.nav-link {
+  color: var(--Blanco);
+}
+
+.nav-link:hover {
+  background-color: var(--Blanco);
+  color: var(--Gris);
+}
+/* hacer nav-link hover */
+h1,
+h2,
+h3 {
+  font-family: BowlbyOne;
+}
+
+/* PORTADA */
+.hero {
+  height: 70vh;
+  background-image: url(../img/banner.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  padding: 1rem;
+  margin: 0;
+  font-size: 80px;
+  color: var(--Blanco);
+  background-color: var(--Naranja);
+}
+
+h2 {
+  border-bottom: 1px;
+  color: var(--Naranja);
+}
+
+.h2Rides {
+  border-bottom: 1px;
+  color: var(--Blanco);
+}
+section {
+}
+
+article h3 {
+  color: black;
+}
+
+#nuestroEquipo article h3 {
+  color: var(--Blanco);
+}
+
+p,
+li {
+  font-family: Montserrat;
+}
+
+.btn-primary {
+  background-color: var(--Gris);
+  color: var(--Blanco);
+}
+
+.btn-primary:hover {
+  background-color: var(--Naranja);
+  color: var(--Blanco);
+}
+
+#nuestroEquipo {
+  background-color: var(--Gris);
+}
+
+#nuestroEquipo p,
+h3,
+li,
+label {
+  color: var(--Blanco);
+}
+
+#rides {
+  background-color: var(--Naranja);
+}
+#rides h2,
+#rides p {
+  color: var(--Blanco);
+}
+.btn-danger {
+  background-color: var(--Naranja);
+  color: var(--Blanco);
+}
+
+.btn-danger:hover {
+  background-color: var(--Blanco);
+  color: var(--Gris);
+}
+footer {
+  background-color: var(--Gris);
+  color: var(--Blanco);
+}
