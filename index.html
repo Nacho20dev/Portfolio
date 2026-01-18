@@ -4,201 +4,188 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ignácio Egozcue - Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   
   <style>
-    body {
-      scroll-behavior: smooth;
-    }
+    /* Reset y tipografía */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    body { line-height: 1.6; color: #1a1a1a; }
+
+    a { text-decoration: none; transition: 0.3s; }
+    a:hover { opacity: 0.8; }
+
+    /* Secciones */
+    section { padding: 80px 20px; }
 
     /* Hero */
-    #hero {
-      height: 100vh;
-      background: #0d6efd;
+    #hero { 
+      height: 100vh; 
+      background: linear-gradient(135deg,#0D6EFD,#6C5CE7);
       color: white;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
     }
     #hero img {
-      border-radius: 50%;
       width: 150px;
-      margin-bottom: 1rem;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+    #hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
+    #hero p { font-size: 1.3rem; }
+
+    /* Navbar */
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); box-shadow: 0 2px 6px rgba(0,0,0,0.1); z-index: 1000; }
+    nav ul { display: flex; justify-content: center; list-style: none; }
+    nav li { margin: 0 15px; }
+    nav a { color: #0D6EFD; font-weight: 600; padding: 15px 0; display: block; }
+    nav a:hover { color: #6C5CE7; }
+
+    /* About */
+    #about { background: #f9f9f9; max-width: 900px; margin: auto; text-align: center; }
+    #about h2 { font-size: 2.5rem; margin-bottom: 20px; color: #0D6EFD; }
+    #about p { font-size: 1.1rem; margin-bottom: 15px; }
+
+    /* Projects */
+    #projects { max-width: 1200px; margin: auto; }
+    #projects h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #0D6EFD; }
+    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media(min-width:768px){ .projects-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(min-width:1024px){ .projects-grid { grid-template-columns: repeat(3,1fr); } }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .card img { border-radius: 8px; margin-bottom: 15px; object-fit: cover; }
+    .card h3 { font-size: 1.5rem; margin-bottom: 10px; color: #6C5CE7; }
+    .card p { font-size: 1rem; margin-bottom: 10px; }
+    .card .tech { font-family: monospace; font-size: 0.9rem; color: #555; margin-bottom: 15px; }
+    .card a {
+      background: linear-gradient(135deg,#0D6EFD,#6C5CE7);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: 600;
     }
 
-    /* Navbar spacing */
-    section {
-      padding-top: 80px; /* espacio para navbar */
-      padding-bottom: 60px;
-    }
+    /* Skills */
+    #skills { background: #f9f9f9; }
+    #skills h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #0D6EFD; }
+    .skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; max-width: 800px; margin: auto; }
+    @media(min-width:768px){ .skills-grid { grid-template-columns: repeat(4,1fr); } }
+    .skill { text-align: center; font-weight: 600; font-size: 1rem; padding: 10px; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .skill:hover { transform: translateY(-5px); }
 
-    /* Cards hover effect */
-    .card:hover {
-      transform: translateY(-5px);
-      transition: 0.3s;
-    }
+    /* Contact */
+    #contact { background: #0D6EFD; color: white; text-align: center; }
+    #contact h2 { font-size: 2.5rem; margin-bottom: 20px; }
+    #contact a { color: white; font-weight: 600; }
+    #contact a:hover { color: #6C5CE7; }
 
-    /* Skills icons */
-    .fa-2x {
-      color: #0d6efd;
-    }
-
-    /* Links */
-    a {
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    /* Footer */
+    footer { text-align: center; padding: 20px; font-size: 0.9rem; background: #f1f1f1; }
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Ignácio Egozcue</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">Sobre mí</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-      </ul>
-    </div>
-  </div>
+<nav>
+  <ul>
+    <li><a href="#hero">Inicio</a></li>
+    <li><a href="#about">Sobre mí</a></li>
+    <li><a href="#projects">Proyectos</a></li>
+    <li><a href="#skills">Habilidades</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
 </nav>
 
-<!-- Hero / Landing -->
+<!-- Hero -->
 <section id="hero">
-  <div class="container">
-    <img src="img/foto-perfil.jpg" alt="Ignácio Egozcue">
-    <h1>Ignácio Egozcue</h1>
-    <p class="lead">Desarrollador .NET Junior | Estudiante de Analista Programador</p>
-  </div>
+  <img src="img/foto-perfil.jpg" alt="Ignácio Egozcue">
+  <h1>Ignácio Egozcue</h1>
+  <p>Desarrollador .NET Junior | Estudiante Analista Programador</p>
 </section>
 
 <!-- About -->
 <section id="about">
-  <div class="container">
-    <h2 class="mb-4">Sobre mí</h2>
-    <p>Soy un desarrollador junior apasionado por crear aplicaciones completas y funcionales. Tengo experiencia en backend con C# y JavaScript, desarrollo frontend con HTML, CSS, Bootstrap, Ionic y MVC. Me gusta trabajar en proyectos donde la estructura, la legibilidad y la usabilidad sean prioridad.</p>
-    <p>Experiencia en desarrollo de APIs REST, sistemas de gestión y landing pages responsivas. Actualmente buscando oportunidades para aplicar mis conocimientos y seguir creciendo profesionalmente.</p>
-  </div>
+  <h2>Sobre mí</h2>
+  <p>Soy un desarrollador junior apasionado por crear aplicaciones completas y funcionales. Tengo experiencia en backend con C# y JavaScript, desarrollo frontend con HTML, CSS, Bootstrap e Ionic.</p>
+  <p>Me gusta trabajar en proyectos donde la estructura, la legibilidad y la usabilidad sean prioridad. Actualmente buscando oportunidades para aplicar mis conocimientos y seguir creciendo profesionalmente.</p>
 </section>
 
 <!-- Projects -->
-<section id="projects" class="bg-light">
-  <div class="container">
-    <h2 class="mb-4">Proyectos Académicos</h2>
-    <div class="row g-4">
+<section id="projects">
+  <h2>Proyectos Académicos</h2>
+  <div class="projects-grid">
 
-      <!-- Proyecto 1: App Móvil -->
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">App Móvil – Gestión de Objetivos</h5>
-            <p class="card-text">
-              Aplicación móvil desarrollada en <strong>Ionic (HTML, CSS, JS)</strong> que permite gestionar objetivos personales mediante operaciones CRUD.
-              La app está compilada como APK para instalar en dispositivos móviles. Los usuarios pueden registrarse de manera anónima.
-            </p>
-            <p><strong>Tecnologías:</strong> JavaScript, Ionic, HTML, CSS, HTTP, APK</p>
-            <a href="https://drive.google.com/uc?export=download&id=16dqveeJzj-mch1QvYgv7hH2tiDodByq0" class="btn btn-success" target="_blank">
-              Descargar APK
-            </a>
-            <small class="d-block mt-2 text-muted">
-              Nota: APK para instalar en celular. Registro de usuario anónimo disponible.
-            </small>
-          </div>
-        </div>
-      </div>
-
-      <!-- Proyecto 2: Landing Pages -->
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <img src="img/proyecto2.jpg" class="card-img-top" alt="Landing Pages">
-          <div class="card-body">
-            <h5 class="card-title">Landing Pages Responsivas</h5>
-            <p class="card-text">Landing pages estáticas desarrolladas con HTML, CSS y Bootstrap, enfocadas en estructura clara, diseño simple y usabilidad.</p>
-            <p><strong>Tecnologías:</strong> HTML, CSS, Bootstrap</p>
-            <a href="#" class="btn btn-primary">Ver Repositorio</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Proyecto 3: Sistema Agencia -->
-      <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
-          <img src="img/proyecto3.jpg" class="card-img-top" alt="Sistema Agencia">
-          <div class="card-body">
-            <h5 class="card-title">Sistema Completo – Agencia de Envíos</h5>
-            <p class="card-text">Sistema con aplicaciones para clientes y funcionarios, backend en C# (.NET) con Arquitectura Limpia, API REST y base de datos SQL Server.</p>
-            <p><strong>Tecnologías:</strong> C#, .NET, SQL Server, Entity Framework, ASP.NET MVC</p>
-            <a href="#" class="btn btn-primary">Ver Repositorio</a>
-          </div>
-        </div>
-      </div>
-
+    <!-- Proyecto APK -->
+    <div class="card">
+      <h3>App Móvil – Gestión de Objetivos</h3>
+      <p>Aplicación móvil desarrollada en Ionic (HTML, CSS, JS) que permite gestionar objetivos personales mediante operaciones CRUD. La app está compilada como APK para instalar en dispositivos móviles. Registro de usuario anónimo disponible.</p>
+      <p class="tech">JavaScript, Ionic, HTML, CSS, HTTP, APK</p>
+      <a href="https://drive.google.com/uc?export=download&id=16dqveeJzj-mch1QvYgv7hH2tiDodByq0" target="_blank">Descargar APK</a>
+      <small>Nota: APK para instalar en celular. Registro de usuario anónimo.</small>
     </div>
+
+    <!-- Proyecto Landing Pages -->
+    <div class="card">
+      <h3>Landing Pages Responsivas</h3>
+      <p>Landing pages estáticas desarrolladas con HTML, CSS y Bootstrap, enfocadas en estructura clara, diseño simple y usabilidad.</p>
+      <p class="tech">HTML, CSS, Bootstrap</p>
+      <a href="#">Ver Repositorio</a>
+    </div>
+
+    <!-- Proyecto Sistema Agencia -->
+    <div class="card">
+      <h3>Sistema Completo – Agencia de Envíos</h3>
+      <p>Sistema con aplicaciones para clientes y funcionarios, backend en C# (.NET) con Arquitectura Limpia, API REST y base de datos SQL Server.</p>
+      <p class="tech">C#, .NET, SQL Server, Entity Framework, ASP.NET MVC</p>
+      <a href="#">Ver Repositorio</a>
+    </div>
+
   </div>
 </section>
 
 <!-- Skills -->
 <section id="skills">
-  <div class="container">
-    <h2 class="mb-4">Habilidades Técnicas</h2>
-    <div class="row g-3">
-      <div class="col-md-3 col-6 text-center">
-        <i class="fab fa-js fa-2x mb-2"></i>
-        <p>JavaScript</p>
-      </div>
-      <div class="col-md-3 col-6 text-center">
-        <i class="fab fa-bootstrap fa-2x mb-2"></i>
-        <p>Bootstrap</p>
-      </div>
-      <div class="col-md-3 col-6 text-center">
-        <i class="fab fa-html5 fa-2x mb-2"></i>
-        <p>HTML</p>
-      </div>
-      <div class="col-md-3 col-6 text-center">
-        <i class="fab fa-css3-alt fa-2x mb-2"></i>
-        <p>CSS</p>
-      </div>
-      <div class="col-md-3 col-6 text-center mt-3">
-        <i class="fas fa-database fa-2x mb-2"></i>
-        <p>SQL Server</p>
-      </div>
-      <div class="col-md-3 col-6 text-center mt-3">
-        <i class="fab fa-cuttlefish fa-2x mb-2"></i>
-        <p>C# .NET</p>
-      </div>
-      <div class="col-md-3 col-6 text-center mt-3">
-        <i class="fas fa-mobile-alt fa-2x mb-2"></i>
-        <p>Ionic</p>
-      </div>
-      <div class="col-md-3 col-6 text-center mt-3">
-        <i class="fas fa-server fa-2x mb-2"></i>
-        <p>APIs REST</p>
-      </div>
-    </div>
+  <h2>Habilidades Técnicas</h2>
+  <div class="skills-grid">
+    <div class="skill">JavaScript</div>
+    <div class="skill">HTML</div>
+    <div class="skill">CSS</div>
+    <div class="skill">Bootstrap</div>
+    <div class="skill">SQL Server</div>
+    <div class="skill">C# .NET</div>
+    <div class="skill">Ionic</div>
+    <div class="skill">APIs REST</div>
   </div>
 </section>
 
 <!-- Contact -->
-<section id="contact" class="bg-dark text-light">
-  <div class="container text-center">
-    <h2 class="mb-4">Contacto</h2>
-    <p>Email: <a href="mailto:ignacio@example.com" class="text-light">ignacio@example.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/ignacioegozcue/" target="_blank" class="text-light">linkedin.com/in/ignacioegozcue</a></p>
-    <p>GitHub: <a href="https://github.com/ignacioegozcue" target="_blank" class="text-light">github.com/ignacioegozcue</a></p>
-  </div>
+<section id="contact">
+  <h2>Contacto</h2>
+  <p>Email: <a href="mailto:ignacio@example.com">ignacio@example.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/ignacioegozcue/" target="_blank">linkedin.com/in/ignacioegozcue</a></p>
+  <p>GitHub: <a href="https://github.com/ignacioegozcue" target="_blank">github.com/ignacioegozcue</a></p>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<footer>
+  &copy; 2026 Ignácio Egozcue. Todos los derechos reservados.
+</footer>
+
 </body>
 </html>
