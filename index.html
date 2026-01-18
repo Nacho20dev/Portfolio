@@ -1,104 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ignácio Egozcue - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Reset y tipografía */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { line-height: 1.6; color: #1a1a1a; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ignácio Egozcue - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+  body { line-height:1.6; color:#1a1a1a; scroll-behavior: smooth; }
+  a { text-decoration:none; transition:0.3s; }
+  a:hover { opacity:0.8; }
 
-    a { text-decoration: none; transition: 0.3s; }
-    a:hover { opacity: 0.8; }
+  /* Navbar */
+  nav { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); box-shadow:0 2px 6px rgba(0,0,0,0.1); z-index:1000; }
+  nav ul { display:flex; justify-content:center; list-style:none; }
+  nav li { margin:0 15px; }
+  nav a { color:#0D6EFD; font-weight:600; padding:15px 0; display:block; }
+  nav a:hover { color:#6C5CE7; }
 
-    /* Secciones */
-    section { padding: 80px 20px; }
+  /* Secciones */
+  section { padding:100px 20px; opacity:0; transform: translateY(20px); animation:fadeUp 1s forwards; }
+  section:nth-of-type(1) { animation-delay:0.1s; }
+  section:nth-of-type(2) { animation-delay:0.2s; }
+  section:nth-of-type(3) { animation-delay:0.3s; }
+  section:nth-of-type(4) { animation-delay:0.4s; }
+  section:nth-of-type(5) { animation-delay:0.5s; }
 
-    /* Hero */
-    #hero { 
-      height: 100vh; 
-      background: linear-gradient(135deg,#0D6EFD,#6C5CE7);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    #hero img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      object-fit: cover;
-    }
-    #hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
-    #hero p { font-size: 1.3rem; }
+  @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
 
-    /* Navbar */
-    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); box-shadow: 0 2px 6px rgba(0,0,0,0.1); z-index: 1000; }
-    nav ul { display: flex; justify-content: center; list-style: none; }
-    nav li { margin: 0 15px; }
-    nav a { color: #0D6EFD; font-weight: 600; padding: 15px 0; display: block; }
-    nav a:hover { color: #6C5CE7; }
+  /* Hero */
+  #hero { 
+    height:100vh;
+    background: linear-gradient(135deg,#0D6EFD,#6C5CE7);
+    color:white;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+  }
+  #hero img { width:160px; height:160px; border-radius:50%; margin-bottom:20px; box-shadow:0 8px 20px rgba(0,0,0,0.3); object-fit:cover; transition: transform 0.5s; }
+  #hero img:hover { transform: scale(1.05); }
+  #hero h1 { font-size:3rem; font-weight:700; margin-bottom:10px; animation:fadeUp 1s forwards; }
+  #hero p { font-size:1.3rem; }
 
-    /* About */
-    #about { background: #f9f9f9; max-width: 900px; margin: auto; text-align: center; }
-    #about h2 { font-size: 2.5rem; margin-bottom: 20px; color: #0D6EFD; }
-    #about p { font-size: 1.1rem; margin-bottom: 15px; }
+  /* About */
+  #about { background:#f9f9f9; max-width:900px; margin:auto; text-align:center; }
+  #about h2 { font-size:2.5rem; margin-bottom:20px; color:#0D6EFD; }
+  #about p { font-size:1.1rem; margin-bottom:15px; }
 
-    /* Projects */
-    #projects { max-width: 1200px; margin: auto; }
-    #projects h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #0D6EFD; }
-    .projects-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-    @media(min-width:768px){ .projects-grid { grid-template-columns: repeat(2,1fr); } }
-    @media(min-width:1024px){ .projects-grid { grid-template-columns: repeat(3,1fr); } }
+  /* Projects */
+  #projects { max-width:1200px; margin:auto; }
+  #projects h2 { text-align:center; font-size:2.5rem; margin-bottom:40px; color:#0D6EFD; }
+  .projects-grid { display:grid; grid-template-columns:1fr; gap:20px; }
+  @media(min-width:768px){ .projects-grid { grid-template-columns: repeat(2,1fr); } }
+  @media(min-width:1024px){ .projects-grid { grid-template-columns: repeat(3,1fr); } }
 
-    .card {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-    .card img { border-radius: 8px; margin-bottom: 15px; object-fit: cover; }
-    .card h3 { font-size: 1.5rem; margin-bottom: 10px; color: #6C5CE7; }
-    .card p { font-size: 1rem; margin-bottom: 10px; }
-    .card .tech { font-family: monospace; font-size: 0.9rem; color: #555; margin-bottom: 15px; }
-    .card a {
-      background: linear-gradient(135deg,#0D6EFD,#6C5CE7);
-      color: white;
-      text-align: center;
-      padding: 10px;
-      border-radius: 5px;
-      font-weight: 600;
-    }
+  .card {
+    background:white;
+    border-radius:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+    padding:20px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+  }
+  .card:hover { transform: translateY(-8px); box-shadow:0 12px 30px rgba(0,0,0,0.15); background:#f0f4ff; }
+  .card img { border-radius:8px; margin-bottom:15px; object-fit:cover; }
+  .card h3 { font-size:1.5rem; margin-bottom:10px; color:#6C5CE7; }
+  .card p { font-size:1rem; margin-bottom:10px; }
+  .card .tech { font-family:monospace; font-size:0.9rem; color:#555; margin-bottom:15px; }
+  .card a {
+    background: linear-gradient(135deg,#0D6EFD,#6C5CE7);
+    color:white; text-align:center; padding:12px; border-radius:8px; font-weight:600;
+    transition: 0.3s;
+  }
+  .card a:hover { background: linear-gradient(135deg,#6C5CE7,#0D6EFD); }
 
-    /* Skills */
-    #skills { background: #f9f9f9; }
-    #skills h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #0D6EFD; }
-    .skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; max-width: 800px; margin: auto; }
-    @media(min-width:768px){ .skills-grid { grid-template-columns: repeat(4,1fr); } }
-    .skill { text-align: center; font-weight: 600; font-size: 1rem; padding: 10px; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
-    .skill:hover { transform: translateY(-5px); }
+  /* Skills */
+  #skills { background:#f9f9f9; }
+  #skills h2 { text-align:center; font-size:2.5rem; margin-bottom:40px; color:#0D6EFD; }
+  .skills-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:20px; max-width:800px; margin:auto; }
+  @media(min-width:768px){ .skills-grid { grid-template-columns: repeat(4,1fr); } }
+  .skill { text-align:center; font-weight:600; font-size:1rem; padding:15px; background:white; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.1); transition: transform 0.3s, background 0.3s; }
+  .skill:hover { transform: translateY(-5px); background:#f0f4ff; }
 
-    /* Contact */
-    #contact { background: #0D6EFD; color: white; text-align: center; }
-    #contact h2 { font-size: 2.5rem; margin-bottom: 20px; }
-    #contact a { color: white; font-weight: 600; }
-    #contact a:hover { color: #6C5CE7; }
+  /* Contact */
+  #contact { background:#0D6EFD; color:white; text-align:center; }
+  #contact h2 { font-size:2.5rem; margin-bottom:20px; }
+  #contact a { color:white; font-weight:600; }
+  #contact a:hover { color:#6C5CE7; }
 
-    /* Footer */
-    footer { text-align: center; padding: 20px; font-size: 0.9rem; background: #f1f1f1; }
-  </style>
+  /* Footer */
+  footer { text-align:center; padding:20px; font-size:0.9rem; background:#f1f1f1; }
+
+</style>
 </head>
 <body>
 
@@ -131,32 +122,27 @@
 <section id="projects">
   <h2>Proyectos Académicos</h2>
   <div class="projects-grid">
-
-    <!-- Proyecto APK -->
     <div class="card">
       <h3>App Móvil – Gestión de Objetivos</h3>
-      <p>Aplicación móvil desarrollada en Ionic (HTML, CSS, JS) que permite gestionar objetivos personales mediante operaciones CRUD. La app está compilada como APK para instalar en dispositivos móviles. Registro de usuario anónimo disponible.</p>
+      <p>Aplicación móvil desarrollada en Ionic (HTML, CSS, JS) que permite gestionar objetivos personales mediante operaciones CRUD. APK instalable con registro anónimo.</p>
       <p class="tech">JavaScript, Ionic, HTML, CSS, HTTP, APK</p>
       <a href="https://drive.google.com/uc?export=download&id=16dqveeJzj-mch1QvYgv7hH2tiDodByq0" target="_blank">Descargar APK</a>
-      <small>Nota: APK para instalar en celular. Registro de usuario anónimo.</small>
+      <small>Nota: APK para celular.</small>
     </div>
 
-    <!-- Proyecto Landing Pages -->
     <div class="card">
       <h3>Landing Pages Responsivas</h3>
-      <p>Landing pages estáticas desarrolladas con HTML, CSS y Bootstrap, enfocadas en estructura clara, diseño simple y usabilidad.</p>
+      <p>Landing pages estáticas con HTML, CSS y Bootstrap. Estructura clara y usabilidad.</p>
       <p class="tech">HTML, CSS, Bootstrap</p>
       <a href="#">Ver Repositorio</a>
     </div>
 
-    <!-- Proyecto Sistema Agencia -->
     <div class="card">
       <h3>Sistema Completo – Agencia de Envíos</h3>
-      <p>Sistema con aplicaciones para clientes y funcionarios, backend en C# (.NET) con Arquitectura Limpia, API REST y base de datos SQL Server.</p>
+      <p>Sistema con aplicaciones para clientes y funcionarios, backend en C# (.NET), API REST y base de datos SQL Server.</p>
       <p class="tech">C#, .NET, SQL Server, Entity Framework, ASP.NET MVC</p>
       <a href="#">Ver Repositorio</a>
     </div>
-
   </div>
 </section>
 
