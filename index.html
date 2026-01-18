@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ignácio Egozcue - Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
   body { line-height:1.6; color:#1a1a1a; scroll-behavior: smooth; }
@@ -19,14 +21,8 @@
   nav a:hover { color:#6C5CE7; }
 
   /* Secciones */
-  section { padding:100px 20px; opacity:0; transform: translateY(20px); animation:fadeUp 1s forwards; }
-  section:nth-of-type(1) { animation-delay:0.1s; }
-  section:nth-of-type(2) { animation-delay:0.2s; }
-  section:nth-of-type(3) { animation-delay:0.3s; }
-  section:nth-of-type(4) { animation-delay:0.4s; }
-  section:nth-of-type(5) { animation-delay:0.5s; }
-
-  @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+  section { padding:100px 20px; opacity:0; transform: translateY(20px); transition: all 0.8s ease-out; }
+  section.visible { opacity:1; transform: translateY(0); }
 
   /* Hero */
   #hero { 
@@ -37,7 +33,7 @@
   }
   #hero img { width:160px; height:160px; border-radius:50%; margin-bottom:20px; box-shadow:0 8px 20px rgba(0,0,0,0.3); object-fit:cover; transition: transform 0.5s; }
   #hero img:hover { transform: scale(1.05); }
-  #hero h1 { font-size:3rem; font-weight:700; margin-bottom:10px; animation:fadeUp 1s forwards; }
+  #hero h1 { font-size:3rem; font-weight:700; margin-bottom:10px; }
   #hero p { font-size:1.3rem; }
 
   /* About */
@@ -59,6 +55,7 @@
     padding:20px;
     display:flex; flex-direction:column; justify-content:space-between;
     transition: transform 0.4s, box-shadow 0.4s, background 0.4s;
+    cursor: pointer;
   }
   .card:hover { transform: translateY(-8px); box-shadow:0 12px 30px rgba(0,0,0,0.15); background:#f0f4ff; }
   .card img { border-radius:8px; margin-bottom:15px; object-fit:cover; }
@@ -91,7 +88,15 @@
 
 </style>
 </head>
-<body>
+<body x-data x-init="
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+    });
+  }, {threshold:0.2});
+  sections.forEach(section => observer.observe(section));
+">
 
 <!-- Navbar -->
 <nav>
@@ -124,7 +129,7 @@
   <div class="projects-grid">
     <div class="card">
       <h3>App Móvil – Gestión de Objetivos</h3>
-      <p>Aplicación móvil desarrollada en Ionic (HTML, CSS, JS) que permite gestionar objetivos personales mediante operaciones CRUD. APK instalable con registro anónimo.</p>
+      <p>Aplicación móvil desarrollada en Ionic (HTML, CSS, JS) que permite gestionar objetivos personales mediante CRUD. APK instalable con registro anónimo.</p>
       <p class="tech">JavaScript, Ionic, HTML, CSS, HTTP, APK</p>
       <a href="https://drive.google.com/uc?export=download&id=16dqveeJzj-mch1QvYgv7hH2tiDodByq0" target="_blank">Descargar APK</a>
       <small>Nota: APK para celular.</small>
