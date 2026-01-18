@@ -4,8 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ignácio Egozcue - Portfolio</title>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Alpine.js -->
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pV1Kqokm6I3w8cKk+HCZf1KQG5vN2x7Z1S/zOI+Hxf5t0g1fD7rD5h9zXx+7eY5zNpF8nR+I3XpsxT0A6FZp5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
@@ -74,8 +81,9 @@
   #skills h2 { text-align:center; font-size:2.5rem; margin-bottom:40px; color:#0D6EFD; }
   .skills-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:20px; max-width:800px; margin:auto; }
   @media(min-width:768px){ .skills-grid { grid-template-columns: repeat(4,1fr); } }
-  .skill { text-align:center; font-weight:600; font-size:1rem; padding:15px; background:white; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.1); transition: transform 0.3s, background 0.3s; }
+  .skill { text-align:center; font-weight:600; font-size:1rem; padding:15px; background:white; border-radius:15px; box-shadow:0 6px 20px rgba(0,0,0,0.1); transition: transform 0.3s, background 0.3s; display:flex; flex-direction:column; align-items:center; justify-content:center; }
   .skill:hover { transform: translateY(-5px); background:#f0f4ff; }
+  .skill i { margin-bottom:8px; }
 
   /* Contact */
   #contact { background:#0D6EFD; color:white; text-align:center; }
@@ -146,7 +154,7 @@
       <h3>Sistema Completo – Agencia de Envíos</h3>
       <p>Sistema con aplicaciones para clientes y funcionarios, backend en C# (.NET), API REST y base de datos SQL Server.</p>
       <p class="tech">C#, .NET, SQL Server, Entity Framework, ASP.NET MVC</p>
-      <a href="#">Ver Repositorio</a>
+      <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank">Ver Repositorio</a>
     </div>
   </div>
 </section>
@@ -155,14 +163,14 @@
 <section id="skills">
   <h2>Habilidades Técnicas</h2>
   <div class="skills-grid">
-    <div class="skill">JavaScript</div>
-    <div class="skill">HTML</div>
-    <div class="skill">CSS</div>
-    <div class="skill">Bootstrap</div>
-    <div class="skill">SQL Server</div>
-    <div class="skill">C# .NET</div>
-    <div class="skill">Ionic</div>
-    <div class="skill">APIs REST</div>
+    <div class="skill"><i class="fab fa-js-square fa-2x" style="color:#f0db4f;"></i>JavaScript</div>
+    <div class="skill"><i class="fab fa-html5 fa-2x" style="color:#e34c26;"></i>HTML</div>
+    <div class="skill"><i class="fab fa-css3-alt fa-2x" style="color:#264de4;"></i>CSS</div>
+    <div class="skill"><i class="fab fa-bootstrap fa-2x" style="color:#7952b3;"></i>Bootstrap</div>
+    <div class="skill"><i class="fas fa-database fa-2x" style="color:#00758f;"></i>SQL Server</div>
+    <div class="skill"><i class="fab fa-microsoft fa-2x" style="color:#f65314;"></i>C# .NET</div>
+    <div class="skill"><i class="fas fa-mobile-alt fa-2x" style="color:#3dc6f0;"></i>Ionic</div>
+    <div class="skill"><i class="fas fa-network-wired fa-2x" style="color:#ff6f61;"></i>APIs REST</div>
   </div>
 </section>
 
@@ -177,6 +185,17 @@
 <footer>
   &copy; 2026 Ignácio Egozcue. Todos los derechos reservados.
 </footer>
+
+<script>
+  // IntersectionObserver para animaciones smooth
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+    });
+  }, {threshold:0.2});
+  sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
