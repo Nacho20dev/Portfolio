@@ -3,152 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio de Ignácio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <title>Ignácio Egozcue - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    /* Reset basic styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f7fc;
-      color: #333;
-      line-height: 1.6;
-      padding: 0;
-      margin: 0;
+      scroll-behavior: smooth;
     }
 
-    header {
-      background-color: #2d3e50;
+    /* Hero */
+    #hero {
+      height: 100vh;
+      background: #0d6efd;
       color: white;
-      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      border-bottom: 5px solid #0078d7;
+    }
+    #hero img {
+      border-radius: 50%;
+      width: 150px;
+      margin-bottom: 1rem;
     }
 
-    header h1 {
-      font-family: 'Ubuntu', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-    }
-
-    main {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
+    /* Navbar spacing */
     section {
-      margin-bottom: 3rem;
+      padding-top: 80px; /* espacio para navbar */
+      padding-bottom: 60px;
     }
 
-    h2 {
-      font-size: 2rem;
-      color: #333;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      font-weight: 700;
+    /* Cards hover effect */
+    .card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s;
     }
 
-    ul {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      list-style: none;
-      padding: 0;
-      margin-top: 1.5rem;
+    /* Skills icons */
+    .fa-2x {
+      color: #0d6efd;
     }
 
-    li {
-      background-color: #ffffff;
-      border: 1px solid #e1e1e1;
-      border-radius: 10px;
-      padding: 1rem;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    li:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
+    /* Links */
     a {
       text-decoration: none;
-      color: #0078d7;
-      font-size: 1.2rem;
-      font-weight: 500;
-      display: block;
-      transition: color 0.3s ease;
     }
-
     a:hover {
-      color: #005fa3;
+      text-decoration: underline;
     }
-
-    footer {
-      background-color: #2d3e50;
-      color: white;
-      text-align: center;
-      padding: 1.5rem;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-    }
-
-    @media (max-width: 768px) {
-      ul {
-        grid-template-columns: 1fr;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-    }
-
   </style>
 </head>
 <body>
-  <header>
-    <h1>Portfolio de Ignacio Egozcue</h1>
-    <p>Explora mis proyectos de desarrollo web.</p>
-  </header>
 
-  <main>
-    <section>
-      <h2>Mis Proyectos</h2>
-      <ul>
-        <li>
-          <a href="Obligatorio DIW- Ignacio_Egozcue/index.html">NBA ALL STARS</a>
-        </li>
-        <li>
-          <a href="Agencia de viajes_30632/index.html">AGENCIA DE VIAJES</a>
-        </li>
-         <li>
-          <a href="http://estanciaegozcue.somee.com">ESTANCIA WEBAPP</a>
-        </li>
- <li>
-          <a href="304632/index.html">RIDERS</a>
-        </li>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Ignácio Egozcue</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">Sobre mí</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Proyectos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
       </ul>
-    </section>
-  </main>
+    </div>
+  </div>
+</nav>
 
-  <footer>
-    <p>&copy; 2024 Ignacio Egozcue</p>
-  </footer>
+<!-- Hero / Landing -->
+<section id="hero">
+  <div class="container">
+    <img src="img/foto-perfil.jpg" alt="Ignácio Egozcue">
+    <h1>Ignácio Egozcue</h1>
+    <p class="lead">Desarrollador .NET Junior | Estudiante de Analista Programador</p>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <h2 class="mb-4">Sobre mí</h2>
+    <p>Soy un desarrollador junior apasionado por crear aplicaciones completas y funcionales. Tengo experiencia en backend con C# y JavaScript, desarrollo frontend con HTML, CSS, Bootstrap, Ionic y MVC. Me gusta trabajar en proyectos donde la estructura, la legibilidad y la usabilidad sean prioridad.</p>
+    <p>Experiencia en desarrollo de APIs REST, sistemas de gestión y landing pages responsivas. Actualmente buscando oportunidades para aplicar mis conocimientos y seguir creciendo profesionalmente.</p>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="bg-light">
+  <div class="container">
+    <h2 class="mb-4">Proyectos Académicos</h2>
+    <div class="row g-4">
+
+      <!-- Proyecto 1: App Móvil -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="img/proyecto1.jpg" class="card-img-top" alt="App Móvil">
+          <div class="card-body">
+            <h5 class="card-title">App Móvil – Gestión de Objetivos</h5>
+            <p class="card-text">Aplicación móvil que permite gestionar objetivos personales con operaciones CRUD, comunicándose con un backend REST desarrollado en JavaScript.</p>
+            <p><strong>Tecnologías:</strong> JavaScript, Ionic, HTML, CSS, HTTP, APK</p>
+            <a href="#" class="btn btn-primary">Ver Repositorio</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 2: Landing Pages -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="img/proyecto2.jpg" class="card-img-top" alt="Landing Pages">
+          <div class="card-body">
+            <h5 class="card-title">Landing Pages Responsivas</h5>
+            <p class="card-text">Landing pages estáticas desarrolladas con HTML, CSS y Bootstrap, enfocadas en estructura clara, diseño simple y usabilidad.</p>
+            <p><strong>Tecnologías:</strong> HTML, CSS, Bootstrap</p>
+            <a href="#" class="btn btn-primary">Ver Repositorio</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 3: Sistema Agencia -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img src="img/proyecto3.jpg" class="card-img-top" alt="Sistema Agencia">
+          <div class="card-body">
+            <h5 class="card-title">Sistema Completo – Agencia de Envíos</h5>
+            <p class="card-text">Sistema con aplicaciones para clientes y funcionarios, backend en C# (.NET) con Arquitectura Limpia, API REST y base de datos SQL Server.</p>
+            <p><strong>Tecnologías:</strong> C#, .NET, SQL Server, Entity Framework, ASP.NET MVC</p>
+            <a href="#" class="btn btn-primary">Ver Repositorio</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="container">
+    <h2 class="mb-4">Habilidades Técnicas</h2>
+    <div class="row g-3">
+      <div class="col-md-3 col-6 text-center">
+        <i class="fab fa-js fa-2x mb-2"></i>
+        <p>JavaScript</p>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <i class="fab fa-bootstrap fa-2x mb-2"></i>
+        <p>Bootstrap</p>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <i class="fab fa-html5 fa-2x mb-2"></i>
+        <p>HTML</p>
+      </div>
+      <div class="col-md-3 col-6 text-center">
+        <i class="fab fa-css3-alt fa-2x mb-2"></i>
+        <p>CSS</p>
+      </div>
+      <div class="col-md-3 col-6 text-center mt-3">
+        <i class="fas fa-database fa-2x mb-2"></i>
+        <p>SQL Server</p>
+      </div>
+      <div class="col-md-3 col-6 text-center mt-3">
+        <i class="fab fa-cuttlefish fa-2x mb-2"></i>
+        <p>C# .NET</p>
+      </div>
+      <div class="col-md-3 col-6 text-center mt-3">
+        <i class="fas fa-mobile-alt fa-2x mb-2"></i>
+        <p>Ionic</p>
+      </div>
+      <div class="col-md-3 col-6 text-center mt-3">
+        <i class="fas fa-server fa-2x mb-2"></i>
+        <p>APIs REST</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="bg-dark text-light">
+  <div class="container text-center">
+    <h2 class="mb-4">Contacto</h2>
+    <p>Email: <a href="mailto:ignacio@example.com" class="text-light">ignacio@example.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/ignacioegozcue/" target="_blank" class="text-light">linkedin.com/in/ignacioegozcue</a></p>
+    <p>GitHub: <a href="https://github.com/ignacioegozcue" target="_blank" class="text-light">github.com/ignacioegozcue</a></p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
