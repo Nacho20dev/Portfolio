@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ignacio Egozcue | Desarrollador .NET Junior</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio de Ignacio Egozcue, desarrollador .NET Junior. Proyectos en C#, APIs REST, SQL Server y aplicaciones web y mobile.">
+  <meta name="keywords" content=".NET Junior, C#, ASP.NET, APIs REST, SQL Server, Portfolio Programador Uruguay">
+  <meta name="author" content="Ignacio Egozcue">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ignacio Egozcue | Desarrollador .NET Junior">
+  <meta property="og:description" content="Portfolio profesional con proyectos reales en C#, APIs REST y SQL Server.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/og-image.png">
+
+  <!-- Devicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind (solo para utilidades, opcional) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: '#8b5cf6' } } }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background:#111; color:#fff; }
+    .carousel img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+      background: #111;
+    }
+    .carousel-caption { background: rgba(0,0,0,0.4); border-radius: 8px; }
+  </style>
+</head>
+
+<body class="text-zinc-100">
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur bg-zinc-950/70 border-b border-zinc-800">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <span class="font-semibold">Ignacio Egozcue</span>
+    <div class="hidden md:flex gap-6 text-sm text-zinc-400">
+      <a href="#proyectos" class="hover:text-primary">Proyectos</a>
+      <a href="#tecnologias" class="hover:text-primary">Tecnologías</a>
+      <a href="#contacto" class="hover:text-primary">Contacto</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="min-h-screen flex items-center px-6 pt-24 relative">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent"></div>
+  <div class="relative max-w-5xl mx-auto">
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+      Hola, soy
+      <span class="text-primary relative">
+        Ignacio Egozcue
+        <span class="absolute inset-0 blur-2xl bg-primary/30 -z-10"></span>
+      </span>
+    </h1>
+    <p class="mt-6 text-lg md:text-xl text-zinc-300 max-w-2xl leading-relaxed">
+      Desarrollador .NET Junior enfocado en crear aplicaciones claras, mantenibles y bien estructuradas.
+    </p>
+    <p class="mt-3 text-zinc-400">
+      Estudiante de Analista Programador · Backend & Web
+    </p>
+    <div class="mt-10 flex gap-4 flex-wrap">
+      <a href="https://github.com/Nacho20dev" target="_blank" class="px-6 py-3 rounded-xl bg-primary text-white hover:scale-[1.02] transition-transform">GitHub</a>
+      <a href="https://www.linkedin.com/in/idet-uy" target="_blank" class="px-6 py-3 rounded-xl border border-zinc-700 hover:border-primary hover:text-primary transition">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="py-28 px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <h2 class="text-3xl font-semibold text-center mb-20">Proyectos</h2>
+
+    <!-- AGENCIA -->
+    <div class="grid lg:grid-cols-2 gap-16 mb-32">
+      <div>
+        <h3 class="text-2xl font-semibold mb-4">Agencia de Envíos</h3>
+        <p class="text-zinc-400 mb-6">Sistema completo desarrollado de punta a punta: backend, API, frontend y base de datos.</p>
+        <ul class="text-zinc-400 space-y-2 mb-8">
+          <li>✔ APIs REST en C#</li>
+          <li>✔ Arquitectura limpia y POO</li>
+          <li>✔ Roles, filtros y flujos reales</li>
+          <li>✔ SQL Server + Entity Framework</li>
+        </ul>
+        <p class="text-sm text-zinc-500 mb-3">Tecnologías utilizadas</p>
+        <div class="flex flex-wrap gap-4 text-2xl text-zinc-400 mb-8">
+          <i class="devicon-csharp-plain hover:text-primary transition"></i>
+          <i class="devicon-dotnetcore-plain hover:text-primary transition"></i>
+          <i class="devicon-microsoftsqlserver-plain hover:text-primary transition"></i>
+          <i class="devicon-git-plain hover:text-primary transition"></i>
+          <i class="devicon-postman-plain hover:text-primary transition"></i>
+          <span class="text-sm px-2 py-1 border border-zinc-700 rounded-md">UML</span>
+        </div>
+        <h4 class="text-lg font-semibold mb-3">Qué problemas resolví</h4>
+        <ul class="text-zinc-400 space-y-2 text-sm mb-8">
+          <li>• Organización clara del sistema para facilitar mantenimiento.</li>
+          <li>• Separación de responsabilidades según tipo de usuario.</li>
+          <li>• Centralización de la lógica principal del negocio.</li>
+          <li>• Búsquedas y filtros para mejorar la experiencia.</li>
+          <li>• Flujos alineados a procesos reales.</li>
+        </ul>
+        <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="inline-block px-5 py-3 bg-primary rounded-xl text-white">Ver repositorio</a>
+      </div>
+
+      <!-- Carousel Bootstrap Agencia -->
+      <div class="mx-auto">
+        <div id="agenciaCarousel" class="carousel slide rounded-3xl" style="background:#111;" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./img/enviosListadoAdmin.png" class="d-block w-100" alt="Listado Admin">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/enviosAltaAdmin.png" class="d-block w-100" alt="Alta Admin">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/usuariosAltaAdmin.png" class="d-block w-100" alt="Usuarios Alta Admin">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/enviosMisEnviosCliente.png" class="d-block w-100" alt="Mis Envios Cliente">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/enviosBuscarCliente.png" class="d-block w-100" alt="Buscar Cliente">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#agenciaCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#agenciaCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#agenciaCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#agenciaCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#agenciaCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#agenciaCarousel" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#agenciaCarousel" data-bs-slide-to="4"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IONIC / Mobile App -->
+    <div class="grid lg:grid-cols-2 gap-16">
+      <div>
+        <h3 class="text-2xl font-semibold mb-4">Objetivos Personales (Mobile)</h3>
+        <p class="text-zinc-400 mb-6">Aplicación mobile desarrollada con Ionic consumiendo una API REST.</p>
+        <ul class="text-zinc-400 space-y-2 mb-8">
+          <li>✔ Login de usuarios</li>
+          <li>✔ Evaluaciones por país y fecha</li>
+          <li>✔ CRUD completo</li>
+        </ul>
+        <p class="text-sm text-zinc-500 mb-3">Tecnologías utilizadas</p>
+        <div class="flex flex-wrap gap-4 text-2xl text-zinc-400 mb-8">
+          <i class="devicon-javascript-plain hover:text-primary transition"></i>
+          <i class="devicon-ionic-original hover:text-primary transition"></i>
+          <i class="devicon-postman-plain hover:text-primary transition"></i>
+        </div>
+        <h4 class="text-lg font-semibold mb-3">Qué problemas resolví</h4>
+        <ul class="text-zinc-400 space-y-2 text-sm mb-8">
+          <li>• Consumo correcto de una API externa.</li>
+          <li>• Organización clara de evaluaciones.</li>
+          <li>• Filtros por país y rango de fechas.</li>
+          <li>• Flujos de login y gestión mobile.</li>
+        </ul>
+        <a href="https://drive.google.com/file/d/16dqveeJzj-mch1QvYgv7hH2tiDodByq0/view" target="_blank" class="inline-block px-5 py-3 bg-primary rounded-xl text-white">Descargar APK</a>
+      </div>
+
+      <!-- Carousel Bootstrap Mobile App -->
+      <div class="mx-auto">
+        <div id="appCarousel" class="carousel slide rounded-3xl" style="background:#111;" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="./img/apkLogin.png" class="d-block w-100" alt="Login App">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/apkAgregarEvaluacion.png" class="d-block w-100" alt="Agregar Evaluación">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/AgregarEvaluacion.png" class="d-block w-100" alt="Agregar Evaluación 2">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/AgregarEvaluacion2.png" class="d-block w-100" alt="Agregar Evaluación 3">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/apkFiltroFechas.png" class="d-block w-100" alt="Filtro Fechas">
+            </div>
+            <div class="carousel-item">
+              <img src="./img/apkEvaluacionesPais.png" class="d-block w-100" alt="Evaluaciones por País">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#appCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#appCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#appCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#appCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#appCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#appCarousel" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#appCarousel" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#appCarousel" data-bs-slide-to="5"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TECNOLOGIAS -->
+<section id="tecnologias" class="py-24 px-6 bg-zinc-900/40">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-3xl font-semibold mb-12">Tecnologías</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 text-zinc-300">
+      <div class="flex flex-col items-center gap-3">
+        <i class="devicon-csharp-plain text-5xl hover:text-primary transition"></i>
+        <span>C#</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="devicon-dotnetcore-plain text-5xl hover:text-primary transition"></i>
+        <span>.NET</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="devicon-microsoftsqlserver-plain text-5xl hover:text-primary transition"></i>
+        <span>SQL Server</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="devicon-javascript-plain text-5xl hover:text-primary transition"></i>
+        <span>JavaScript</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="devicon-ionic-original text-5xl hover:text-primary transition"></i>
+        <span>Ionic</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="devicon-git-plain text-5xl hover:text-primary transition"></i>
+        <span>Git</span>
+      </div>
+      <div class="flex flex-col items-center gap-3">
+        <i class="devicon-github-original text-5xl hover:text-primary transition"></i>
+        <span>GitHub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto" class="py-16 text-center text-zinc-400">
+  <p class="mb-6 text-lg">¿Charlamos?</p>
+  <div class="flex justify-center gap-8 text-sm">
+    <a href="mailto:ignacio.egozcue9@gmail.com" class="hover:text-primary">Email</a>
+    <a href="https://wa.me/59893370197" target="_blank" class="hover:text-primary">WhatsApp</a>
+    <a href="https://www.linkedin.com/in/idet-uy" target="_blank" class="hover:text-primary">LinkedIn</a>
+  </div>
+  <p class="mt-8 text-xs">© 2026 Ignacio Egozcue</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
