@@ -5,256 +5,305 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ignacio Egozcue | Portfolio</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
 
-  <!-- Google Font -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (contacto) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 
   <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --primary: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --card: #020617;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, #0f1220 0%, #14172a 100%);
-      color: #e5e7eb;
+      background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    /* NAV */
-    nav {
-      background: rgba(15,18,32,0.8);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid #2a2e55;
-    }
-
-    nav a {
-      color: #c7d2fe;
-      margin-left: 1.2rem;
+    a {
+      color: inherit;
       text-decoration: none;
-      font-size: 0.9rem;
     }
 
-    nav a:hover {
-      color: #818cf8;
+    /* ================= NAV ================= */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* HERO */
-    .hero {
-      min-height: 80vh;
+    nav ul {
       display: flex;
-      align-items: center;
       justify-content: center;
-      text-align: center;
+      gap: 2rem;
+      padding: 1rem;
+      list-style: none;
+    }
+
+    nav li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+
+    nav li:hover {
+      color: var(--primary);
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      min-height: 65vh;
       padding-top: 6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: heroFade 1s ease forwards;
     }
 
-    .hero h1 {
-      font-size: 3rem;
+    .hero-content h1 {
+      font-size: 2.8rem;
       font-weight: 700;
+      position: relative;
+      display: inline-block;
     }
 
-    .hero p {
-      margin-top: 0.8rem;
-      color: #a5b4fc;
-      line-height: 1.4;
+    .hero-content h1::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      bottom: -8px;
+      left: 0;
+      animation: underline 1s ease forwards 0.5s;
     }
 
-    .divider {
-      width: 70px;
-      height: 2px;
-      background: #6366f1;
-      margin: 1.5rem auto;
+    .hero-content p {
+      margin-top: 1.2rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 600px;
     }
 
-    .socials i {
-      font-size: 1.3rem;
-      margin: 0 0.7rem;
-      color: #c7d2fe;
-      transition: 0.2s;
-    }
-
-    .socials i:hover {
-      color: #818cf8;
-      transform: translateY(-3px);
-    }
-
+    /* ================= PROYECTOS ================= */
     section {
-      padding: 4rem 0;
+      padding: 3rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
     }
 
-    h2 {
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
       text-align: center;
-      font-weight: 700;
-      margin-bottom: 3rem;
     }
 
-    .project {
-      margin-bottom: 6rem;
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
-    .project h3 {
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .project-description {
-      text-align: center;
-      max-width: 760px;
-      margin: 1rem auto 2rem;
-      color: #c7d2fe;
-    }
-
-    .features {
-      max-width: 720px;
-      margin: 0 auto 2rem;
-    }
-
-    .features li {
-      margin-bottom: 0.6rem;
-    }
-
-    .tech-icons {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .tech-icons img {
-      width: 36px;
-      margin: 0 8px;
-    }
-
-    .carousel img {
-      max-height: 360px;
-      object-fit: contain;
+    .project-card {
+      background: var(--card);
       border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transform: translateY(30px);
+      opacity: 0;
+      animation: cardFade 0.8s ease forwards;
     }
 
-    .btn-outline-custom {
-      border: 1px solid #6366f1;
-      color: #a5b4fc;
+    .project-card:nth-child(2) {
+      animation-delay: 0.2s;
     }
 
-    .btn-outline-custom:hover {
-      background: #6366f1;
-      color: #fff;
+    .project-card:hover {
+      transform: translateY(-6px);
+      transition: transform 0.3s;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-content ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-content li {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ================= TEC ICONS ================= */
+    .tech-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .tech-icons i {
+      font-size: 1.4rem;
+      color: var(--muted);
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .tech-icons i:hover {
+      color: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* ================= ANIMATIONS ================= */
+    @keyframes heroFade {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes underline {
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes cardFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav class="fixed-top py-3">
-  <div class="container d-flex justify-content-between">
-    <span class="fw-semibold">Ignacio Egozcue</span>
-    <div>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#contacto">Contacto</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <h1>Ignacio Egozcue</h1>
-    <p>
-      Desarrollador junior backend en formación<br>
-      Estudiante de Analista Programador
-    </p>
-
-    <div class="divider"></div>
-
-    <div class="socials">
-      <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:ignacio.egozcue9@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://wa.me/59893370197" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- PROYECTOS -->
-<section id="proyectos">
-  <h2>Proyectos Académicos</h2>
-
-  <!-- Agencia -->
-  <div class="project container">
-    <h3>Agencia de Envíos</h3>
-    <p class="project-description">
-      Sistema completo desarrollado de punta a punta: backend, API, frontend y base de datos.
-    </p>
-
-    <div class="tech-icons">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg">
-    </div>
-
-    <ul class="features">
-      <li>✔ APIs REST en C#</li>
-      <li>✔ Arquitectura limpia y POO</li>
-      <li>✔ Roles, filtros y flujos reales</li>
-      <li>✔ SQL Server + Entity Framework</li>
+  <!-- NAV -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
+  </nav>
 
-    <div id="carouselAgencia" class="carousel slide mb-4">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="img/enviosListadoAdmin.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/enviosAltaAdmin.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/usuariosAltaAdmin.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/enviosMisEnviosCliente.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/enviosBuscarCliente.png" class="d-block w-100"></div>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Ignacio Egozcue</h1>
+      <p>
+        Desarrollador junior backend en formación.  
+        Estudiante de Analista Programador.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <h2>Proyectos Académicos</h2>
+
+    <div class="projects">
+
+      <!-- PROYECTO 1 -->
+      <div class="project-card">
+        <img src="img/envios-1.png" alt="Agencia de envíos">
+        <div class="project-content">
+          <h3>Agencia de Envíos</h3>
+          <p>
+            Sistema completo desarrollado de punta a punta: backend, API, frontend y base de datos.
+          </p>
+
+          <ul>
+            <li>APIs REST en C#</li>
+            <li>Arquitectura limpia y POO</li>
+            <li>Roles y flujos reales</li>
+            <li>SQL Server + EF</li>
+          </ul>
+
+          <div class="tech-icons">
+            <i class="fa-solid fa-code"></i>
+            <i class="fa-solid fa-database"></i>
+            <i class="fa-brands fa-html5"></i>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="text-center">
-      <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="btn btn-outline-custom">
-        Ver repositorio
-      </a>
-    </div>
-  </div>
+      <!-- PROYECTO 2 -->
+      <div class="project-card">
+        <img src="img/apk-1.png" alt="Objetivos personales">
+        <div class="project-content">
+          <h3>Objetivos Personales (Mobile)</h3>
+          <p>
+            Aplicación mobile desarrollada con Ionic consumiendo una API REST.
+          </p>
 
-  <!-- APK -->
-  <div class="project container">
-    <h3>Objetivos Personales (Mobile)</h3>
-    <p class="project-description">
-      Aplicación mobile desarrollada con Ionic y JavaScript consumiendo una API REST.
-    </p>
+          <ul>
+            <li>Login de usuarios</li>
+            <li>CRUD completo</li>
+            <li>Filtros por país y fecha</li>
+          </ul>
 
-    <div class="tech-icons">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg">
-    </div>
-
-    <ul class="features">
-      <li>✔ Login de usuarios</li>
-      <li>✔ Evaluaciones por país y fecha</li>
-      <li>✔ CRUD completo</li>
-    </ul>
-
-    <div id="carouselAPK" class="carousel slide mb-4">
-      <div class="carousel-inner">
-        <div class="carousel-item active"><img src="img/apkLogin.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/apkAgregarEvaluacion.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/AgregarEvaluacion.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/AgregarEvaluacion2.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/apkFiltroFechas.png" class="d-block w-100"></div>
-        <div class="carousel-item"><img src="img/apkEvaluacionesPais.png" class="d-block w-100"></div>
+          <div class="tech-icons">
+            <i class="fa-brands fa-js"></i>
+            <i class="fa-brands fa-html5"></i>
+            <i class="fa-solid fa-mobile-screen"></i>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="text-center">
-      <a href="https://drive.google.com/file/d/16dqveeJzj-mch1QvYgv7hH2tiDodByq0/view" target="_blank" class="btn btn-outline-custom">
-        Descargar APK
-      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
