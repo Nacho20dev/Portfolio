@@ -11,18 +11,17 @@
 
   <style>
     :root {
-      --bg-dark: #0f0f0f;
-      --card-bg: #1a1a1b;
+      --bg-dark: #0d0d0e;
+      --card-bg: #161617;
       --accent: #c586c0;
       --text-blue: #4fc1ff;
-      --border-color: #333333;
+      --border-color: #2d2d2d;
     }
 
     body {
       background-color: var(--bg-dark);
       color: #e0e0e0;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
     }
 
     .accent { color: var(--accent); }
@@ -30,70 +29,86 @@
 
     /* NAVBAR */
     nav {
-      background-color: rgba(15, 15, 15, 0.9) !important;
-      backdrop-filter: blur(10px);
+      background-color: rgba(13, 13, 14, 0.9) !important;
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-color);
     }
 
     /* HERO */
-    .hero {
-      padding: 7rem 0 4rem;
-      text-align: left;
-    }
-    
+    .hero { padding: 8rem 0 4rem; }
     .hero h1 {
       font-size: clamp(2.5rem, 8vw, 4rem);
       background: linear-gradient(90deg, #ffffff, var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
     }
 
-    /* CONTACT ICONS - Mejorados para Mobile */
-    .hero-icons {
-      display: flex;
-      gap: 20px;
-      margin-top: 1.5rem;
-    }
-
+    .hero-icons { display: flex; gap: 25px; margin-top: 2rem; }
     .hero-icons a {
       color: #ffffff;
-      font-size: 2.2rem; /* Más grandes */
-      transition: all 0.3s ease;
+      font-size: 2.5rem;
+      transition: 0.3s ease;
+    }
+    .hero-icons a:hover { color: var(--accent); transform: translateY(-5px); }
+
+    /* SKILLS GRID */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 20px;
+      margin-top: 2rem;
+    }
+    .skill-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 15px;
+      padding: 1.5rem 0.5rem;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .skill-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(197, 134, 192, 0.2);
+    }
+    .skill-item i { font-size: 2.5rem; margin-bottom: 0.5rem; display: block; }
+    .skill-item span { font-size: 0.8rem; font-weight: 500; }
+
+    /* TIMELINE */
+    .timeline {
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+      position: relative;
+    }
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -31px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      background: var(--bg-dark);
+      border: 3px solid var(--accent);
+      border-radius: 50%;
     }
 
-    .hero-icons a:hover {
-      color: var(--accent);
-      transform: scale(1.1);
-    }
-
-    /* PROJECTS */
+    /* PROJECT CARDS */
     .project-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 24px;
       padding: 2.5rem;
       margin-bottom: 3rem;
-      transition: all 0.4s ease;
+      transition: 0.4s;
     }
-
-    .project-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    /* TECH TAGS */
-    .tech-badge {
-      font-size: 1.8rem;
-      margin-right: 12px;
-      color: var(--text-blue);
-    }
-
-    /* BUTTONS */
+    .project-card:hover { border-color: var(--accent); }
+    
     .btn-custom {
-      background: transparent;
+      background: rgba(255,255,255,0.05);
       border: 1px solid var(--border-color);
       color: #fff;
-      padding: 0.6rem 1.5rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 50px;
       transition: 0.3s;
       text-decoration: none;
@@ -101,41 +116,22 @@
       align-items: center;
       gap: 8px;
     }
+    .btn-custom:hover { background: var(--accent); color: #000; }
 
-    .btn-custom:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #000;
-    }
-
-    /* COLLAPSE CONTENT */
     .aprendi-box {
-      background: #111;
+      background: #0a0a0a;
       border-radius: 15px;
       padding: 20px;
       border-left: 4px solid var(--accent);
     }
 
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: 0.6s ease-out;
-    }
+    .fade-up { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+    .fade-up.show { opacity: 1; transform: translateY(0); }
 
-    .fade-up.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 4rem 0;
-      border-top: 1px solid var(--border-color);
-      text-align: center;
-    }
+    footer { padding: 4rem 0; border-top: 1px solid var(--border-color); text-align: center; }
 
     @media (max-width: 768px) {
-      .hero-icons a { font-size: 2.5rem; } /* Aún más grandes en móvil para touch */
+      .hero-icons a { font-size: 2.8rem; }
       .project-card { padding: 1.5rem; }
     }
   </style>
@@ -150,60 +146,85 @@
 </nav>
 
 <header class="container hero fade-up">
-  <h1 class="fw-bold">Ignacio Egozcue</h1>
-  <p class="fs-4 text-secondary mb-4">
-    Desarrollador Junior <span class="text-blue">Backend</span> & Estudiante de Analista Programador.
-  </p>
-  
-  <div class="hero-icons">
-    <a href="https://github.com/Nacho20dev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/idet-uy" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:ignacio.egozcue9@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    <a href="https://wa.me/59893370197" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <div class="row align-items-center">
+    <div class="col-lg-8">
+      <h1 class="fw-bold">Ignacio Egozcue</h1>
+      <p class="fs-4 text-secondary mb-4">
+        Desarrollador <span class="text-blue">Backend</span> en formación · Analista Programador
+      </p>
+      <div class="hero-icons">
+        <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:ignacio.egozcue9@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/59893370197" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
   </div>
 </header>
 
 <main class="container">
+  
+  <section class="mb-5 fade-up">
+    <h2 class="mb-4">Stack <span class="accent">Tecnológico</span></h2>
+    <div class="skills-grid">
+      <div class="skill-item"><i class="devicon-csharp-plain accent"></i><span>C#</span></div>
+      <div class="skill-item"><i class="devicon-dotnetcore-plain accent"></i><span>.NET EF</span></div>
+      <div class="skill-item"><i class="devicon-microsoftsqlserver-plain accent"></i><span>SQL Server</span></div>
+      <div class="skill-item"><i class="devicon-javascript-plain accent"></i><span>JS Vanilla</span></div>
+      <div class="skill-item"><i class="devicon-react-original accent"></i><span>React</span></div>
+      <div class="skill-item"><i class="devicon-ionic-original accent"></i><span>Ionic</span></div>
+      <div class="skill-item"><i class="devicon-postman-plain accent"></i><span>Postman</span></div>
+      <div class="skill-item"><i class="devicon-git-plain accent"></i><span>Git</span></div>
+    </div>
+  </section>
+
+  <section class="mb-5 fade-up">
+    <h2 class="mb-4">Trayectoria <span class="accent">Académica</span></h2>
+    <div class="timeline ms-2">
+      <div class="timeline-item">
+        <h5 class="text-blue">Actualidad (1er Semestre 2026)</h5>
+        <p class="text-secondary">Cursando: <strong>Algoritmos 1</strong>, <strong>Ingeniería de Software</strong> y <strong>Taller de React</strong>.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="accent">Julio 2026</h5>
+        <p class="text-white">Titulación intermedia prevista: <strong>Programador Web</strong>.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="text-blue">2do Semestre 2026</h5>
+        <p class="text-secondary">Próximos desafíos: Taller Genexus, Diseño de Aplicaciones y Algoritmos 2.</p>
+      </div>
+      <div class="timeline-item">
+        <h5 class="text-blue">Año 2027</h5>
+        <p class="text-secondary">Proyecto Integrador final para la obtención del título de <strong>Analista Programador</strong>.</p>
+      </div>
+    </div>
+  </section>
+
   <h2 class="mb-5 fade-up">Proyectos destacados</h2>
 
   <div class="project-card fade-up">
     <div class="row">
       <div class="col-lg-7">
-        <h3 class="mb-3">Agencia de Envíos (Ecosistema Logístico)</h3>
-        <p class="text-secondary">Sistema escalable diseñado bajo estándares industriales para la gestión de envíos y rastreo en tiempo real.</p>
-        
-        <div class="mb-4">
-          <i class="devicon-csharp-plain tech-badge"></i>
-          <i class="devicon-microsoftsqlserver-plain tech-badge"></i>
-          <i class="devicon-dotnetcore-plain tech-badge"></i>
-          <i class="devicon-postman-plain tech-badge"></i>
-        </div>
-
+        <h3>Agencia de Envíos</h3>
+        <p class="text-secondary">Arquitectura Backend profesional para gestión logística.</p>
         <div class="mt-4">
-          <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="btn-custom">
-            <i class="fab fa-github"></i> Repositorio
-          </a>
-          <button class="btn-custom" data-bs-toggle="collapse" data-bs-target="#checkAgencia">
-            <i class="fas fa-terminal"></i> ¿Qué aprendí?
-          </button>
+          <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="btn-custom"><i class="fab fa-github"></i> Código</a>
+          <button class="btn-custom" data-bs-toggle="collapse" data-bs-target="#checkAgencia"><i class="fas fa-terminal"></i> ¿Qué aprendí?</button>
         </div>
-
         <div class="collapse" id="checkAgencia">
           <div class="aprendi-box mt-4">
             <ul class="list-unstyled mb-0">
-              <li class="mb-2 text-white"><i class="fas fa-check accent me-2"></i> Implementación de <strong>Arquitectura Limpia</strong> desacoplando la lógica de negocio de la infraestructura.</li>
-              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Orquestación de <strong>Casos de Uso</strong> para mantener un flujo de datos predecible y testeable.</li>
-              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Patrón <strong>Repository & Interfaces</strong> para una persistencia de datos flexible.</li>
-              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Seguridad robusta mediante <strong>JWT Tokens</strong> y filtros de <strong>Authorize</strong> personalizados.</li>
-              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Diseño orientado a <strong>Estándar REST</strong> utilizando <strong>DTOs</strong> para la transferencia eficiente de datos.</li>
-              <li><i class="fas fa-check accent me-2"></i> Consultas optimizadas con <strong>LINQ to Entities</strong> y mapeo relacional complejo.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> <strong>Arquitectura Limpia</strong> y Casos de Uso.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Patrón <strong>Repository</strong> con interfaces.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Autenticación segura con <strong>JWT</strong> y filtros Authorize.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Transferencia de datos eficiente mediante <strong>DTOs</strong>.</li>
+              <li><i class="fas fa-check accent me-2"></i> Consultas complejas con <strong>LINQ to Entities</strong> y JSON.</li>
             </ul>
           </div>
         </div>
       </div>
-      
       <div class="col-lg-5 mt-4 mt-lg-0">
-        <div id="carAgencia" class="carousel slide rounded shadow-lg" data-bs-ride="carousel">
+        <div class="carousel slide rounded shadow-lg" data-bs-ride="carousel">
           <div class="carousel-inner rounded">
             <div class="carousel-item active"><img src="img/enviosListadoAdmin.png" class="d-block w-100"></div>
             <div class="carousel-item"><img src="img/enviosAltaAdmin.png" class="d-block w-100"></div>
@@ -216,38 +237,24 @@
   <div class="project-card fade-up">
     <div class="row">
       <div class="col-lg-7">
-        <h3 class="mb-3">Objetivos Personales (Mobile App)</h3>
-        <p class="text-secondary">Solución móvil para la autogestión y seguimiento de metas personales mediante integración asíncrona.</p>
-        
-        <div class="mb-4">
-          <i class="devicon-ionic-original tech-badge"></i>
-          <i class="devicon-javascript-plain tech-badge"></i>
-          <i class="devicon-html5-plain tech-badge"></i>
-        </div>
-
+        <h3>Objetivos Personales (App)</h3>
+        <p class="text-secondary">Aplicación mobile híbrida con consumo asíncrono de API.</p>
         <div class="mt-4">
-          <a href="TU_LINK_DRIVE" target="_blank" class="btn-custom">
-            <i class="fas fa-download"></i> Descargar APK
-          </a>
-          <button class="btn-custom" data-bs-toggle="collapse" data-bs-target="#checkMobile">
-            <i class="fas fa-code"></i> ¿Qué aprendí?
-          </button>
+          <a href="#" class="btn-custom"><i class="fas fa-download"></i> APK</a>
+          <button class="btn-custom" data-bs-toggle="collapse" data-bs-target="#checkMobile"><i class="fas fa-code"></i> ¿Qué aprendí?</button>
         </div>
-
         <div class="collapse" id="checkMobile">
           <div class="aprendi-box mt-4">
             <ul class="list-unstyled mb-0">
-              <li class="mb-2 text-white"><i class="fas fa-check accent me-2"></i> Consumo de APIs REST externas mediante Fetch y manejo de estados asíncronos.</li>
-              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Estructuración de datos en formato <strong>JSON</strong> para visualización dinámica.</li>
-              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Desarrollo bajo filosofía <strong>Mobile First</strong> con componentes nativos de Ionic.</li>
-              <li><i class="fas fa-check accent me-2"></i> Gestión de autenticación persistente en dispositivos móviles.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Consumo de APIs REST con <strong>Fetch API</strong>.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Manejo de asincronía y <strong>JSON</strong> en JS Vanilla.</li>
+              <li><i class="fas fa-check accent me-2"></i> Diseño <strong>Mobile First</strong> con Ionic framework.</li>
             </ul>
           </div>
         </div>
       </div>
-
       <div class="col-lg-5 mt-4 mt-lg-0">
-        <div id="carMobile" class="carousel slide rounded shadow-lg" data-bs-ride="carousel">
+        <div class="carousel slide rounded shadow-lg" data-bs-ride="carousel">
           <div class="carousel-inner rounded">
             <div class="carousel-item active"><img src="img/apkLogin.png" class="d-block w-100"></div>
             <div class="carousel-item"><img src="img/apkEvaluacionesPais.png" class="d-block w-100"></div>
@@ -260,11 +267,10 @@
 
 <footer>
   <div class="container">
-    <p class="text-secondary mb-4">Uruguay · 2026 · Diseñado con foco en el Backend</p>
-    <div class="hero-icons justify-content-center">
+    <p class="text-secondary mb-4">Uruguay · 2026 · Ignacio Egozcue</p>
+    <div class="hero-icons justify-content-center mt-0">
         <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://wa.me/59893370197" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
   </div>
 </footer>
@@ -272,12 +278,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  const observerOptions = { threshold: 0.1 };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('show');
     });
-  }, observerOptions);
+  }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
