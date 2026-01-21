@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ignacio Egozcue | Portfolio</title>
+  <title>Ignacio Egozcue | Portfolio Backend</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -11,111 +11,115 @@
 
   <style>
     :root {
-      --bg-dark: #1e1e1e;
-      --card-bg: #252526;
+      --bg-dark: #0f0f0f;
+      --card-bg: #1a1a1b;
       --accent: #c586c0;
-      --text-blue: #9cdcfe;
+      --text-blue: #4fc1ff;
+      --border-color: #333333;
     }
 
     body {
       background-color: var(--bg-dark);
-      color: #d4d4d4;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #e0e0e0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
     }
 
-    h1, h2, h3 { color: #ffffff; }
     .accent { color: var(--accent); }
+    .text-blue { color: var(--text-blue); }
 
+    /* NAVBAR */
     nav {
-      background-color: var(--bg-dark);
-      border-bottom: 1px solid #3c3c3c;
+      background-color: rgba(15, 15, 15, 0.9) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
     }
 
     /* HERO */
-    .hero { padding: 5rem 0 3rem; }
-    .hero p { color: var(--text-blue); max-width: 720px; }
+    .hero {
+      padding: 7rem 0 4rem;
+      text-align: left;
+    }
     
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      background: linear-gradient(90deg, #ffffff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* CONTACT ICONS - Mejorados para Mobile */
+    .hero-icons {
+      display: flex;
+      gap: 20px;
+      margin-top: 1.5rem;
+    }
+
     .hero-icons a {
-      color: #d4d4d4;
-      font-size: 1.8rem;
-      margin-right: 1.2rem;
-      transition: all .3s;
-      display: inline-block;
+      color: #ffffff;
+      font-size: 2.2rem; /* Más grandes */
+      transition: all 0.3s ease;
     }
 
     .hero-icons a:hover {
       color: var(--accent);
-      transform: translateY(-5px);
+      transform: scale(1.1);
     }
 
     /* PROJECTS */
-    section { padding: 3rem 0; }
-
-    .project {
+    .project-card {
       background-color: var(--card-bg);
-      border: 1px solid #3c3c3c;
-      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
       padding: 2.5rem;
-      margin-bottom: 4rem;
-      transition: transform 0.3s ease, border-color 0.3s ease;
+      margin-bottom: 3rem;
+      transition: all 0.4s ease;
     }
 
-    .project:hover {
+    .project-card:hover {
       border-color: var(--accent);
-      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
 
-    /* TECH ICONS */
-    .tech-icons {
-      font-size: 2rem;
-      display: flex;
-      gap: 15px;
-      margin: 1.5rem 0;
-    }
-    
-    .tech-icons i {
+    /* TECH TAGS */
+    .tech-badge {
+      font-size: 1.8rem;
+      margin-right: 12px;
       color: var(--text-blue);
-      transition: color 0.3s;
-    }
-    
-    .tech-icons i:hover {
-      color: var(--accent);
     }
 
     /* BUTTONS */
-    .btn-soft {
-      border: 1px solid #444;
-      color: #d4d4d4;
-      background: rgba(255,255,255,0.05);
-      border-radius: 30px;
-      padding: .5rem 1.2rem;
-      font-size: .9rem;
-      transition: all .3s ease;
-      margin-right: .6rem;
+    .btn-custom {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: #fff;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      transition: 0.3s;
       text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .btn-soft:hover {
-      background-color: var(--accent);
-      color: #1e1e1e;
+    .btn-custom:hover {
+      background: var(--accent);
       border-color: var(--accent);
+      color: #000;
     }
 
-    /* COLLAPSE CARD */
-    .aprendi-content {
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 12px;
-      margin-top: 1rem;
+    /* COLLAPSE CONTENT */
+    .aprendi-box {
+      background: #111;
+      border-radius: 15px;
+      padding: 20px;
+      border-left: 4px solid var(--accent);
     }
 
-    /* ANIMATIONS */
     .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: all .8s ease-out;
+      transform: translateY(20px);
+      transition: 0.6s ease-out;
     }
 
     .fade-up.show {
@@ -123,164 +127,157 @@
       transform: translateY(0);
     }
 
+    /* FOOTER */
     footer {
-      background: linear-gradient(180deg, #252526, #1e1e1e);
-      border-top: 1px solid #3c3c3c;
-      padding: 4rem 0 2rem;
+      padding: 4rem 0;
+      border-top: 1px solid var(--border-color);
       text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-icons a { font-size: 2.5rem; } /* Aún más grandes en móvil para touch */
+      .project-card { padding: 1.5rem; }
     }
   </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-dark sticky-top">
+<nav class="navbar navbar-dark fixed-top">
   <div class="container">
-    <span class="navbar-brand fw-bold">Ignacio <span class="accent">Egozcue</span></span>
+    <span class="navbar-brand fw-bold">IE<span class="accent">.dev</span></span>
   </div>
 </nav>
 
-<header class="hero container fade-up">
-  <h1 class="display-4 fw-bold">Ignacio Egozcue</h1>
-  <p class="fs-5">
-    Desarrollador junior backend en formación · Estudiante de Analista Programador
+<header class="container hero fade-up">
+  <h1 class="fw-bold">Ignacio Egozcue</h1>
+  <p class="fs-4 text-secondary mb-4">
+    Desarrollador Junior <span class="text-blue">Backend</span> & Estudiante de Analista Programador.
   </p>
-
+  
   <div class="hero-icons">
-    <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Nacho20dev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/idet-uy" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:ignacio.egozcue9@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    <a href="https://wa.me/59893370197" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
   </div>
 </header>
 
-<section class="container">
-  <h2 class="accent mb-5 fade-up">Proyectos Académicos</h2>
+<main class="container">
+  <h2 class="mb-5 fade-up">Proyectos destacados</h2>
 
-  <div class="project fade-up">
-    <h3>Agencia de Envíos</h3>
-    <p class="text-secondary">Sistema integral con arquitectura multicapa enfocado en la gestión logística profesional.</p>
+  <div class="project-card fade-up">
+    <div class="row">
+      <div class="col-lg-7">
+        <h3 class="mb-3">Agencia de Envíos (Ecosistema Logístico)</h3>
+        <p class="text-secondary">Sistema escalable diseñado bajo estándares industriales para la gestión de envíos y rastreo en tiempo real.</p>
+        
+        <div class="mb-4">
+          <i class="devicon-csharp-plain tech-badge"></i>
+          <i class="devicon-microsoftsqlserver-plain tech-badge"></i>
+          <i class="devicon-dotnetcore-plain tech-badge"></i>
+          <i class="devicon-postman-plain tech-badge"></i>
+        </div>
 
-    <div class="tech-icons">
-      <i class="devicon-csharp-plain" title="C#"></i>
-      <i class="devicon-microsoftsqlserver-plain" title="SQL Server"></i>
-      <i class="devicon-dotnetcore-plain" title="Entity Framework"></i>
-      <i class="devicon-postman-plain" title="Postman"></i>
-    </div>
+        <div class="mt-4">
+          <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="btn-custom">
+            <i class="fab fa-github"></i> Repositorio
+          </a>
+          <button class="btn-custom" data-bs-toggle="collapse" data-bs-target="#checkAgencia">
+            <i class="fas fa-terminal"></i> ¿Qué aprendí?
+          </button>
+        </div>
 
-    <div class="mb-4">
-        <p class="fw-bold accent mb-2 small">DESAFÍOS RESUELTOS:</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-caret-right accent me-2"></i> Separación de responsabilidades y lógica de negocio centralizada.</li>
-          <li><i class="fas fa-caret-right accent me-2"></i> Implementación de roles de usuario (Admin/Cliente).</li>
-          <li><i class="fas fa-caret-right accent me-2"></i> Consultas complejas con Entity Framework para reportes de envíos.</li>
-        </ul>
-    </div>
-
-    <div class="mt-3">
-      <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="btn-soft">
-        <i class="fab fa-github me-1"></i> Código fuente
-      </a>
-      <button class="btn-soft" data-bs-toggle="collapse" data-bs-target="#aprendiAgencia">
-        <i class="fas fa-lightbulb me-1"></i> ¿Qué aprendí?
-      </button>
-    </div>
-
-    <div class="collapse" id="aprendiAgencia">
-      <div class="card card-body aprendi-content mt-3 text-light">
-        <ul class="list-unstyled mb-0">
-          <li class="mb-2"><i class="fas fa-check accent me-2"></i> Dominio de **Arquitectura Limpia** para facilitar el escalado.</li>
-          <li class="mb-2"><i class="fas fa-check accent me-2"></i> Manejo de **UML** para documentar procesos antes de codificar.</li>
-          <li class="mb-2"><i class="fas fa-check accent me-2"></i> Creación de **APIs REST** robustas y seguras.</li>
-          <li><i class="fas fa-check accent me-2"></i> Gestión de migraciones y modelado en **SQL Server**.</li>
-        </ul>
+        <div class="collapse" id="checkAgencia">
+          <div class="aprendi-box mt-4">
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2 text-white"><i class="fas fa-check accent me-2"></i> Implementación de <strong>Arquitectura Limpia</strong> desacoplando la lógica de negocio de la infraestructura.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Orquestación de <strong>Casos de Uso</strong> para mantener un flujo de datos predecible y testeable.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Patrón <strong>Repository & Interfaces</strong> para una persistencia de datos flexible.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Seguridad robusta mediante <strong>JWT Tokens</strong> y filtros de <strong>Authorize</strong> personalizados.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Diseño orientado a <strong>Estándar REST</strong> utilizando <strong>DTOs</strong> para la transferencia eficiente de datos.</li>
+              <li><i class="fas fa-check accent me-2"></i> Consultas optimizadas con <strong>LINQ to Entities</strong> y mapeo relacional complejo.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div id="carouselAgencia" class="carousel slide mt-4 rounded shadow" data-bs-ride="carousel">
-      <div class="carousel-inner rounded">
-        <div class="carousel-item active"><img src="img/enviosListadoAdmin.png" class="d-block w-100" alt="Vista Admin"></div>
-        <div class="carousel-item"><img src="img/enviosAltaAdmin.png" class="d-block w-100" alt="Alta Envios"></div>
-        <div class="carousel-item"><img src="img/enviosMisEnviosCliente.png" class="d-block w-100" alt="Vista Cliente"></div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselAgencia" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselAgencia" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
-  </div>
-
-  <div class="project fade-up">
-    <h3>Objetivos Personales (Mobile)</h3>
-    <p class="text-secondary">Aplicación híbrida para el seguimiento de metas y evaluaciones mediante consumo de API.</p>
-
-    <div class="tech-icons">
-      <i class="devicon-ionic-original" title="Ionic"></i>
-      <i class="devicon-javascript-plain" title="JS Vanilla"></i>
-      <i class="devicon-html5-plain" title="HTML5"></i>
-      <i class="devicon-postman-plain" title="Postman"></i>
-    </div>
-
-    <div class="mb-4">
-        <p class="fw-bold accent mb-2 small">DESAFÍOS RESUELTOS:</p>
-        <ul class="list-unstyled">
-          <li><i class="fas fa-caret-right accent me-2"></i> Sincronización de datos mediante Fetch API y promesas.</li>
-          <li><i class="fas fa-caret-right accent me-2"></i> Gestión de filtros dinámicos por país y fechas.</li>
-          <li><i class="fas fa-caret-right accent me-2"></i> Diseño de interfaz adaptable (Mobile First).</li>
-        </ul>
-    </div>
-
-    <div class="mt-3">
-      <a href="https://drive.google.com/file/d/16dqveeJzj-mch1QvYgv7hH2tiDodByq0/view" target="_blank" class="btn-soft">
-        <i class="fa-solid fa-download me-1"></i> Descargar APK
-      </a>
-      <button class="btn-soft" data-bs-toggle="collapse" data-bs-target="#aprendiApp">
-        <i class="fas fa-lightbulb me-1"></i> ¿Qué aprendí?
-      </button>
-    </div>
-
-    <div class="collapse" id="aprendiApp">
-      <div class="card card-body aprendi-content mt-3 text-light">
-        <ul class="list-unstyled mb-0">
-          <li class="mb-2"><i class="fas fa-check accent me-2"></i> Flujo completo de **Login y Seguridad** en el cliente.</li>
-          <li class="mb-2"><i class="fas fa-check accent me-2"></i> Ciclo de vida de componentes en **Ionic/Capacitor**.</li>
-          <li class="mb-2"><i class="fas fa-check accent me-2"></i> Manipulación asíncrona del DOM con **JavaScript Vanilla**.</li>
-          <li><i class="fas fa-check accent me-2"></i> Depuración de peticiones HTTP en entornos móviles.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div id="carouselApp" class="carousel slide mt-4 rounded shadow" data-bs-ride="carousel">
-      <div class="carousel-inner rounded">
-        <div class="carousel-item active"><img src="img/apkLogin.png" class="d-block w-100" alt="Login"></div>
-        <div class="carousel-item"><img src="img/apkEvaluacionesPais.png" class="d-block w-100" alt="Filtros"></div>
+      
+      <div class="col-lg-5 mt-4 mt-lg-0">
+        <div id="carAgencia" class="carousel slide rounded shadow-lg" data-bs-ride="carousel">
+          <div class="carousel-inner rounded">
+            <div class="carousel-item active"><img src="img/enviosListadoAdmin.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="img/enviosAltaAdmin.png" class="d-block w-100"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</section>
+
+  <div class="project-card fade-up">
+    <div class="row">
+      <div class="col-lg-7">
+        <h3 class="mb-3">Objetivos Personales (Mobile App)</h3>
+        <p class="text-secondary">Solución móvil para la autogestión y seguimiento de metas personales mediante integración asíncrona.</p>
+        
+        <div class="mb-4">
+          <i class="devicon-ionic-original tech-badge"></i>
+          <i class="devicon-javascript-plain tech-badge"></i>
+          <i class="devicon-html5-plain tech-badge"></i>
+        </div>
+
+        <div class="mt-4">
+          <a href="TU_LINK_DRIVE" target="_blank" class="btn-custom">
+            <i class="fas fa-download"></i> Descargar APK
+          </a>
+          <button class="btn-custom" data-bs-toggle="collapse" data-bs-target="#checkMobile">
+            <i class="fas fa-code"></i> ¿Qué aprendí?
+          </button>
+        </div>
+
+        <div class="collapse" id="checkMobile">
+          <div class="aprendi-box mt-4">
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2 text-white"><i class="fas fa-check accent me-2"></i> Consumo de APIs REST externas mediante Fetch y manejo de estados asíncronos.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Estructuración de datos en formato <strong>JSON</strong> para visualización dinámica.</li>
+              <li class="mb-2"><i class="fas fa-check accent me-2"></i> Desarrollo bajo filosofía <strong>Mobile First</strong> con componentes nativos de Ionic.</li>
+              <li><i class="fas fa-check accent me-2"></i> Gestión de autenticación persistente en dispositivos móviles.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 mt-4 mt-lg-0">
+        <div id="carMobile" class="carousel slide rounded shadow-lg" data-bs-ride="carousel">
+          <div class="carousel-inner rounded">
+            <div class="carousel-item active"><img src="img/apkLogin.png" class="d-block w-100"></div>
+            <div class="carousel-item"><img src="img/apkEvaluacionesPais.png" class="d-block w-100"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 
 <footer>
-  <p class="mb-3">Construido con foco en buenas prácticas y escalabilidad.</p>
-  <div class="mb-4">
-    <a href="mailto:ignacio.egozcue9@gmail.com" class="hero-icons"><i class="fa-solid fa-envelope"></i></a>
-    <a href="https://wa.me/59893370197" target="_blank" class="hero-icons"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.linkedin.com/in/idet-uy" target="_blank" class="hero-icons"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/Nacho20dev" target="_blank" class="hero-icons"><i class="fab fa-github"></i></a>
-  </div>
-  <div class="copyright">
-    © 2026 Ignacio Egozcue · Uruguay
+  <div class="container">
+    <p class="text-secondary mb-4">Uruguay · 2026 · Diseñado con foco en el Backend</p>
+    <div class="hero-icons justify-content-center">
+        <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://wa.me/59893370197" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Animación suave de entrada
-  const observer = new IntersectionObserver(entries => {
+  const observerOptions = { threshold: 0.1 };
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('show');
     });
-  }, { threshold: 0.1 });
+  }, observerOptions);
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
