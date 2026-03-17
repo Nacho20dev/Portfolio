@@ -18,6 +18,12 @@ body {
   font-family: system-ui;
 }
 
+/* NAV */
+nav {
+  background:#0f0f1a;
+  border-bottom:1px solid #2a2a40;
+}
+
 /* TITULO */
 .main-title {
   font-size: 2.8rem;
@@ -25,12 +31,6 @@ body {
   background: linear-gradient(90deg, #c4b5fd, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* NAV */
-nav {
-  background:#0f0f1a;
-  border-bottom:1px solid #2a2a40;
 }
 
 /* HERO */
@@ -55,14 +55,16 @@ nav {
   width:48px;
   margin:12px;
   padding:10px;
-  background:#1a1a2e;
+  background: radial-gradient(circle, #1a1a2e, #0f0f1a);
   border-radius:12px;
   transition:.3s;
+  filter: brightness(0.9) saturate(0.8);
 }
 
 .stack img:hover {
   transform:scale(1.15);
-  box-shadow:0 0 15px #8b5cf6;
+  box-shadow:0 0 18px rgba(139,92,246,0.6);
+  filter: hue-rotate(250deg) brightness(1.1);
 }
 
 /* TIMELINE */
@@ -111,6 +113,11 @@ nav {
 .tech img {
   width:35px;
   margin-right:8px;
+  filter: brightness(0.9);
+}
+
+.tech img:hover {
+  filter: hue-rotate(250deg) brightness(1.2);
 }
 
 /* BUTTON */
@@ -180,7 +187,7 @@ section {
 
 <header class="hero container text-center fade-up">
   <h1 class="main-title">Ignacio Egozcue</h1>
-  <p>Desarrollador junior backend en formación · estudiante de analista programador</p>
+  <p>Desarrollador backend en formación · Analista Programador</p>
 
   <div class="hero-icons">
     <a href="https://github.com/Nacho20dev"><i class="fab fa-github"></i></a>
@@ -202,7 +209,7 @@ section {
     <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg">
-    <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg">
 
   </div>
 
@@ -247,20 +254,23 @@ section {
 <section class="container fade-up">
   <h2>Proyectos</h2>
 
+  <!-- PROYECTO 1 -->
   <div class="project">
     <h3>Agencia de Envíos</h3>
 
     <div class="tech mb-3">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg">
       <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg">
     </div>
 
     <p><strong>Qué aprendí:</strong></p>
     <ul>
-      <li>CRUD completo con roles</li>
-      <li>Gestión de usuarios y envíos</li>
-      <li>Integración con SQL Server</li>
+      <li>Arquitectura backend con C# y .NET</li>
+      <li>Persistencia con SQL Server y Entity Framework</li>
+      <li>Diseño y testing de APIs con Postman</li>
+      <li>Manejo de lógica de negocio y roles</li>
     </ul>
 
     <a href="https://github.com/Nacho20dev/AgenciaEnvios" class="btn-soft">
@@ -268,6 +278,7 @@ section {
     </a>
   </div>
 
+  <!-- PROYECTO 2 -->
   <div class="project">
     <h3>App Objetivos</h3>
 
@@ -280,7 +291,7 @@ section {
     <ul>
       <li>Desarrollo mobile con Ionic</li>
       <li>Persistencia de datos</li>
-      <li>UX enfocada en productividad</li>
+      <li>Diseño UX enfocado en productividad</li>
     </ul>
 
     <a href="https://drive.google.com/file/d/16dqveeJzj-mch1QvYgv7hH2tiDodByq0/view" class="btn-soft">
