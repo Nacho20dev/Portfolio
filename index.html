@@ -29,19 +29,19 @@ body {
   background: var(--bg-dark);
   color: var(--text-primary);
   font-family: system-ui, -apple-system, sans-serif;
-  overflow-x: hidden; /* Previene scroll horizontal por animaciones */
+  overflow-x: hidden;
 }
 
 /* ==============================
    2. UTILITIES 
    ============================== */
 section {
-  padding: 4rem 0; /* Más aire entre secciones */
+  padding: 5rem 0; /* Más aire entre secciones */
 }
 
 h2 {
   font-weight: 700;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   position: relative;
   display: inline-block;
 }
@@ -73,17 +73,17 @@ nav {
 }
 
 /* ==============================
-   4. TITULO Y TYPING (EXPLOTADO)
+   4. TITULO Y TYPING
    ============================== */
 .main-title {
-  font-size: 3.5rem;
+  font-size: 3.8rem;
   font-weight: 800;
   background: linear-gradient(90deg, var(--accent-light), var(--accent), var(--accent-light));
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 4s linear infinite;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 @keyframes shine {
@@ -91,10 +91,10 @@ nav {
 }
 
 .typing-container {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
   font-weight: 400;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .typed-text {
@@ -118,14 +118,14 @@ nav {
    5. HERO Y ICONOS 
    ============================== */
 .hero {
-  padding: 8rem 0 4rem; /* Más espacio arriba */
+  padding: 9rem 0 5rem;
   position: relative;
 }
 
 .hero-icons a {
   color: var(--text-secondary);
-  font-size: 1.8rem;
-  margin: 0 0.8rem;
+  font-size: 2rem;
+  margin: 0 1rem;
   transition: all 0.4s ease;
   display: inline-block;
 }
@@ -133,7 +133,7 @@ nav {
 .hero-icons a:hover {
   color: var(--accent);
   transform: translateY(-5px) scale(1.1);
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  text-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
 }
 
 /* ==============================
@@ -142,109 +142,92 @@ nav {
 .stack-category {
   background: rgba(26, 26, 46, 0.5);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
 .stack-category h5 {
   color: var(--accent-light);
-  margin-bottom: 1.2rem;
-  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .stack img {
-  width: 55px; /* Un toque más grandes */
-  margin: 10px;
-  padding: 10px;
+  width: 60px;
+  margin: 12px;
+  padding: 12px;
   background: radial-gradient(circle, #20203a, #0f0f1a);
-  border-radius: 14px;
+  border-radius: 16px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   filter: brightness(0.9) saturate(0.8);
 }
 
 .stack img:hover {
-  transform: scale(1.2) translateY(-5px);
-  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.5);
+  transform: scale(1.25) translateY(-8px);
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.6);
   filter: brightness(1.1) saturate(1.2);
 }
 
 /* ==============================
-   7. TIMELINE (MODERNO)
+   7. TIMELINE 
    ============================== */
 .timeline {
   border-left: 2px solid var(--border);
-  padding-left: 30px;
+  padding-left: 35px;
   position: relative;
 }
 
 .timeline-item {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   position: relative;
 }
 
 .dot {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   background: var(--accent);
   border-radius: 50%;
   position: absolute;
-  left: -39px;
-  top: 5px;
-  box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+  left: -44px;
+  top: 6px;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
   transition: 0.3s;
 }
 
 .timeline-item:hover .dot {
-  transform: scale(1.3);
+  transform: scale(1.4);
   background: var(--accent-light);
 }
 
 .timeline-item h5 {
   color: var(--accent-light);
   font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .timeline-item p {
   color: var(--text-secondary);
+  font-size: 1rem;
 }
 
 /* ==============================
-   8. VIDEO (EXPOSURE)
-   ============================== */
-.video-container {
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  border: 3px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: 0.5s;
-}
-
-.video-container:hover {
-  border-color: var(--accent);
-  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.3);
-}
-
-.video iframe {
-  width: 100%;
-  height: 500px; /* Un toque más alto */
-  border: none;
-}
-
-/* ==============================
-   9. PROYECTOS (EXPLOTADO)
+   8. PROYECTOS (EXPLOTADO)
    ============================== */
 .project {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2.5rem;
+  border-radius: 24px;
+  padding: 3rem;
   margin-bottom: 3rem;
   transition: all 0.5s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Efecto de borde brillante superior */
@@ -254,17 +237,17 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, transparent, var(--accent), transparent);
   transform: translateX(-100%);
-  transition: 0.7s;
+  transition: 0.8s;
 }
 
 .project:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   background: var(--bg-card-hover);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
-  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 25px 50px rgba(139, 92, 246, 0.25);
+  border-color: rgba(139, 92, 246, 0.4);
 }
 
 .project:hover::before {
@@ -272,37 +255,41 @@ nav {
 }
 
 .project h3 {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--accent-light);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
 }
 
 /* TECH BADGES */
 .tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .tech-badge {
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(139, 92, 246, 0.12);
   color: var(--accent-light);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.8rem;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   transition: 0.3s;
+  font-weight: 500;
 }
 
 .tech-badge:hover {
-  background: rgba(139, 92, 246, 0.2);
-  transform: scale(1.05);
+  background: rgba(139, 92, 246, 0.25);
+  transform: scale(1.08);
 }
 
 .tech-badge img {
-  width: 18px;
-  margin-right: 6px;
+  width: 19px;
+  margin-right: 7px;
 }
 
 /* BUTTONS */
@@ -311,12 +298,12 @@ nav {
   border: 2px solid var(--accent);
   color: var(--text-primary);
   border-radius: 30px;
-  padding: 0.6rem 1.5rem;
+  padding: 0.7rem 1.8rem;
   font-weight: 600;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   transition: 0.4s;
   cursor: pointer;
 }
@@ -324,7 +311,37 @@ nav {
 .btn-modern:hover {
   background: var(--accent);
   color: white;
-  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.45);
+}
+
+/* ==============================
+   9. CV FLOTANTE (NUEVO)
+   ============================== */
+.cv-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50px;
+  padding: 12px 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+}
+
+.cv-float:hover {
+  transform: scale(1.05) translateY(-5px);
+  background: #7c3aed; /* Un violeta un toque más oscuro */
+  box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5);
+  border-color: var(--accent-light);
+  color: white;
 }
 
 /* ==============================
@@ -333,34 +350,36 @@ nav {
 footer {
   background: var(--bg-dark);
   border-top: 1px solid var(--border);
-  padding: 4rem 2.5rem 2.5rem;
+  padding: 5rem 2.5rem 3rem;
   text-align: center;
 }
 
 footer .footer-text {
   color: var(--text-secondary);
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
 }
 
 footer a {
   color: var(--text-secondary);
-  font-size: 1.6rem;
-  margin: 0 0.9rem;
+  font-size: 1.8rem;
+  margin: 0 1rem;
   transition: 0.3s;
   display: inline-block;
 }
 
 footer a:hover {
   color: var(--accent);
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
 .copy {
-  margin-top: 2rem;
-  font-size: 0.9rem;
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /* ==============================
@@ -368,8 +387,8 @@ footer a:hover {
    ============================== */
 .fade-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transform: translateY(35px);
+  transition: all 0.9s ease-out;
 }
 
 .fade-up.show {
@@ -384,9 +403,14 @@ footer a:hover {
 
 <nav class="navbar navbar-dark fixed-top">
   <div class="container">
-    <span class="navbar-brand">Ignacio Egozcue</span>
+    <span class="navbar-brand">Ignacio Egozcue | Portfolio Profundo</span>
   </div>
 </nav>
+
+<a href="CV_Ignacio_Egozcue.pdf" target="_blank" class="cv-float">
+    <i class="fa-solid fa-file-pdf"></i>
+    Descargar CV
+</a>
 
 <header class="hero container text-center fade-up">
   <h1 class="main-title">Ignacio Egozcue</h1>
@@ -398,6 +422,7 @@ footer a:hover {
   <div class="hero-icons">
     <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
     <a href="https://linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:ignacio.egozcue9@gmail.com"><i class="fa-solid fa-envelope"></i></a>
   </div>
 </header>
 
@@ -406,204 +431,34 @@ footer a:hover {
 
   <div class="row d-flex justify-content-center">
     
-    <div class="col-md-5 stack-category mx-2">
+    <div class="col-lg-5 col-md-10 stack-category mx-lg-2">
         <h5>Backend & Base de Datos</h5>
         <div class="stack d-flex justify-content-center flex-wrap">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET Core">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
             <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL Server">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
         </div>
     </div>
 
-    <div class="col-md-5 stack-category mx-2">
+    <div class="col-lg-5 col-md-10 stack-category mx-lg-2 mt-md-3 mt-lg-0">
         <h5>Frontend & Mobile</h5>
         <div class="stack d-flex justify-content-center flex-wrap">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman">
         </div>
     </div>
   </div>
 
-  <p class="mt-4 text-secondary">HTML5 · JavaScript · React · C# .NET · Java · SQL Server · MongoDB · Ionic · Postman</p>
+  <p class="mt-4 text-secondary fs-5">HTML5 · JavaScript · React · C# .NET · Java · SQL Server · MongoDB · Ionic · Postman</p>
 </section>
 
 <section class="container fade-up">
-  <h2>Formación Académica</h2>
+  <h2>Formación e Hitos Académicos</h2>
 
   <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <div class="timeline">
-        
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <h5>Actualidad (Ciclo 1 2026)</h5>
-          <p>Profundizando en Algoritmos 1 (Java) y principios de Ingeniería de Software.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <h5>Julio 2026 (Ciclo previsto)</h5>
-          <p>Taller Genexus · Diseño de Aplicaciones Avanzadas · Algoritmos y Estructuras de Datos 2.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="dot"></div>
-          <h5>2027</h5>
-          <p>Titulación prevista: <strong>Analista Programador</strong></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="container text-center fade-up">
-  <h2>Demo de Proyecto</h2>
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
-        <div class="video-container">
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" allowfullscreen></iframe>
-            </div>
-        </div>
-        <p class="mt-3 text-secondary">Presentación de la Agencia de Envíos</p>
-    </div>
-  </div>
-</section>
-
-<section class="container fade-up">
-  <h2>Proyectos Destacados</h2>
-
-  <div class="row">
-    
-    <div class="col-md-6 mb-4">
-      <div class="project h-100">
-        <h3>Agencia de Envíos</h3>
-        
-        <div class="tech mb-3">
-          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"> C#</div>
-          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"> .NET Core API</div>
-          <div class="tech-badge"><img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"> SQL Server</div>
-          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"> Testing</div>
-        </div>
-
-        <p class="text-secondary">Sistema completo para la gestión de logística. Implementé lógica de negocio compleja, manejo de roles y persistencia con Entity Framework.</p>
-        
-        <p><strong>Claves del desarrollo:</strong></p>
-        <ul>
-          <li>Arquitectura Backend REST con C#</li>
-          <li>Testing riguroso de endpoints con Postman</li>
-          <li>Manejo de estados de envíos y autenticación</li>
-        </ul>
-
-        <div class="mt-auto pt-3">
-          <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="btn-modern">
-            <i class="fab fa-github"></i> Ver repositorio
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 mb-4">
-      <div class="project h-100">
-        <h3>Goalify: Gestión de Objetivos</h3>
-        
-        <div class="tech mb-3">
-          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"> JavaScript</div>
-          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg"> Ionic/Capacitor</div>
-          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"> React</div>
-        </div>
-
-        <p class="text-secondary">Aplicación móvil híbrida para la productividad. Enfocada en un diseño UX limpio y en la persistencia local de datos.</p>
-        
-        <p><strong>Claves del desarrollo:</strong></p>
-        <ul>
-          <li>Desarrollo Mobile con Ionic/React</li>
-          <li>Persistencia de datos local (Storage)</li>
-          <li>Diseño UX centrado en la productividad</li>
-        </ul>
-
-        <div class="mt-auto pt-3">
-          <a href="https://drive.google.com/file/d/16dqveeJzj-mch1QvYgv7hH2tiDodByq0/view" target="_blank" class="btn-modern">
-            <i class="fa-solid fa-download"></i> Descargar APK (V2)
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<footer>
-  <p class="footer-text">Construyendo experiencia real 🚀</p>
-
-  <div>
-    <a href="mailto:ignacio.egozcue9@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-    <a href="https://wa.me/59893370197" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
-  </div>
-
-  <div class="copy">
-    © 2026 Ignacio Egozcue | Maldonado, Uruguay
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-const typedTextSpan = document.querySelector(".typed-text");
-const textArray = ["Backend Developer (C#/Java)", "Analista Programador", "Mobile Tech Enthusiast", "Uruguay based 🇺🇾"];
-const typingSpeed = 100;
-const erasingSpeed = 50;
-const newTextDelay = 2000;
-let textArrayIndex = 0;
-let charIndex = 0;
-
-function type() {
-  if (charIndex < textArray[textArrayIndex].length) {
-    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-    charIndex++;
-    setTimeout(type, typingSpeed);
-  } else {
-    setTimeout(erase, newTextDelay);
-  }
-}
-
-function erase() {
-  if (charIndex > 0) {
-    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-    charIndex--;
-    setTimeout(erase, erasingSpeed);
-  } else {
-    textArrayIndex++;
-    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-    setTimeout(type, typingSpeed + 1100);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (textArray.length) setTimeout(type, newTextDelay + 250);
-});
-</script>
-
-<script>
-const els = document.querySelectorAll('.fade-up');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.1 }); /* Empieza la animacion cuando solo el 10% es visible */
-
-els.forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+    <div class="col-lg
