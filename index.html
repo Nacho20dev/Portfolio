@@ -4,174 +4,377 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ignacio Egozcue | Portfolio</title>
+<title>Ignacio Egozcue | Portfolio Profundo</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
 
-/* BASE */
+/* ==============================
+   1. VARIABLES Y BASE 
+   ============================== */
+:root {
+  --bg-dark: #0f0f1a;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #1d1d33;
+  --accent: #8b5cf6;
+  --accent-light: #c4b5fd;
+  --border: #2a2a40;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+}
+
 body {
-  background:#0f0f1a;
-  color:#ffffff;
-  font-family: system-ui;
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow-x: hidden; /* Previene scroll horizontal por animaciones */
 }
 
-/* NAV */
-nav {
-  background:#0f0f1a;
-  border-bottom:1px solid #2a2a40;
+/* ==============================
+   2. UTILITIES 
+   ============================== */
+section {
+  padding: 4rem 0; /* Más aire entre secciones */
 }
 
-/* TITULO */
-.main-title {
-  font-size: 2.8rem;
+h2 {
   font-weight: 700;
-  background: linear-gradient(90deg, #c4b5fd, #8b5cf6);
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* ==============================
+   3. NAV 
+   ============================== */
+nav {
+  background: rgba(15, 15, 26, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* ==============================
+   4. TITULO Y TYPING (EXPLOTADO)
+   ============================== */
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent-light), var(--accent), var(--accent-light));
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+  margin-bottom: 1rem;
 }
 
-/* HERO */
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+.typing-container {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.typed-text {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  background-color: var(--accent);
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ==============================
+   5. HERO Y ICONOS 
+   ============================== */
 .hero {
-  padding:4rem 0 2rem;
+  padding: 8rem 0 4rem; /* Más espacio arriba */
+  position: relative;
 }
 
 .hero-icons a {
-  color:#fff;
-  font-size:1.6rem;
-  margin-right:1rem;
-  transition:.3s;
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  margin: 0 0.8rem;
+  transition: all 0.4s ease;
+  display: inline-block;
 }
 
 .hero-icons a:hover {
-  color:#8b5cf6;
-  transform:translateY(-2px);
+  color: var(--accent);
+  transform: translateY(-5px) scale(1.1);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
 }
 
-/* STACK */
+/* ==============================
+   6. STACK (CATEGORIZADO)
+   ============================== */
+.stack-category {
+  background: rgba(26, 26, 46, 0.5);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stack-category h5 {
+  color: var(--accent-light);
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .stack img {
-  width:48px;
-  margin:12px;
-  padding:10px;
-  background: radial-gradient(circle, #1a1a2e, #0f0f1a);
-  border-radius:12px;
-  transition:.3s;
+  width: 55px; /* Un toque más grandes */
+  margin: 10px;
+  padding: 10px;
+  background: radial-gradient(circle, #20203a, #0f0f1a);
+  border-radius: 14px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   filter: brightness(0.9) saturate(0.8);
 }
 
 .stack img:hover {
-  transform:scale(1.15);
-  box-shadow:0 0 18px rgba(139,92,246,0.6);
-  filter: hue-rotate(250deg) brightness(1.1);
+  transform: scale(1.2) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.5);
+  filter: brightness(1.1) saturate(1.2);
 }
 
-/* TIMELINE */
+/* ==============================
+   7. TIMELINE (MODERNO)
+   ============================== */
 .timeline {
-  border-left:2px solid #2a2a40;
-  padding-left:20px;
+  border-left: 2px solid var(--border);
+  padding-left: 30px;
+  position: relative;
 }
 
 .timeline-item {
-  margin-bottom:2rem;
-  position:relative;
+  margin-bottom: 2.5rem;
+  position: relative;
 }
 
 .dot {
-  width:12px;
-  height:12px;
-  background:#8b5cf6;
-  border-radius:50%;
-  position:absolute;
-  left:-27px;
-  top:6px;
+  width: 16px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  left: -39px;
+  top: 5px;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.7);
+  transition: 0.3s;
 }
 
-/* VIDEO */
+.timeline-item:hover .dot {
+  transform: scale(1.3);
+  background: var(--accent-light);
+}
+
+.timeline-item h5 {
+  color: var(--accent-light);
+  font-weight: 700;
+}
+
+.timeline-item p {
+  color: var(--text-secondary);
+}
+
+/* ==============================
+   8. VIDEO (EXPOSURE)
+   ============================== */
+.video-container {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border: 3px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.video-container:hover {
+  border-color: var(--accent);
+  box-shadow: 0 25px 60px rgba(139, 92, 246, 0.3);
+}
+
 .video iframe {
-  width:100%;
-  height:450px;
-  border-radius:14px;
+  width: 100%;
+  height: 500px; /* Un toque más alto */
+  border: none;
 }
 
-/* PROJECT */
+/* ==============================
+   9. PROYECTOS (EXPLOTADO)
+   ============================== */
 .project {
-  background:#1a1a2e;
-  border:1px solid #2a2a40;
-  border-radius:16px;
-  padding:2rem;
-  margin-bottom:3rem;
-  transition:.3s;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de borde brillante superior */
+.project::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform: translateX(-100%);
+  transition: 0.7s;
 }
 
 .project:hover {
-  box-shadow:0 0 20px rgba(139,92,246,0.4);
+  transform: translateY(-8px);
+  background: var(--bg-card-hover);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.3);
 }
 
-/* TECH ICONS */
-.tech img {
-  width:35px;
-  margin-right:8px;
-  filter: brightness(0.9);
+.project:hover::before {
+  transform: translateX(100%);
 }
 
-.tech img:hover {
-  filter: hue-rotate(250deg) brightness(1.2);
+.project h3 {
+  font-weight: 700;
+  color: var(--accent-light);
 }
 
-/* BUTTON */
-.btn-soft {
-  border:1px solid #8b5cf6;
-  border-radius:20px;
-  padding:.4rem 1rem;
-  margin-right:.5rem;
-  color:#fff;
-  transition:.3s;
+/* TECH BADGES */
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.btn-soft:hover {
-  background:#8b5cf6;
+.tech-badge {
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--accent-light);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
 }
 
-/* FOOTER */
+.tech-badge:hover {
+  background: rgba(139, 92, 246, 0.2);
+  transform: scale(1.05);
+}
+
+.tech-badge img {
+  width: 18px;
+  margin-right: 6px;
+}
+
+/* BUTTONS */
+.btn-modern {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--text-primary);
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.btn-modern:hover {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* ==============================
+   10. FOOTER 
+   ============================== */
 footer {
-  background:#0f0f1a;
-  border-top:1px solid #2a2a40;
-  padding:2.5rem;
-  text-align:center;
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border);
+  padding: 4rem 2.5rem 2.5rem;
+  text-align: center;
+}
+
+footer .footer-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
 
 footer a {
-  color:#fff;
-  font-size:1.5rem;
-  margin:0 .7rem;
+  color: var(--text-secondary);
+  font-size: 1.6rem;
+  margin: 0 0.9rem;
+  transition: 0.3s;
+  display: inline-block;
 }
 
 footer a:hover {
-  color:#8b5cf6;
+  color: var(--accent);
+  transform: translateY(-3px);
 }
 
 .copy {
-  margin-top:1rem;
-  font-size:.8rem;
-  opacity:.6;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
 }
 
-/* ANIMACION */
+/* ==============================
+   11. ANIMACION FADE-UP 
+   ============================== */
 .fade-up {
-  opacity:0;
-  transform:translateY(20px);
-  transition:.6s;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
 }
 
 .fade-up.show {
-  opacity:1;
-  transform:translateY(0);
-}
-
-section {
-  padding:2.5rem 0;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>
@@ -179,7 +382,7 @@ section {
 
 <body>
 
-<nav class="navbar navbar-dark">
+<nav class="navbar navbar-dark fixed-top">
   <div class="container">
     <span class="navbar-brand">Ignacio Egozcue</span>
   </div>
@@ -187,136 +390,206 @@ section {
 
 <header class="hero container text-center fade-up">
   <h1 class="main-title">Ignacio Egozcue</h1>
-  <p>Desarrollador backend en formación · Analista Programador</p>
+  <div class="typing-container">
+    <span class="static-text">Soy </span>
+    <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+  </div>
 
   <div class="hero-icons">
-    <a href="https://github.com/Nacho20dev"><i class="fab fa-github"></i></a>
-    <a href="https://linkedin.com/in/idet-uy"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
   </div>
 </header>
 
-<!-- STACK -->
 <section class="container text-center fade-up">
   <h2>Stack Tecnológico</h2>
 
-  <div class="stack d-flex justify-content-center flex-wrap">
+  <div class="row d-flex justify-content-center">
+    
+    <div class="col-md-5 stack-category mx-2">
+        <h5>Backend & Base de Datos</h5>
+        <div class="stack d-flex justify-content-center flex-wrap">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+            <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL Server">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+        </div>
+    </div>
 
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg">
-    <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg">
-
+    <div class="col-md-5 stack-category mx-2">
+        <h5>Frontend & Mobile</h5>
+        <div class="stack d-flex justify-content-center flex-wrap">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman">
+        </div>
+    </div>
   </div>
 
-  <p class="mt-3">HTML5 · JavaScript · React · C# .NET · SQL Server · MongoDB · Ionic · Postman</p>
+  <p class="mt-4 text-secondary">HTML5 · JavaScript · React · C# .NET · Java · SQL Server · MongoDB · Ionic · Postman</p>
 </section>
 
-<!-- TIMELINE -->
 <section class="container fade-up">
-  <h2>Formación</h2>
+  <h2>Formación Académica</h2>
 
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="dot"></div>
-      <h5>Actualidad</h5>
-      <p>Algoritmos 1 (Java) · Ingeniería de Software</p>
-    </div>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <h5>Actualidad (Ciclo 1 2026)</h5>
+          <p>Profundizando en Algoritmos 1 (Java) y principios de Ingeniería de Software.</p>
+        </div>
 
-    <div class="timeline-item">
-      <div class="dot"></div>
-      <h5>Julio 2026</h5>
-      <p>Taller Genexus · Diseño de Aplicaciones · Algoritmos 2</p>
-    </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <h5>Julio 2026 (Ciclo previsto)</h5>
+          <p>Taller Genexus · Diseño de Aplicaciones Avanzadas · Algoritmos y Estructuras de Datos 2.</p>
+        </div>
 
-    <div class="timeline-item">
-      <div class="dot"></div>
-      <h5>2027</h5>
-      <p>Titulación prevista: Analista Programador</p>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <h5>2027</h5>
+          <p>Titulación prevista: <strong>Analista Programador</strong></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- VIDEO -->
-<section class="container fade-up">
-  <h2>Demo</h2>
-
-  <div class="video">
-    <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" allowfullscreen></iframe>
+<section class="container text-center fade-up">
+  <h2>Demo de Proyecto</h2>
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+        <div class="video-container">
+            <div class="video">
+                <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" allowfullscreen></iframe>
+            </div>
+        </div>
+        <p class="mt-3 text-secondary">Presentación de la Agencia de Envíos</p>
+    </div>
   </div>
 </section>
 
-<!-- PROYECTOS -->
 <section class="container fade-up">
-  <h2>Proyectos</h2>
+  <h2>Proyectos Destacados</h2>
 
-  <!-- PROYECTO 1 -->
-  <div class="project">
-    <h3>Agencia de Envíos</h3>
+  <div class="row">
+    
+    <div class="col-md-6 mb-4">
+      <div class="project h-100">
+        <h3>Agencia de Envíos</h3>
+        
+        <div class="tech mb-3">
+          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"> C#</div>
+          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg"> .NET Core API</div>
+          <div class="tech-badge"><img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"> SQL Server</div>
+          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"> Testing</div>
+        </div>
 
-    <div class="tech mb-3">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg">
-      <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg">
+        <p class="text-secondary">Sistema completo para la gestión de logística. Implementé lógica de negocio compleja, manejo de roles y persistencia con Entity Framework.</p>
+        
+        <p><strong>Claves del desarrollo:</strong></p>
+        <ul>
+          <li>Arquitectura Backend REST con C#</li>
+          <li>Testing riguroso de endpoints con Postman</li>
+          <li>Manejo de estados de envíos y autenticación</li>
+        </ul>
+
+        <div class="mt-auto pt-3">
+          <a href="https://github.com/Nacho20dev/AgenciaEnvios" target="_blank" class="btn-modern">
+            <i class="fab fa-github"></i> Ver repositorio
+          </a>
+        </div>
+      </div>
     </div>
 
-    <p><strong>Qué aprendí:</strong></p>
-    <ul>
-      <li>Arquitectura backend con C# y .NET</li>
-      <li>Persistencia con SQL Server y Entity Framework</li>
-      <li>Diseño y testing de APIs con Postman</li>
-      <li>Manejo de lógica de negocio y roles</li>
-    </ul>
+    <div class="col-md-6 mb-4">
+      <div class="project h-100">
+        <h3>Goalify: Gestión de Objetivos</h3>
+        
+        <div class="tech mb-3">
+          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"> JavaScript</div>
+          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg"> Ionic/Capacitor</div>
+          <div class="tech-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"> React</div>
+        </div>
 
-    <a href="https://github.com/Nacho20dev/AgenciaEnvios" class="btn-soft">
-      <i class="fab fa-github"></i> Ver repositorio
-    </a>
-  </div>
+        <p class="text-secondary">Aplicación móvil híbrida para la productividad. Enfocada en un diseño UX limpio y en la persistencia local de datos.</p>
+        
+        <p><strong>Claves del desarrollo:</strong></p>
+        <ul>
+          <li>Desarrollo Mobile con Ionic/React</li>
+          <li>Persistencia de datos local (Storage)</li>
+          <li>Diseño UX centrado en la productividad</li>
+        </ul>
 
-  <!-- PROYECTO 2 -->
-  <div class="project">
-    <h3>App Objetivos</h3>
-
-    <div class="tech mb-3">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg">
+        <div class="mt-auto pt-3">
+          <a href="https://drive.google.com/file/d/16dqveeJzj-mch1QvYgv7hH2tiDodByq0/view" target="_blank" class="btn-modern">
+            <i class="fa-solid fa-download"></i> Descargar APK (V2)
+          </a>
+        </div>
+      </div>
     </div>
-
-    <p><strong>Qué aprendí:</strong></p>
-    <ul>
-      <li>Desarrollo mobile con Ionic</li>
-      <li>Persistencia de datos</li>
-      <li>Diseño UX enfocado en productividad</li>
-    </ul>
-
-    <a href="https://drive.google.com/file/d/16dqveeJzj-mch1QvYgv7hH2tiDodByq0/view" class="btn-soft">
-      <i class="fa-solid fa-download"></i> Descargar APK
-    </a>
   </div>
 
 </section>
 
 <footer>
-  <p>Construyendo experiencia real 🚀</p>
+  <p class="footer-text">Construyendo experiencia real 🚀</p>
 
   <div>
     <a href="mailto:ignacio.egozcue9@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-    <a href="https://wa.me/59893370197"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://linkedin.com/in/idet-uy"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/Nacho20dev"><i class="fab fa-github"></i></a>
+    <a href="https://wa.me/59893370197" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://linkedin.com/in/idet-uy" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Nacho20dev" target="_blank"><i class="fab fa-github"></i></a>
   </div>
 
   <div class="copy">
-    © 2026 Ignacio Egozcue
+    © 2026 Ignacio Egozcue | Maldonado, Uruguay
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const typedTextSpan = document.querySelector(".typed-text");
+const textArray = ["Backend Developer (C#/Java)", "Analista Programador", "Mobile Tech Enthusiast", "Uruguay based 🇺🇾"];
+const typingSpeed = 100;
+const erasingSpeed = 50;
+const newTextDelay = 2000;
+let textArrayIndex = 0;
+let charIndex = 0;
+
+function type() {
+  if (charIndex < textArray[textArrayIndex].length) {
+    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(type, typingSpeed);
+  } else {
+    setTimeout(erase, newTextDelay);
+  }
+}
+
+function erase() {
+  if (charIndex > 0) {
+    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(erase, erasingSpeed);
+  } else {
+    textArrayIndex++;
+    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+    setTimeout(type, typingSpeed + 1100);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (textArray.length) setTimeout(type, newTextDelay + 250);
+});
+</script>
 
 <script>
 const els = document.querySelectorAll('.fade-up');
@@ -327,7 +600,7 @@ const observer = new IntersectionObserver(entries => {
       entry.target.classList.add('show');
     }
   });
-});
+}, { threshold: 0.1 }); /* Empieza la animacion cuando solo el 10% es visible */
 
 els.forEach(el => observer.observe(el));
 </script>
