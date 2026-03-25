@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agencia de Envíos | Detalle Técnico</title>
+    <title>Agencia de Envíos | Detalle Técnico Enterprise</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -24,16 +24,18 @@
             color: var(--text-primary);
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .navbar {
             background: rgba(15, 15, 26, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
+            z-index: 1000;
         }
 
         .hero-project {
-            padding: 8rem 0 4rem;
+            padding: 9rem 0 4rem;
             background: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, var(--bg-dark) 100%);
             text-align: center;
         }
@@ -49,6 +51,31 @@
             display: inline-block;
         }
 
+        /* Estética de Imágenes Públicas */
+        .img-container {
+            height: 220px;
+            overflow: hidden;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+        
+        .logistica-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Filtro para unificar estética púrpura/oscura */
+            filter: grayscale(100%) brightness(0.6) sepia(0.5) hue-rotate(240deg) saturate(2.5);
+            opacity: 0.85;
+            transition: 0.5s ease;
+        }
+
+        .img-card:hover .logistica-img {
+            filter: grayscale(0%) brightness(1) sepia(0) hue-rotate(0deg) saturate(1);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
         .architecture-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -57,14 +84,7 @@
             height: 100%;
             transition: 0.3s;
         }
-
         .architecture-card:hover { border-color: var(--accent); }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
 
         /* Diagrama de Capas */
         .layer-box {
@@ -74,23 +94,19 @@
             margin-bottom: 10px;
             text-align: center;
         }
-        .layer-active { 
-            background: rgba(139, 92, 246, 0.15); 
-            border-color: var(--accent); 
-            font-weight: 600;
-        }
+        .layer-active { background: rgba(139, 92, 246, 0.15); border-color: var(--accent); font-weight: 600; }
 
         .status-banner {
-            background: rgba(255, 193, 7, 0.05);
-            border: 1px solid #ffc107;
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid var(--accent);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 3rem;
         }
 
         footer { border-top: 1px solid var(--border); padding: 4rem 0; margin-top: 5rem; text-align: center; }
         
-        .fade-up { opacity: 0; transform: translateY(20px); transition: 0.6s all ease-out; }
+        .fade-up { opacity: 0; transform: translateY(25px); transition: 0.7s all ease-out; }
         .fade-up.show { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -99,7 +115,7 @@
 <nav class="navbar navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.html"><i class="fa-solid fa-arrow-left me-2"></i> Volver</a>
-        <span class="navbar-text d-none d-md-block">Ignacio Egozcue | Case Study</span>
+        <span class="navbar-text d-none d-md-block">Ignacio Egozcue | Proyecto Principal</span>
     </div>
 </nav>
 
@@ -107,94 +123,94 @@
     <div class="container fade-up">
         <h1 class="display-3 fw-bold mb-3">Agencia de Envíos</h1>
         <p class="lead text-secondary mx-auto mb-4" style="max-width: 750px;">
-            Sistema de gestión logística empresarial desarrollado con <strong>Clean Architecture</strong>, priorizando el desacoplamiento y la integridad de datos.
+            Arquitectura de software empresarial diseñada para gestionar flujos logísticos complejos, con separación estricta de responsabilidades y enfoque en seguridad.
         </p>
         <div class="mb-4">
             <span class="tech-badge">.NET Core 8</span>
-            <span class="tech-badge">C# / MVC</span>
+            <span class="tech-badge"><i class="fa-solid fa-layer-group me-2"></i>Clean Architecture</span>
             <span class="tech-badge">SQL Server</span>
             <span class="tech-badge">Entity Framework</span>
-            <span class="tech-badge">JWT & Security</span>
+            <span class="tech-badge">JWT Auth</span>
         </div>
     </div>
 </header>
 
 <main class="container">
     
+    <section class="row g-4 mb-5 fade-up">
+        <div class="col-md-4 img-card">
+            <div class="img-container shadow-lg mb-3">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" class="logistica-img" alt="Warehouse">
+            </div>
+            <h6 class="text-center fw-bold">Operaciones de Almacén</h6>
+            <p class="small text-secondary text-center">Gestión y registro de stock centralizado.</p>
+        </div>
+        <div class="col-md-4 img-card">
+            <div class="img-container shadow-lg mb-3">
+                <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800&auto=format&fit=crop" class="logistica-img" alt="Tracking">
+            </div>
+            <h6 class="text-center fw-bold">Trazabilidad Global</h6>
+            <p class="small text-secondary text-center">Monitoreo dinámico de rutas y envíos.</p>
+        </div>
+        <div class="col-md-4 img-card">
+            <div class="img-container shadow-lg mb-3">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" class="logistica-img" alt="Cloud API">
+            </div>
+            <h6 class="text-center fw-bold">Infraestructura API</h6>
+            <p class="small text-secondary text-center">Integración escalable mediante endpoints.</p>
+        </div>
+    </section>
+
     <section class="row g-5 align-items-center mb-5 fade-up">
         <div class="col-lg-6">
-            <h2 class="mb-4">Ingeniería en Capas</h2>
-            <p>El núcleo del sistema implementa una arquitectura de capas donde las reglas de negocio son el centro. Este diseño permite que el software sea agnóstico a la base de datos o al cliente que lo consume.</p>
+            <h2 class="mb-4">Diseño del Sistema</h2>
+            <p>El proyecto separa la lógica de negocio de la infraestructura. El <strong>Backoffice de Funcionarios</strong> administra la operatividad, mientras que los <strong>Endpoints de Clientes</strong> permiten consultas de tarifas y tracking.</p>
             
             <div class="mt-4">
-                <div class="d-flex mb-3">
-                    <i class="fa-solid fa-user-gear text-accent fs-4 me-3"></i>
+                <div class="d-flex mb-4">
+                    <i class="fa-solid fa-user-shield text-accent fs-4 me-3"></i>
                     <div>
-                        <h6 class="fw-bold mb-1">Backoffice Funcionarios</h6>
-                        <p class="small text-secondary">Gestión administrativa de ingresos, despachos y estados operativos de paquetes.</p>
+                        <h6 class="fw-bold mb-1">Seguridad & JWT</h6>
+                        <p class="small text-secondary">Tokens stateless y hasheo de contraseñas para garantizar la confidencialidad.</p>
                     </div>
                 </div>
                 <div class="d-flex">
-                    <i class="fa-solid fa-mobile-screen-button text-accent fs-4 me-3"></i>
+                    <i class="fa-solid fa-code-branch text-accent fs-4 me-3"></i>
                     <div>
-                        <h6 class="fw-bold mb-1">Endpoints de Clientes</h6>
-                        <p class="small text-secondary">Interfaz API para consulta de tarifas y tracking de envíos en tiempo real.</p>
+                        <h6 class="fw-bold mb-1">Inversión de Dependencias</h6>
+                        <p class="small text-secondary">Uso intensivo de interfaces para facilitar el testeo y mantenimiento.</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="architecture-card">
-                <h5 class="text-center mb-4">Estructura de la Solución</h5>
+                <h5 class="text-center mb-4"><i class="fa-solid fa-diagram-project me-2"></i>Clean Architecture</h5>
                 <div class="layer-box layer-active">Presentación (WebAPI / MVC / Controllers)</div>
-                <div class="text-center my-1"><i class="fa-solid fa-arrow-down opacity-50"></i></div>
+                <div class="text-center my-1"><i class="fa-solid fa-chevron-down opacity-50"></i></div>
                 <div class="layer-box">Aplicación (Casos de Uso / Interfaces)</div>
-                <div class="text-center my-1"><i class="fa-solid fa-arrow-down opacity-50"></i></div>
+                <div class="text-center my-1"><i class="fa-solid fa-chevron-down opacity-50"></i></div>
                 <div class="layer-box">Dominio (Entidades / Reglas de Negocio)</div>
-                <div class="text-center my-1"><i class="fa-solid fa-arrow-up opacity-50"></i></div>
-                <div class="layer-box layer-active">Infraestructura (EF Core / Seguridad / SQL)</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="row g-4 mb-5 fade-up">
-        <div class="col-md-4">
-            <div class="architecture-card text-center">
-                <i class="fa-solid fa-lock feature-icon"></i>
-                <h5>Seguridad</h5>
-                <p class="small text-secondary">Autenticación basada en <strong>JWT</strong> y algoritmos de <strong>Hasheo</strong> para protección de credenciales.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="architecture-card text-center">
-                <i class="fa-solid fa-database feature-icon"></i>
-                <h5>Persistencia</h5>
-                <p class="small text-secondary">Uso de <strong>Entity Framework Code-First</strong> para una gestión de datos robusta y escalable.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="architecture-card text-center">
-                <i class="fa-solid fa-vials feature-icon"></i>
-                <h5>Inyección</h5>
-                <p class="small text-secondary">Implementación de <strong>Dependency Injection</strong> para cumplir con los principios SOLID.</p>
+                <div class="text-center my-1"><i class="fa-solid fa-chevron-up opacity-50"></i></div>
+                <div class="layer-box layer-active">Infraestructura (EF Core / SQL / Seguridad)</div>
             </div>
         </div>
     </section>
 
     <section class="mb-5 text-center fade-up">
         <div class="status-banner">
-            <i class="fa-solid fa-cloud-arrow-up fs-2 text-warning mb-3"></i>
-            <h4 class="fw-bold">Infraestructura Cloud-Ready</h4>
+            <i class="fa-solid fa-cloud text-accent fs-1 mb-3"></i>
+            <h4 class="fw-bold">Estado del Despliegue</h4>
             <p class="text-secondary mx-auto mb-4" style="max-width: 600px;">
-                Diseñado para entornos de alta disponibilidad. El sistema fue validado y desplegado exitosamente en <strong>Microsoft Azure</strong> (App Services & SQL Database).
+                Sistema diseñado para entornos <strong>Cloud-Ready</strong>. Validado exitosamente en Microsoft Azure (App Service & SQL Database).
             </p>
-            <div class="d-flex justify-content-center gap-2 flex-wrap">
-                <span class="badge bg-dark border border-secondary p-2 px-3">Azure Ready</span>
-                <span class="badge bg-dark border border-secondary p-2 px-3">SQL Server</span>
-                <span class="badge bg-dark border border-secondary p-2 px-3">Enterprise Grade</span>
+            <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+                <span class="badge bg-dark border border-secondary p-2 px-3">Azure Validated</span>
+                <span class="badge bg-dark border border-secondary p-2 px-3">Docker Ready</span>
+                <span class="badge bg-dark border border-secondary p-2 px-3">SQL Cloud</span>
             </div>
-            <p class="small text-secondary mt-4 fst-italic">
-                * El despliegue en vivo se encuentra pausado por optimización de recursos de suscripción. Código disponible para auditoría técnica.
+            <p class="small text-secondary fst-italic mb-0">
+                * Instancia en vivo actualmente en modo preservación. Código disponible para auditoría técnica en GitHub.
             </p>
         </div>
     </section>
@@ -203,7 +219,7 @@
 
 <footer>
     <div class="container fade-up">
-        <p class="text-secondary mb-4">© 2026 Ignacio Egozcue | Software Developer</p>
+        <p class="text-secondary mb-4">© 2026 Ignacio Egozcue | Software Engineer in formation</p>
         <div class="fs-2">
             <a href="https://github.com/Nacho20dev" target="_blank" class="text-secondary mx-3"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-secondary mx-3"><i class="fab fa-linkedin"></i></a>
