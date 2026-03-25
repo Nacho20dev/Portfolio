@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agencia de Envíos | Detalle Técnico Enterprise</title>
-    
+    <title>Agencia de Envíos | Especificaciones Técnicas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
     <style>
         :root {
             --bg-dark: #0f0f1a;
@@ -24,89 +22,37 @@
             color: var(--text-primary);
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        .navbar {
-            background: rgba(15, 15, 26, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-
-        .hero-project {
-            padding: 9rem 0 4rem;
-            background: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, var(--bg-dark) 100%);
-            text-align: center;
-        }
-
-        .tech-badge {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid var(--accent);
-            color: var(--accent-light);
-            padding: 6px 15px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin: 5px;
-            display: inline-block;
-        }
-
-        /* Estética de Imágenes Públicas */
-        .img-container {
-            height: 220px;
-            overflow: hidden;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-        }
+        .navbar { background: rgba(15, 15, 26, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+        .hero-project { padding: 8rem 0 4rem; background: linear-gradient(180deg, rgba(139, 92, 246, 0.1) 0%, var(--bg-dark) 100%); text-align: center; }
         
-        .logistica-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Filtro para unificar estética púrpura/oscura */
-            filter: grayscale(100%) brightness(0.6) sepia(0.5) hue-rotate(240deg) saturate(2.5);
-            opacity: 0.85;
-            transition: 0.5s ease;
-        }
-
-        .img-card:hover .logistica-img {
-            filter: grayscale(0%) brightness(1) sepia(0) hue-rotate(0deg) saturate(1);
-            opacity: 1;
-            transform: scale(1.05);
-        }
-
-        .architecture-card {
+        .rf-card {
             background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            height: 100%;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 15px 15px 0;
             transition: 0.3s;
         }
-        .architecture-card:hover { border-color: var(--accent); }
+        .rf-card:hover { transform: translateX(10px); background: #1d1d33; }
 
-        /* Diagrama de Capas */
-        .layer-box {
-            border: 2px dashed var(--border);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            text-align: center;
+        .tech-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-light);
+            font-weight: 700;
         }
-        .layer-active { background: rgba(139, 92, 246, 0.15); border-color: var(--accent); font-weight: 600; }
 
-        .status-banner {
-            background: rgba(139, 92, 246, 0.05);
-            border: 1px solid var(--accent);
-            border-radius: 20px;
-            padding: 2.5rem;
-            margin-top: 3rem;
-        }
+        .img-container { height: 200px; overflow: hidden; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 2rem; }
+        .logistica-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.6) sepia(0.5) hue-rotate(240deg) saturate(2.5); }
+        
+        .layer-box { border: 2px dashed var(--border); padding: 0.8rem; border-radius: 10px; margin-bottom: 8px; text-align: center; font-size: 0.9rem; }
+        .layer-active { background: rgba(139, 92, 246, 0.1); border-color: var(--accent); }
 
         footer { border-top: 1px solid var(--border); padding: 4rem 0; margin-top: 5rem; text-align: center; }
-        
-        .fade-up { opacity: 0; transform: translateY(25px); transition: 0.7s all ease-out; }
+        .fade-up { opacity: 0; transform: translateY(20px); transition: 0.6s all ease-out; }
         .fade-up.show { opacity: 1; transform: translateY(0); }
     </style>
 </head>
@@ -115,103 +61,94 @@
 <nav class="navbar navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="index.html"><i class="fa-solid fa-arrow-left me-2"></i> Volver</a>
-        <span class="navbar-text d-none d-md-block">Ignacio Egozcue | Proyecto Principal</span>
     </div>
 </nav>
 
 <header class="hero-project">
     <div class="container fade-up">
-        <h1 class="display-3 fw-bold mb-3">Agencia de Envíos</h1>
-        <p class="lead text-secondary mx-auto mb-4" style="max-width: 750px;">
-            Arquitectura de software empresarial diseñada para gestionar flujos logísticos complejos, con separación estricta de responsabilidades y enfoque en seguridad.
+        <h1 class="display-4 fw-bold mb-3">Agencia de Envíos Enterprise</h1>
+        <p class="text-secondary mx-auto mb-4" style="max-width: 800px;">
+            Solución logística robusta basada en <strong>Clean Architecture</strong>. 
+            Implementación de lógica de negocio compleja con persistencia en SQL Server mediante <strong>LINQ to Entities</strong>.
         </p>
-        <div class="mb-4">
-            <span class="tech-badge">.NET Core 8</span>
-            <span class="tech-badge"><i class="fa-solid fa-layer-group me-2"></i>Clean Architecture</span>
-            <span class="tech-badge">SQL Server</span>
-            <span class="tech-badge">Entity Framework</span>
-            <span class="tech-badge">JWT Auth</span>
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+            <span class="badge bg-dark border border-secondary p-2">.NET 8</span>
+            <span class="badge bg-dark border border-secondary p-2">LINQ to Entities</span>
+            <span class="badge bg-dark border border-secondary p-2">JWT Authentication</span>
+            <span class="badge bg-dark border border-secondary p-2">Entity Framework</span>
         </div>
     </div>
 </header>
 
 <main class="container">
-    
-    <section class="row g-4 mb-5 fade-up">
-        <div class="col-md-4 img-card">
-            <div class="img-container shadow-lg mb-3">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" class="logistica-img" alt="Warehouse">
-            </div>
-            <h6 class="text-center fw-bold">Operaciones de Almacén</h6>
-            <p class="small text-secondary text-center">Gestión y registro de stock centralizado.</p>
-        </div>
-        <div class="col-md-4 img-card">
-            <div class="img-container shadow-lg mb-3">
-                <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800&auto=format&fit=crop" class="logistica-img" alt="Tracking">
-            </div>
-            <h6 class="text-center fw-bold">Trazabilidad Global</h6>
-            <p class="small text-secondary text-center">Monitoreo dinámico de rutas y envíos.</p>
-        </div>
-        <div class="col-md-4 img-card">
-            <div class="img-container shadow-lg mb-3">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" class="logistica-img" alt="Cloud API">
-            </div>
-            <h6 class="text-center fw-bold">Infraestructura API</h6>
-            <p class="small text-secondary text-center">Integración escalable mediante endpoints.</p>
-        </div>
-    </section>
 
-    <section class="row g-5 align-items-center mb-5 fade-up">
-        <div class="col-lg-6">
-            <h2 class="mb-4">Diseño del Sistema</h2>
-            <p>El proyecto separa la lógica de negocio de la infraestructura. El <strong>Backoffice de Funcionarios</strong> administra la operatividad, mientras que los <strong>Endpoints de Clientes</strong> permiten consultas de tarifas y tracking.</p>
+    <section class="row g-5 mb-5 fade-up">
+        <div class="col-lg-7">
+            <h2 class="mb-4">Arquitectura de Datos & Consultas</h2>
+            <p>El sistema utiliza <strong>Entity Framework Core</strong> con un enfoque Code-First. La manipulación de datos se realiza exclusivamente mediante <strong>LINQ (Language Integrated Query)</strong>, garantizando consultas fuertemente tipadas y optimizadas para SQL Server.</p>
             
-            <div class="mt-4">
-                <div class="d-flex mb-4">
-                    <i class="fa-solid fa-user-shield text-accent fs-4 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Seguridad & JWT</h6>
-                        <p class="small text-secondary">Tokens stateless y hasheo de contraseñas para garantizar la confidencialidad.</p>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <i class="fa-solid fa-code-branch text-accent fs-4 me-3"></i>
-                    <div>
-                        <h6 class="fw-bold mb-1">Inversión de Dependencias</h6>
-                        <p class="small text-secondary">Uso intensivo de interfaces para facilitar el testeo y mantenimiento.</p>
-                    </div>
-                </div>
+            <div class="rf-card">
+                <span class="tech-tag">Backend Ops</span>
+                <h5 class="mt-2">Gestión de Auditoría (RF2)</h5>
+                <p class="small text-secondary mb-0">Implementación de un sistema de trazabilidad que registra automáticamente la acción, fecha y usuario responsable de cada modificación en el staff.</p>
+            </div>
+
+            <div class="rf-card">
+                <span class="tech-tag">Business Logic</span>
+                <h5 class="mt-2">Seguimiento de Status (RF5)</h5>
+                <p class="small text-secondary mb-0">Workflow dinámico para el ingreso de comentarios de seguimiento, permitiendo una trazabilidad etapa a etapa del envío.</p>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="architecture-card">
-                <h5 class="text-center mb-4"><i class="fa-solid fa-diagram-project me-2"></i>Clean Architecture</h5>
-                <div class="layer-box layer-active">Presentación (WebAPI / MVC / Controllers)</div>
+        
+        <div class="col-lg-5">
+            <div class="p-4 rounded-4" style="background: var(--bg-card); border: 1px solid var(--border);">
+                <h6 class="text-center mb-4">Pipeline de Consulta LINQ</h6>
+                <div class="layer-box">Petición Tracking (ID)</div>
                 <div class="text-center my-1"><i class="fa-solid fa-chevron-down opacity-50"></i></div>
-                <div class="layer-box">Aplicación (Casos de Uso / Interfaces)</div>
+                <div class="layer-box layer-active">Query LINQ to Entities</div>
                 <div class="text-center my-1"><i class="fa-solid fa-chevron-down opacity-50"></i></div>
-                <div class="layer-box">Dominio (Entidades / Reglas de Negocio)</div>
-                <div class="text-center my-1"><i class="fa-solid fa-chevron-up opacity-50"></i></div>
-                <div class="layer-box layer-active">Infraestructura (EF Core / SQL / Seguridad)</div>
+                <div class="layer-box">IQueryable Translation</div>
+                <div class="text-center my-1"><i class="fa-solid fa-chevron-down opacity-50"></i></div>
+                <div class="layer-box layer-active">SQL Server Execution</div>
             </div>
         </div>
     </section>
 
-    <section class="mb-5 text-center fade-up">
-        <div class="status-banner">
-            <i class="fa-solid fa-cloud text-accent fs-1 mb-3"></i>
-            <h4 class="fw-bold">Estado del Despliegue</h4>
-            <p class="text-secondary mx-auto mb-4" style="max-width: 600px;">
-                Sistema diseñado para entornos <strong>Cloud-Ready</strong>. Validado exitosamente en Microsoft Azure (App Service & SQL Database).
-            </p>
-            <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
-                <span class="badge bg-dark border border-secondary p-2 px-3">Azure Validated</span>
-                <span class="badge bg-dark border border-secondary p-2 px-3">Docker Ready</span>
-                <span class="badge bg-dark border border-secondary p-2 px-3">SQL Cloud</span>
+    <section class="mb-5 fade-up">
+        <h2 class="text-center mb-5">Alcance Funcional</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="p-4 h-100 rounded-4 border border-secondary">
+                    <h4 class="text-accent-light mb-4"><i class="fa-solid fa-clipboard-user me-2"></i>Panel de Funcionarios</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fa-solid fa-check text-accent me-2"></i><strong>RF1:</strong> Login seguro por roles (Admin/Funcionario).</li>
+                        <li class="mb-3"><i class="fa-solid fa-check text-accent me-2"></i><strong>RF3:</strong> Alta de envíos (Email, destino, peso).</li>
+                        <li class="mb-3"><i class="fa-solid fa-check text-accent me-2"></i><strong>RF4:</strong> Finalización y entrega con registro de fecha.</li>
+                        <li class="mb-3"><i class="fa-solid fa-check text-accent me-2"></i><strong>RF6:</strong> Tracking interno detallado.</li>
+                    </ul>
+                </div>
             </div>
-            <p class="small text-secondary fst-italic mb-0">
-                * Instancia en vivo actualmente en modo preservación. Código disponible para auditoría técnica en GitHub.
-            </p>
+            <div class="col-md-6">
+                <div class="p-4 h-100 rounded-4 border border-secondary">
+                    <h4 class="text-accent-light mb-4"><i class="fa-solid fa-users me-2"></i>Acceso a Clientes</h4>
+                    <p class="small text-secondary mb-4">Consulta pública sin autenticación (según RF1), enfocada en la experiencia de usuario.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fa-solid fa-magnifying-glass text-accent me-2"></i>Búsqueda avanzada por Tracking.</li>
+                        <li class="mb-3"><i class="fa-solid fa-calendar-days text-accent me-2"></i>Filtros de envíos por fechas y texto.</li>
+                        <li class="mb-3"><i class="fa-solid fa-truck-ramp-box text-accent me-2"></i>Visualización de seguimiento etapa a etapa.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="status-banner text-center fade-up" style="background: rgba(139, 92, 246, 0.05); border: 1px solid var(--accent); border-radius: 20px; padding: 3rem;">
+        <h3 class="fw-bold mb-3">Resumen de Staff Técnico</h3>
+        <p class="text-secondary mx-auto mb-4" style="max-width: 600px;">
+            El proyecto garantiza la escalabilidad mediante el desacoplamiento de interfaces y una capa de infraestructura basada en <strong>SQL Server Cloud</strong>.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="https://github.com/Nacho20dev" class="btn btn-outline-light rounded-pill"><i class="fab fa-github me-2"></i>Código en GitHub</a>
         </div>
     </section>
 
@@ -219,19 +156,15 @@
 
 <footer>
     <div class="container fade-up">
-        <p class="text-secondary mb-4">© 2026 Ignacio Egozcue | Software Engineer in formation</p>
-        <div class="fs-2">
-            <a href="https://github.com/Nacho20dev" target="_blank" class="text-secondary mx-3"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-secondary mx-3"><i class="fab fa-linkedin"></i></a>
-        </div>
+        <p class="text-secondary mb-0">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
     </div>
 </footer>
 
 <script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
