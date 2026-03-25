@@ -21,43 +21,57 @@ body {
   color: #333;
 }
 
-/* Navbar Transparente a Sólido */
+/* Navbar */
 .navbar {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 1000;
 }
 
-/* Hero Section estilo App Store */
+/* Hero Section estilo App Store (Corregido) */
 .hero-app {
   padding: 120px 0 60px 0;
   background: linear-gradient(135deg, #ffffff 0%, #e6f4f9 100%);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.app-icon-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 30px; /* Bordes redondeados estilo app */
+  overflow: hidden; /* Corta la imagen si es más grande */
+  box-shadow: 0 15px 35px rgba(50, 169, 209, 0.25);
+  margin: 0 auto 20px auto; /* Centrado en móvil */
+  border: 4px solid white; /* Borde elegante */
 }
 
 .app-icon {
-  width: 150px;
-  height: 150px;
-  border-radius: 30px;
-  box-shadow: 0 20px 40px rgba(50, 169, 209, 0.2);
-  object-fit: cover;
-  margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen sin deformar */
+  display: block;
 }
 
 .app-title {
   font-weight: 800;
   font-size: 3.5rem;
   color: var(--goalify-dark);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  letter-spacing: -1px;
 }
 
 .app-category {
   color: var(--goalify-blue);
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: block;
 }
 
-/* Cards de Funciones */
+/* Resto de estilos igual... */
 .feature-card {
   background: white;
   border: none;
@@ -85,7 +99,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Badge de API */
 .api-badge {
   background: var(--goalify-dark);
   color: white;
@@ -124,15 +137,23 @@ body {
   box-shadow: 0 15px 25px rgba(50, 169, 209, 0.4);
 }
 
+footer {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
 </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-dark fixed-top">
   <div class="container">
-    <a class="btn btn-outline-secondary btn-sm" href="index.html">
-      <i class="fa-solid fa-chevron-left"></i> VOLVER
+    <a href="index.html" class="btn btn-outline-secondary btn-sm">
+        <i class="fa-solid fa-arrow-left"></i>
+        Volver al Portfolio
     </a>
+    <span class="navbar-brand">Ignacio Egozcue | Detalle de Proyecto</span>
   </div>
 </nav>
 
@@ -140,13 +161,15 @@ body {
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-3 text-center">
-        <img src="appstore.jpg" alt="Goalify Logo" class="app-icon">
+        <div class="app-icon-container">
+            <img src="appstore.jpg" alt="Goalify Logo" class="app-icon">
+        </div>
       </div>
       <div class="col-md-9">
-        <span class="app-category">Salud y Fitness</span>
+        <span class="app-category">Salud y Fitness • Maldonado, Uruguay</span>
         <h1 class="app-title">Goalify</h1>
-        <p class="lead text-muted mb-4">Mide tu progreso, alcanza tus metas y visualiza tu impacto en la comunidad global.</p>
-        <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+        <p class="lead text-muted mb-4 fs-5">Mide tu progreso, alcanza tus metas físicas y visualiza tu impacto en la comunidad global.</p>
+        <div class="d-flex gap-3 justify-content-center justify-content-md-start flex-wrap">
           <a href="https://drive.google.com/uc?export=download&id=1GTaQJWyI4MchsP3NmB-kpMxkScYIeFuu" class="btn-download">
             <i class="fa-brands fa-google-play"></i> INSTALAR APK
           </a>
@@ -159,46 +182,51 @@ body {
   </div>
 </section>
 
-<section class="container my-5">
-  <div class="row g-4">
-    <div class="col-md-4">
+<section class="container my-5 py-5">
+  <div class="row g-4 justify-content-center">
+    <div class="col-lg-4 col-md-6">
       <div class="feature-card text-center text-md-start">
         <div class="icon-box mx-auto mx-md-0"><i class="fa-solid fa-location-dot"></i></div>
-        <h5>Geolocalización</h5>
-        <p class="text-muted">Integración con <strong>Leaflet.js</strong> para visualizar la comunidad de usuarios por país en un mapa interactivo.</p>
+        <h5 class="fw-bold">Geolocalización</h5>
+        <p class="text-muted fs-6">Integración con <strong>Leaflet.js</strong> para visualizar la comunidad de usuarios por país en un mapa interactivo.</p>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-lg-4 col-md-6">
       <div class="feature-card text-center text-md-start">
         <div class="icon-box mx-auto mx-md-0"><i class="fa-solid fa-chart-line"></i></div>
-        <h5>Gestión de Metas</h5>
-        <p class="text-muted">Sistema completo de CRUD para evaluaciones físicas con cálculo de promedios globales y diarios.</p>
+        <h5 class="fw-bold">Gestión de Metas</h5>
+        <p class="text-muted fs-6">Sistema completo de CRUD para evaluaciones físicas con cálculo de promedios globales y diarios.</p>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-lg-4 col-md-6">
       <div class="feature-card text-center text-md-start">
         <div class="icon-box mx-auto mx-md-0"><i class="fa-solid fa-mobile-screen"></i></div>
-        <h5>Interfaz Híbrida</h5>
-        <p class="text-muted">Desarrollada con <strong>Ionic Framework</strong>, garantizando una experiencia de usuario fluida y nativa.</p>
+        <h5 class="fw-bold">Interfaz Híbrida</h5>
+        <p class="text-muted fs-6">Desarrollada con <strong>Ionic Framework & React</strong>, garantizando una experiencia de usuario fluida y nativa.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="container my-5 py-5 border-top">
+<section class="container my-5 py-5 border-top border-light">
   <div class="row justify-content-center text-center">
-    <div class="col-lg-8">
-      <h2 class="fw-bold mb-4">Sobre el Desarrollo</h2>
-      <p class="fs-5 text-muted">
-        Goalify es una aplicación móvil híbrida que demuestra mi capacidad para manejar flujos complejos de usuario: desde el registro y login seguro, hasta el consumo de APIs RESTful en tiempo real. La aplicación destaca por su <strong>interfaz limpia</strong> y el uso de componentes de hardware como la ubicación para generar estadísticas globales.
+    <div class="col-lg-9">
+      <h2 class="fw-bold mb-4">Sobre el Desarrollo y el Impacto</h2>
+      <p class="fs-5 text-secondary lead">
+        Goalify es más que un tracker; es una demostración de mi capacidad para orquestar flujos de usuario complejos en una plataforma móvil híbrida. El proyecto me desafió a integrar de forma fluida la autenticación segura, el consumo de APIs RESTful en tiempo real y la manipulación de datos geográficos para generar estadísticas globales.
+      </p>
+      <p class="fs-5 text-secondary mt-3">
+        La aplicación destaca por su <strong>interfaz limpia y centrada en la UX</strong>, el uso óptimo del almacenamiento local y la integración con hardware como la ubicación para crear valor añadido.
       </p>
     </div>
   </div>
 </section>
 
-<footer class="py-4 text-center text-muted border-top">
-  <small>© 2026 Ignacio Egozcue | Creado con Ionic & Bootstrap</small>
+<footer class="py-4 text-center text-muted border-top border-light mt-5">
+  <small>© 2026 Ignacio Egozcue | Maldonado, Uruguay | Construyendo experiencia real.</small>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
