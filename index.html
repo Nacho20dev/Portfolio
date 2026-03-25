@@ -47,6 +47,7 @@
             border-radius: 2px;
         }
 
+        /* Navbar */
         nav {
             background: rgba(15, 15, 26, 0.9);
             backdrop-filter: blur(10px);
@@ -54,6 +55,7 @@
             z-index: 1000;
         }
 
+        /* Hero Section */
         .hero { padding: 9rem 0 3rem; }
         .main-title {
             font-size: 3.8rem;
@@ -71,6 +73,28 @@
         .cursor { display: inline-block; width: 3px; background-color: var(--accent); animation: blink 0.8s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
+        /* Stack Tecnológico */
+        .stack-category {
+            background: rgba(26, 26, 46, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: 0.3s;
+        }
+        .stack-category:hover { border-color: var(--accent); }
+        .stack img {
+            width: 50px;
+            margin: 12px;
+            transition: all 0.3s ease;
+            filter: grayscale(30%);
+        }
+        .stack img:hover {
+            transform: scale(1.25) translateY(-5px);
+            filter: grayscale(0%);
+        }
+
+        /* Proyectos */
         .project {  
             background: var(--bg-card);  
             border: 1px solid var(--border);  
@@ -81,12 +105,25 @@
             display: flex;  
             flex-direction: column;  
         }
-        .project:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2); }
+        .project:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--accent); 
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.15); 
+        }
 
+        /* Timeline */
         .timeline { border-left: 2px solid var(--border); padding-left: 35px; position: relative; }
         .timeline-item { margin-bottom: 3rem; position: relative; }
-        .dot { width: 18px; height: 18px; background: var(--accent); border-radius: 50%; position: absolute; left: -44px; top: 6px; box-shadow: 0 0 10px var(--accent); }
+        .dot { 
+            width: 18px; height: 18px; 
+            background: var(--accent); 
+            border-radius: 50%; 
+            position: absolute; 
+            left: -44px; top: 6px; 
+            box-shadow: 0 0 12px var(--accent); 
+        }
 
+        /* Botón CV Flotante */
         .cv-float {
             position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white;
             border-radius: 50px; padding: 12px 24px; z-index: 2000; text-decoration: none; font-weight: 700;
@@ -94,6 +131,7 @@
         }
         .cv-float:hover { transform: scale(1.05); background: #7c3aed; color: white; }
 
+        /* Animaciones Fade */
         .fade-up { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
         .fade-up.show { opacity: 1; transform: translateY(0); }
     </style>
@@ -103,7 +141,7 @@
 
 <nav class="navbar navbar-dark fixed-top">
   <div class="container">
-    <span class="navbar-brand fw-bold">Ignacio Egozcue | Portfolio Profundo</span>
+    <span class="navbar-brand fw-bold">Ignacio Egozcue | Software Dev</span>
   </div>
 </nav>
 
@@ -140,6 +178,30 @@
     </div>
 </section>
 
+<section class="container text-center fade-up">
+    <h2>Stack Tecnológico</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-5 stack-category mx-2">
+            <h5 class="text-accent-light mb-4"><i class="fa-solid fa-code-branch me-2"></i>Backend & DB</h5>
+            <div class="stack">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL Server">
+            </div>
+        </div>
+        <div class="col-md-5 stack-category mx-2">
+            <h5 class="text-accent-light mb-4"><i class="fa-solid fa-mobile-screen me-2"></i>Frontend & Mobile</h5>
+            <div class="stack">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS">
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="container fade-up">
   <h2>Formación e hitos académicos</h2>
   <div class="row justify-content-center">
@@ -147,18 +209,18 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="dot"></div>
-          <h5>Actualidad (Ciclo 1 2026)</h5>
-          <p>Profundizando en Algoritmos 1 (Java) y principios fundamentales de Ingeniería de Software.</p>
+          <h5>Actualidad (2026)</h5>
+          <p>Profundización en Algoritmos y Estructuras de Datos en Java. Bases de Ingeniería de Software.</p>
         </div>
         <div class="timeline-item">
           <div class="dot"></div>
-          <h5>Marzo 2026 (Hito Práctico)</h5>
-          <p>Desarrollo y despliegue de aplicaciones móviles híbridas con Ionic, React y Capacitor.</p>
+          <h5>Marzo 2026</h5>
+          <p>Hito de desarrollo: Despliegue de aplicaciones móviles híbridas (Ionic/React/Capacitor).</p>
         </div>
         <div class="timeline-item">
           <div class="dot"></div>
-          <h5>Julio 2026 (Ciclo previsto)</h5>
-          <p>Taller Genexus, Diseño de Aplicaciones Avanzadas y Algoritmos 2.</p>
+          <h5>Julio 2026 (Ciclo Previsto)</h5>
+          <p>Taller Genexus, Algoritmos Avanzados y Diseño de Sistemas.</p>
         </div>
         <div class="timeline-item">
           <div class="dot"></div>
@@ -176,37 +238,38 @@
     <div class="col-md-6 col-lg-4">
       <div class="project">
         <h3>Agencia de Envíos</h3>
-        <p class="text-secondary flex-grow-1">Sistema backend en C# / .NET Core para gestión logística con SQL Server.</p>
+        <p class="text-secondary flex-grow-1">Sistema backend en C# / .NET Core para gestión logística avanzada con SQL Server.</p>
         <a href="proyecto-envios.html" class="btn btn-outline-primary rounded-pill mt-3">Detalle Técnico</a>
       </div>
     </div>
     <div class="col-md-6 col-lg-4">
       <div class="project">
-        <h3>Goalify: Gestión</h3>
-        <p class="text-secondary flex-grow-1">App móvil híbrida (Ionic/React) para control de objetivos y bienestar diario.</p>
+        <h3>Goalify: Bienestar</h3>
+        <p class="text-secondary flex-grow-1">App móvil multiplataforma para el seguimiento de objetivos diarios y hábitos de salud.</p>
         <a href="proyecto-goalify.html" class="btn btn-outline-primary rounded-pill mt-3">Detalle Técnico</a>
       </div>
     </div>
     <div class="col-md-6 col-lg-4">
       <div class="project">
-        <h3>MovieList: Catálogo</h3>
-        <p class="text-secondary flex-grow-1">Aplicación React con Redux Toolkit para gestión de películas y persistencia de datos.</p>
+        <h3>MovieList: Redux</h3>
+        <p class="text-secondary flex-grow-1">Catálogo dinámico desarrollado con React y Redux Toolkit, optimizando la persistencia de datos.</p>
         <a href="proyecto-movielist.html" class="btn btn-outline-primary rounded-pill mt-3">Detalle Técnico</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>
-  <p class="fs-5 mb-4">Desarrollando mi presente para mi mejor futuro 🚀</p>
+<footer class="text-center py-5 border-top border-secondary mt-5">
+  <p class="fs-5 mb-4 italic">"Desarrollando mi presente para mi mejor futuro" 🚀</p>
   <div class="fs-2 mb-4">
     <a href="https://github.com/Nacho20dev" target="_blank" class="text-secondary mx-3"><i class="fab fa-github"></i></a>
     <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-secondary mx-3"><i class="fab fa-linkedin"></i></a>
   </div>
-  <p class="text-secondary opacity-50">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
+  <p class="text-secondary small opacity-50">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
 </footer>
 
 <script>
+// Typing Effect
 const typedTextSpan = document.querySelector(".typed-text");
 const textArray = ["Backend Developer (C#/Java)", "Analista Programador en formación", "Mobile Tech Enthusiast", "Uruguay based 🇺🇾"];
 let textArrayIndex = 0; let charIndex = 0;
@@ -227,6 +290,7 @@ function erase() {
 
 document.addEventListener("DOMContentLoaded", () => { if(textArray.length) setTimeout(type, 1000); });
 
+// Intersection Observer for Animations
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
 }, { threshold: 0.1 });
