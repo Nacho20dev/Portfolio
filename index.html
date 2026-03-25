@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Ignacio Egozcue | Portfolio</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
 <style>
-/* Estilos base y variables */
 :root {
   --bg-dark: #0f0f1a;
   --bg-card: #1a1a2e;
@@ -58,6 +56,7 @@ nav {
 }
 
 /* Hero */
+.hero { padding: 9rem 0 3rem; }
 .main-title {
   font-size: 3.8rem;
   font-weight: 800;
@@ -67,38 +66,40 @@ nav {
   -webkit-text-fill-color: transparent;
   animation: shine 4s linear infinite;
 }
-
 @keyframes shine { to { background-position: 200% center; } }
-
-.hero { padding: 9rem 0 3rem; }
 
 .typing-container { font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
 .typed-text { color: var(--accent); font-weight: 600; }
 .cursor { display: inline-block; width: 3px; background-color: var(--accent); animation: blink 0.8s infinite; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-/* Stack y Proyectos */
-.stack-category { background: rgba(26, 26, 46, 0.5); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; margin-bottom: 2rem; }
-.stack img { width: 55px; margin: 10px; transition: 0.3s; }
-.stack img:hover { transform: scale(1.2) translateY(-5px); }
-
-.project { background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; transition: 0.4s; height: 100%; display: flex; flex-direction: column; }
-.project:hover { transform: translateY(-10px); background: var(--bg-card-hover); border-color: var(--accent); }
+/* Cards & Projects */
+.project { 
+  background: var(--bg-card); 
+  border: 1px solid var(--border); 
+  border-radius: 24px; 
+  padding: 2.5rem; 
+  transition: 0.4s; 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+}
+.project:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2); }
 
 /* Timeline */
 .timeline { border-left: 2px solid var(--border); padding-left: 35px; position: relative; }
-.timeline-item { margin-bottom: 2.5rem; position: relative; }
-.dot { width: 16px; height: 16px; background: var(--accent); border-radius: 50%; position: absolute; left: -44px; top: 6px; }
+.timeline-item { margin-bottom: 3rem; position: relative; }
+.dot { width: 18px; height: 18px; background: var(--accent); border-radius: 50%; position: absolute; left: -44px; top: 6px; box-shadow: 0 0 10px var(--accent); }
 
 /* Botón flotante CV */
 .cv-float {
   position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white;
   border-radius: 50px; padding: 12px 24px; z-index: 2000; text-decoration: none; font-weight: 700;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4); transition: 0.3s;
 }
 .cv-float:hover { transform: scale(1.05); background: #7c3aed; color: white; }
 
-/* Animación */
+/* Animación Fade */
 .fade-up { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
 .fade-up.show { opacity: 1; transform: translateY(0); }
 </style>
@@ -108,7 +109,7 @@ nav {
 
 <nav class="navbar navbar-dark fixed-top">
   <div class="container">
-    <span class="navbar-brand fw-bold">Ignacio Egozcue | Portfolio</span>
+    <span class="navbar-brand fw-bold">Ignacio Egozcue | Portfolio Profundo</span>
   </div>
 </nav>
 
@@ -122,8 +123,8 @@ nav {
     <span>Soy </span><span class="typed-text"></span><span class="cursor">&nbsp;</span>
   </div>
   <div class="fs-2">
-    <a href="https://github.com/Nacho20dev" class="text-secondary mx-2"><i class="fab fa-github"></i></a>
-    <a href="https://linkedin.com/in/idet-uy" class="text-secondary mx-2"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/Nacho20dev" target="_blank" class="text-secondary mx-2"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-secondary mx-2"><i class="fab fa-linkedin"></i></a>
     <a href="mailto:ignacio.egozcue9@gmail.com" class="text-secondary mx-2"><i class="fa-solid fa-envelope"></i></a>
   </div>
 </header>
@@ -133,24 +134,10 @@ nav {
     <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6">
             <div class="ratio ratio-9x16 shadow-lg rounded-4 overflow-hidden bg-dark">
-                <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" title="Video de presentación" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" title="Presentación Ignacio" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </div>
-</section>
-
-<section class="container text-center fade-up">
-  <h2>Stack Tecnológico</h2>
-  <div class="row justify-content-center">
-    <div class="col-md-5 stack-category mx-2">
-      <h5>Backend</h5>
-      <div class="stack"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"><img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"></div>
-    </div>
-    <div class="col-md-5 stack-category mx-2">
-      <h5>Frontend & Mobile</h5>
-      <div class="stack"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"></div>
-    </div>
-  </div>
 </section>
 
 <section class="container fade-up">
@@ -158,8 +145,26 @@ nav {
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <div class="timeline">
-        <div class="timeline-item"><div class="dot"></div><h5>Actualidad 2026</h5><p>Algoritmos en Java e Ingeniería de Software.</p></div>
-        <div class="timeline-item"><div class="dot"></div><h5>2027</h5><p>Titulación prevista: Analista Programador.</p></div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <h5>Actualidad (Ciclo 1 2026)</h5>
+          <p>Profundizando en Algoritmos 1 (Java) y principios fundamentales de Ingeniería de Software.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <h5>Marzo 2026 (Hito Práctico)</h5>
+          <p>Desarrollo y despliegue de aplicaciones móviles híbridas con Ionic, React y Capacitor.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <h5>Julio 2026 (Ciclo previsto)</h5>
+          <p>Taller Genexus, Diseño de Aplicaciones Avanzadas y Algoritmos 2.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <h5>2027</h5>
+          <p class="fw-bold text-accent-light">Titulación prevista: Analista Programador</p>
+        </div>
       </div>
     </div>
   </div>
@@ -168,36 +173,43 @@ nav {
 <section class="container fade-up">
   <h2>Proyectos Destacados</h2>
   <div class="row g-4">
-    <div class="col-md-6">
+    <div class="col-md-6 col-lg-4">
       <div class="project">
         <h3>Agencia de Envíos</h3>
-        <p class="text-secondary flex-grow-1">Sistema backend en C# / .NET Core con SQL Server para gestión logística avanzada.</p>
-        <a href="proyecto-envios.html" class="btn btn-outline-primary rounded-pill mt-3">Ver Detalle</a>
+        <p class="text-secondary flex-grow-1">Sistema backend en C# / .NET Core para gestión logística con SQL Server.</p>
+        <a href="proyecto-envios.html" class="btn btn-outline-primary rounded-pill mt-3">Detalle Técnico</a>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-lg-4">
       <div class="project">
-        <h3>Goalify</h3>
-        <p class="text-secondary flex-grow-1">App móvil con Ionic y React para seguimiento de objetivos personales.</p>
-        <a href="proyecto-goalify.html" class="btn btn-outline-primary rounded-pill mt-3">Ver Detalle</a>
+        <h3>Goalify: Gestión</h3>
+        <p class="text-secondary flex-grow-1">App móvil híbrida (Ionic/React) para control de objetivos y bienestar diario.</p>
+        <a href="proyecto-goalify.html" class="btn btn-outline-primary rounded-pill mt-3">Detalle Técnico</a>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+      <div class="project">
+        <h3>MovieList: Catálogo</h3>
+        <p class="text-secondary flex-grow-1">Aplicación React con Redux Toolkit para gestión de películas y persistencia de datos.</p>
+        <a href="proyecto-movielist.html" class="btn btn-outline-primary rounded-pill mt-3">Detalle Técnico</a>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="text-center py-5 border-top border-secondary mt-5">
+<footer>
   <p class="fs-5 mb-4">Desarrollando mi presente para mi mejor futuro 🚀</p>
-  <div class="fs-3 mb-4">
-    <a href="https://github.com/Nacho20dev" class="text-secondary mx-2"><i class="fab fa-github"></i></a>
-    <a href="https://linkedin.com/in/idet-uy" class="text-secondary mx-2"><i class="fab fa-linkedin"></i></a>
+  <div class="fs-2 mb-4">
+    <a href="https://github.com/Nacho20dev" class="text-secondary mx-3"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/idet-uy" class="text-secondary mx-3"><i class="fab fa-linkedin"></i></a>
   </div>
-  <p class="text-secondary small">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
+  <p class="text-secondary opacity-50">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
 </footer>
 
 <script>
-// Typing effect
+// Efecto de tipeo
 const typedTextSpan = document.querySelector(".typed-text");
-const textArray = ["Backend Developer (C#/Java)", "Analista Programador en formación", "Uruguay based 🇺🇾"];
+const textArray = ["Backend Developer (C#/Java)", "Analista Programador en formación", "Mobile Tech Enthusiast", "Uruguay based 🇺🇾"];
 let textArrayIndex = 0; let charIndex = 0;
 
 function type() {
@@ -211,12 +223,12 @@ function erase() {
   if (charIndex > 0) {
     typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
     charIndex--; setTimeout(erase, 50);
-  } else { textArrayIndex++; if(textArrayIndex>=textArray.length) textArrayIndex=0; setTimeout(type, 1000); }
+  } else { textArrayIndex++; if(textArrayIndex>=textArray.length) textArrayIndex=0; setTimeout(type, 1100); }
 }
 
-document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
+document.addEventListener("DOMContentLoaded", () => { if(textArray.length) setTimeout(type, 1000); });
 
-// Fade up animation
+// Animación al hacer scroll
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
 }, { threshold: 0.1 });
