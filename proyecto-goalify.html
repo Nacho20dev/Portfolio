@@ -34,7 +34,6 @@
             margin-bottom: 40px;
         }
 
-        /* Logo Local Orientado */
         .app-logo-container {
             width: 140px;
             height: 140px;
@@ -74,20 +73,17 @@
             transform: translateY(-2px);
         }
 
-        /* Galería de Estilo de Vida Goalify */
         .goal-image {
             width: 100%;
             height: 250px;
             object-fit: cover;
             border-radius: 20px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
 
-        .goal-image:hover {
-            transform: scale(1.03);
-        }
+        .goal-image:hover { transform: scale(1.03); }
 
         .card-feature {
             background: white;
@@ -111,12 +107,18 @@
             margin-bottom: 20px;
         }
 
-        footer {
-            padding: 50px 0;
-            border-top: 1px solid #eee;
-            margin-top: 50px;
-            color: #999;
+        .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            background: #e6f4f9;
+            color: var(--goalify-blue);
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
         }
+
+        footer { padding: 50px 0; border-top: 1px solid #eee; margin-top: 50px; color: #999; }
     </style>
 </head>
 <body>
@@ -133,12 +135,12 @@
     <header class="hero-app text-center">
         <div class="container">
             <div class="app-logo-container">
-                <img src="img/playstore.png" alt="Goalify Logo" class="app-logo-img">
+                <img src="img/goalify.png" alt="Goalify Logo" class="app-logo-img">
             </div>
             
             <h1 class="app-title">Goalify</h1>
-            <p class="lead text-muted mx-auto mb-4" style="max-width: 600px;">
-                Mide tu progreso, alcanza tus metas y visualiza tu impacto en una comunidad global dedicada al bienestar integral.
+            <p class="lead text-muted mx-auto mb-4" style="max-width: 650px;">
+                Califica tu desempeño diario en salud, emociones, trabajo, descanso y social para alcanzar tu mejor versión.
             </p>
             
             <div class="d-flex justify-content-center gap-3 flex-wrap">
@@ -146,52 +148,57 @@
                     <i class="fa-brands fa-google-play"></i> INSTALAR APK
                 </a>
                 <a href="https://goalify.develotion.com/" target="_blank" class="btn btn-outline-secondary rounded-pill px-4">
-                    <i class="fa-solid fa-server me-2"></i> API Documentation
+                    <i class="fa-solid fa-server me-2"></i> Documentación API
                 </a>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <div class="row mb-5 g-4">
-            <div class="col-6 col-md-3">
-                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=500" alt="Salud y Entrenamiento" class="goal-image">
-                <p class="text-center fw-bold small">SALUD Y ENTRENAMIENTO</p>
+        <h4 class="fw-bold mb-4 text-center">Áreas que evalúas en Goalify</h4>
+        <div class="row mb-5 g-4 text-center">
+            <div class="col-6 col-md-4 col-lg-2 offset-lg-1">
+                <span class="category-badge">SALUD</span>
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=400" alt="Salud" class="goal-image">
             </div>
-            <div class="col-6 col-md-3">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=500" alt="Éxito Social" class="goal-image">
-                <p class="text-center fw-bold small">CONEXIÓN SOCIAL</p>
+            <div class="col-6 col-md-4 col-lg-2">
+                <span class="category-badge">EMOCIONES</span>
+                <img src="https://images.unsplash.com/photo-1516534775068-ba3e84529573?q=80&w=400" alt="Emociones" class="goal-image">
             </div>
-            <div class="col-6 col-md-3">
-                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=500" alt="Enfoque y Trabajo" class="goal-image">
-                <p class="text-center fw-bold small">ENFOQUE Y TRABAJO</p>
+            <div class="col-6 col-md-4 col-lg-2">
+                <span class="category-badge">TRABAJO</span>
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=400" alt="Trabajo" class="goal-image">
             </div>
-            <div class="col-6 col-md-3">
-                <img src="https://images.unsplash.com/photo-1511275539165-cc46b1ee8960?q=80&w=500" alt="Descanso" class="goal-image">
-                <p class="text-center fw-bold small">DESCANSO REPARADOR</p>
+            <div class="col-6 col-md-4 col-lg-2">
+                <span class="category-badge">DESCANSO</span>
+                <img src="https://images.unsplash.com/photo-1511295742364-9119171761c5?q=80&w=400" alt="Descanso" class="goal-image">
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <span class="category-badge">SOCIAL</span>
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=400" alt="Social" class="goal-image">
             </div>
         </div>
 
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="card-feature">
-                    <div class="icon-round"><i class="fa-solid fa-location-crosshairs"></i></div>
-                    <h5 class="fw-bold">Leaflet Maps</h5>
-                    <p class="text-muted">Visualización interactiva de la comunidad global, permitiendo ver el impacto de los usuarios en el mapa mediante coordenadas dinámicas.</p>
+                    <div class="icon-round"><i class="fa-solid fa-star"></i></div>
+                    <h5 class="fw-bold">Calificación Diaria</h5>
+                    <p class="text-muted">Interfaz intuitiva para agregar, editar y borrar tus evaluaciones diarias, manteniendo un control total sobre tus registros de desempeño.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card-feature">
-                    <div class="icon-round"><i class="fa-solid fa-bolt"></i></div>
-                    <h5 class="fw-bold">Ionic + React</h5>
-                    <p class="text-muted">Arquitectura móvil híbrida de alto rendimiento, asegurando una experiencia nativa tanto en Android como en iOS.</p>
+                    <div class="icon-round"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h5 class="fw-bold">Geolocalización Global</h5>
+                    <p class="text-muted">Uso de <strong>Leaflet</strong> para visualizar la distribución de usuarios por país, conectando tu progreso con una comunidad internacional.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card-feature">
-                    <div class="icon-round"><i class="fa-solid fa-chart-simple"></i></div>
-                    <h5 class="fw-bold">Análisis de Progreso</h5>
-                    <p class="text-muted">Sistema de persistencia de datos local y sincronización con API para mantener un historial preciso de tus entrenamientos.</p>
+                    <div class="icon-round"><i class="fa-solid fa-filter"></i></div>
+                    <h5 class="fw-bold">Filtros Avanzados</h5>
+                    <p class="text-muted">Herramientas de filtrado por fechas que permiten analizar tendencias y mejoras en tus niveles de energía y productividad.</p>
                 </div>
             </div>
         </div>
@@ -199,17 +206,28 @@
         <div class="row mt-5">
             <div class="col-12">
                 <div class="p-4 p-md-5 bg-white rounded-5 shadow-sm border">
-                    <h3 class="fw-bold mb-4">Sobre el Desarrollo</h3>
-                    <p class="lead text-secondary">
-                        Goalify fue diseñado para resolver la falta de conexión visual entre personas que comparten objetivos de bienestar similares. El mayor desafío técnico fue optimizar el consumo de la API de Develotion para que la carga de datos geográficos en el mapa fuera instantánea, garantizando una fluidez total en dispositivos móviles.
-                    </p>
+                    <h3 class="fw-bold mb-4">Funcionalidades Técnicas</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> CRUD completo de evaluaciones.</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Integración con API REST externa.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Persistencia local de datos.</li>
+                                <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> Manejo de mapas dinámicos.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
     <footer class="text-center">
-        <p class="small mb-0">© 2026 Ignacio Egozcue | Proyecto Integrador Final</p>
+        <p class="small mb-0">© 2026 Ignacio Egozcue | Portafolio de Desarrollo Móvil</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
