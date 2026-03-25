@@ -1,263 +1,265 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MovieList | Detalle de Proyecto</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieList | Redux Dashboard Experience</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-<style>
-/* ==============================
-   1. TUS ESTILOS ORIGINALES (NETFLIX STYLE)
-   ============================== */
-:root {
-  --netflix-red: #e50914;
-  --netflix-black: #000000;
-  --netflix-dark-gray: #141414;
-  --accent-glow: rgba(229, 9, 20, 0.3);
-}
+    <style>
+        :root {
+            --netflix-red: #e50914;
+            --netflix-black: #000000;
+            --card-bg: rgba(24, 24, 24, 0.9);
+            --redux-purple: #764abc;
+        }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: radial-gradient(circle, #1a1a1a 0%, #000000 100%) !important;
-  background-attachment: fixed;
-  color: #ffffff !important;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  min-height: 100vh;
-}
+        body {
+            background: #000 !important;
+            color: #fff !important;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
 
-/* Fuerza las cards a ser oscuras y con tu efecto glassmorphism */
-.dashboard-action-card, .detail-card {
-  background-color: rgba(20, 20, 20, 0.7) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 16px;
-  padding: 2.5rem;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
+        /* Fondo Animado sutil */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(229, 9, 20, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(118, 74, 188, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
 
-.dashboard-action-card:hover, .detail-card:hover {
-  border-color: var(--netflix-red) !important;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
-}
+        .navbar {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 1.5rem 0;
+        }
 
-/* Estilos de texto */
-h1, h2, h3, h4, h5, h6, span, label, p {
-  color: #ffffff !important;
-}
+        .hero-section {
+            padding: 160px 0 60px;
+            text-align: center;
+        }
 
-.text-muted {
-  color: #aaaaaa !important;
-}
+        .netflix-logo-type {
+            font-weight: 900;
+            font-size: 4.5rem;
+            color: var(--netflix-red);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 0;
+            text-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+            animation: fadeInDown 1s ease;
+        }
 
-/* ==============================
-   2. ESTILOS ESPECÍFICOS DE LA PRESENTACIÓN
-   ============================== */
-nav {
-  background: rgba(0, 0, 0, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
+        /* Dashboard Mockup Styles */
+        .dashboard-mockup {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
 
-.project-header {
-  padding-top: 8rem;
-  padding-bottom: 4rem;
-  text-align: center;
-}
+        .chart-bar {
+            height: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
 
-.logo-container {
-  animation: pulse-red 2s infinite;
-  margin-bottom: 1.5rem;
-}
+        .chart-progress {
+            height: 100%;
+            background: var(--netflix-red);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--netflix-red);
+        }
 
-.netflix-title {
-  font-weight: 800;
-  letter-spacing: 6px;
-  font-size: 3rem;
-  text-shadow: 0 0 20px var(--accent-glow);
-  color: var(--netflix-red) !important;
-}
+        .feature-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            height: 100%;
+        }
 
-.tech-badge {
-  background: rgba(229, 9, 20, 0.1);
-  border: 1px solid rgba(229, 9, 20, 0.4);
-  color: white;
-  padding: 6px 15px;
-  border-radius: 4px; /* Más cuadrado estilo Netflix */
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+        .feature-box:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+            border-color: var(--netflix-red);
+        }
 
-/* Botones */
-.btn-netflix {
-  background-color: var(--netflix-red);
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-weight: 700;
-  border-radius: 4px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: 0.3s;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
+        .redux-badge {
+            background: var(--redux-purple);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            vertical-align: middle;
+        }
 
-.btn-netflix:hover {
-  background-color: #b20710;
-  color: white;
-  transform: scale(1.05);
-}
+        .btn-netflix-main {
+            background: var(--netflix-red);
+            color: white;
+            font-weight: 700;
+            padding: 14px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            border: none;
+        }
 
-.btn-outline-netflix {
-  background: transparent;
-  border: 1px solid #666;
-  color: white;
-  padding: 12px 30px;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: 0.3s;
-}
+        .btn-netflix-main:hover {
+            background: #ff0f1b;
+            box-shadow: 0 0 25px rgba(229, 9, 20, 0.6);
+            color: white;
+            transform: scale(1.05);
+        }
 
-.btn-outline-netflix:hover {
-  border-color: white;
-  background: rgba(255,255,255,0.1);
-}
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
 
-/* Animaciones */
-@keyframes pulse-red {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.fade-in-entry {
-  animation: fadeIn 0.8s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Listas custom */
-.feature-list {
-  list-style: none;
-  padding: 0;
-}
-
-.feature-list li {
-  margin-bottom: 15px;
-  padding-left: 30px;
-  position: relative;
-}
-
-.feature-list li::before {
-  content: "\f008"; /* Icono de cine */
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  color: var(--netflix-red);
-  position: absolute;
-  left: 0;
-}
-
-</style>
+        .stat-circle {
+            width: 100px; height: 100px;
+            border: 8px solid rgba(255,255,255,0.1);
+            border-top: 8px solid var(--netflix-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center; justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: 800;
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-dark fixed-top">
-  <div class="container">
-    <a href="index.html" class="btn-outline-netflix">
-      <i class="fa-solid fa-arrow-left"></i> VOLVER AL PORTFOLIO
-    </a>
-  </div>
+    <div class="container">
+        <a href="index.html" class="text-white text-decoration-none fw-bold small">
+            <i class="fa-solid fa-chevron-left me-2"></i> EXPLORAR PORTFOLIO
+        </a>
+        <span class="text-muted small d-none d-md-block">IGNACIO EGOZCUE // FRONT-END DEVELOPER</span>
+    </div>
 </nav>
 
-<main class="container fade-in-entry">
-  
-  <header class="project-header">
-    <div class="logo-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#E50914" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 11V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7"></path>
-        <path d="M4 11h16"></path>
-        <path d="M15 22H9a5 5 0 0 1-5-5v-1h16v1a5 5 0 0 1-5 5z"></path>
-        <path d="M12 11v4"></path>
-        <path d="m8 11 1.76-1.76"></path>
-        <path d="m16 11-1.76-1.76"></path>
-        <path d="m12 11 1.76-1.76"></path>
-        <path d="m12 11-1.76-1.76"></path>
-      </svg>
+<header class="hero-section">
+    <div class="container">
+        <h1 class="netflix-logo-type">MovieList</h1>
+        <p class="lead text-secondary fw-light mb-4">Arquitectura <span class="redux-badge">REDUX TOOLKIT</span> para una experiencia fluida.</p>
+        <div class="d-flex justify-content-center gap-3">
+            <span class="badge rounded-pill px-3 py-2 border border-secondary">React 18</span>
+            <span class="badge rounded-pill px-3 py-2 border border-secondary">Dynamic Charts</span>
+            <span class="badge rounded-pill px-3 py-2 border border-secondary">REST API</span>
+        </div>
     </div>
-    <h1 class="netflix-title">MOVIELIST</h1>
-    <p class="text-muted text-uppercase fw-light mb-4" style="letter-spacing: 3px;">Catálogo dinámico • Arquitectura de Estado Global</p>
-    
-    <div class="d-flex justify-content-center gap-2 flex-wrap">
-      <span class="tech-badge">React.js</span>
-      <span class="tech-badge">Redux Toolkit</span>
-      <span class="tech-badge">JavaScript ES6+</span>
-      <span class="tech-badge">Postman API</span>
-    </div>
-  </header>
+</header>
 
-  <div class="row g-4">
-    <div class="col-lg-7">
-      <div class="detail-card h-100">
-        <h4 class="mb-4">EL DESAFÍO TÉCNICO</h4>
-        <p class="text-secondary fs-5">
-          MovieList nació como un proyecto para dominar la gestión de datos en aplicaciones de gran escala. Implementé un sistema de catálogo donde el usuario puede explorar, filtrar y gestionar películas mediante una API REST.
-        </p>
-        <p class="text-secondary fs-5 mt-3">
-          El foco principal fue la **Arquitectura de Estado Global**. Utilicé Redux para centralizar la información de las películas, los filtros y el estado de carga, asegurando que la interfaz reaccione de forma instantánea a cada interacción.
-        </p>
-      </div>
+<main class="container mb-5">
+    <div class="row g-4 align-items-center mb-5">
+        <div class="col-lg-6">
+            <h2 class="fw-bold mb-4">Gestión de Estado <span class="text-danger">Pro</span></h2>
+            <p class="text-secondary fs-5">
+                MovieList no es solo un catálogo; es un motor de datos reactivo. Utiliza <strong>Redux Toolkit</strong> para sincronizar cada acción: desde agregar una recomendación hasta filtrar miles de títulos por fecha, todo sucede en milisegundos sin refrescar la página.
+            </p>
+            <div class="row g-3 mt-4">
+                <div class="col-6">
+                    <div class="feature-box">
+                        <i class="fa-solid fa-bolt text-danger mb-3 fs-4"></i>
+                        <h6 class="fw-bold">Tiempo Real</h6>
+                        <p class="small text-muted mb-0">Listado actualizado instantáneamente mediante Thunks asíncronos.</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="feature-box">
+                        <i class="fa-solid fa-filter text-danger mb-3 fs-4"></i>
+                        <h6 class="fw-bold">Filtros Inteligentes</h6>
+                        <p class="small text-muted mb-0">Búsqueda avanzada por rangos de fecha y categorías dinámicas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="dashboard-mockup">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold m-0 small">DASHBOARD DE MÉTRICAS</h5>
+                    <i class="fa-solid fa-circle text-danger small blink"></i>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between small mb-1">
+                        <span>Acción & Aventura</span>
+                        <span class="text-danger">12 películas</span>
+                    </div>
+                    <div class="chart-bar"><div class="chart-progress" style="width: 85%;"></div></div>
+                </div>
+
+                <div class="row mt-5 text-center">
+                    <div class="col-6 border-end border-secondary">
+                        <div class="stat-circle text-danger">35%</div>
+                        <span class="x-small text-uppercase text-muted" style="font-size: 0.65rem;">Apta < 12 Años</span>
+                    </div>
+                    <div class="col-6">
+                        <i class="fa-solid fa-layer-group fs-2 mb-2 text-danger"></i>
+                        <h4 class="fw-bold mb-0">6</h4>
+                        <span class="x-small text-uppercase text-muted" style="font-size: 0.65rem;">Categorías</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="col-lg-5">
-      <div class="detail-card h-100">
-        <h4 class="mb-4">STACK DE DESARROLLO</h4>
-        <ul class="feature-list text-secondary fs-5">
-          <li><strong>Store Central:</strong> Manejo de estado con Redux.</li>
-          <li><strong>API Integration:</strong> Consumo de datos externos (JSON/REST).</li>
-          <li><strong>ES6 Essentials:</strong> Uso intensivo de Map, Filter y Asincronismo.</li>
-          <li><strong>Postman:</strong> Testing exhaustivo de la estructura de la API.</li>
-        </ul>
-      </div>
+    <div class="glass-card mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h3 class="fw-bold">Lógica de Datos Validada</h3>
+                <p class="text-secondary mb-0">La estructura de la API fue testeada exhaustivamente con Postman para garantizar una integración perfecta con los componentes de React.</p>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <a href="https://documenter.getpostman.com/view/8171328/2sB3Hhs2dS" target="_blank" class="btn btn-outline-light px-4">
+                    POSTMAN DOCS <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
+                </a>
+            </div>
+        </div>
     </div>
 
-    <div class="col-12">
-      <div class="detail-card text-center">
-        <h4 class="mb-4">DOCUMENTACIÓN DE LA API</h4>
-        <p class="mb-4">Este proyecto consume datos estructurados que fueron validados y testeados previamente.</p>
-        <a href="https://documenter.getpostman.com/view/8171328/2sB3Hhs2dS" target="_blank" class="btn-outline-netflix">
-          <i class="fa-solid fa-code"></i> VER DOCUMENTACIÓN POSTMAN
-        </a>
-      </div>
+    <div class="text-center py-5">
+        <h2 class="fw-bold mb-5">Lleva tu catálogo a todas partes</h2>
+        <div class="d-flex justify-content-center gap-4 flex-wrap">
+            <a href="https://drive.google.com/uc?export=download&id=1GTaQJWyI4MchsP3NmB-kpMxkScYIeFuu" class="btn-netflix-main">
+                <i class="fa-solid fa-download me-2"></i> DESCARGAR APK
+            </a>
+            <a href="https://github.com/Nacho20dev" target="_blank" class="btn btn-outline-danger px-5 fw-bold">
+                GITHUB REPO
+            </a>
+        </div>
     </div>
-  </div>
-
-  <div class="text-center my-5 py-4">
-    <h3 class="mb-4">¿QUIERES PROBAR LA EXPERIENCIA?</h3>
-    <div class="d-flex justify-content-center gap-3">
-      <a href="https://drive.google.com/uc?export=download&id=1GTaQJWyI4MchsP3NmB-kpMxkScYIeFuu" class="btn-netflix">
-        <i class="fa-solid fa-download"></i> DESCARGAR APK
-      </a>
-      <a href="https://github.com/Nacho20dev" target="_blank" class="btn-outline-netflix">
-        <i class="fab fa-github"></i> VER CÓDIGO
-      </a>
-    </div>
-  </div>
-
 </main>
 
-<footer class="py-5 text-center mt-5 border-top border-secondary" style="background-color: rgba(0,0,0,0.5);">
-  <p class="text-muted small">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
+<footer class="py-5 text-center border-top border-secondary mt-5">
+    <div class="container">
+        <p class="text-muted small mb-0">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
+        <p class="text-muted x-small">Desarrollado con pasión en React & Redux</p>
+    </div>
 </footer>
 
 </body>
