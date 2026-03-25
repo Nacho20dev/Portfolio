@@ -134,6 +134,37 @@
         /* Animaciones Fade */
         .fade-up { opacity: 0; transform: translateY(30px); transition: 0.8s all ease-out; }
         .fade-up.show { opacity: 1; transform: translateY(0); }
+
+.video-card{
+    background: var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:12px;
+    transition:0.35s;
+}
+
+.video-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-6px);
+    box-shadow:0 10px 25px rgba(139,92,246,0.25);
+}
+
+.video-wrapper{
+    position:relative;
+    width:100%;
+    padding-top:177%; /* 9:16 ratio */
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.video-wrapper iframe{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
     </style>
 </head>
 
@@ -161,21 +192,31 @@
   </div>
 </header>
 
-<section class="container text-center fade-up">
-    <h2 class="mb-4">Presentación en Video</h2>
-    <div class="row justify-content-center">
-        <div class="col-11 col-sm-6 col-md-5 col-lg-3">
-            <div class="ratio ratio-9x16 shadow-lg rounded-4 overflow-hidden bg-dark border border-secondary">
-                <iframe 
-                    src="https://www.youtube.com/embed/0E5piiMhuZM?rel=0&modestbranding=1" 
-                    title="Presentación Ignacio Egozcue" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
+<section class="container fade-up text-center">
+    
+    <h2>Presentación</h2>
+
+    <div class="row justify-content-center mt-5">
+        
+        <div class="col-10 col-sm-8 col-md-6 col-lg-4 col-xl-3">
+
+            <div class="video-card">
+
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/0E5piiMhuZM"
+                        title="Presentación Ignacio Egozcue"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
             </div>
+
         </div>
+
     </div>
+
 </section>
 
 
