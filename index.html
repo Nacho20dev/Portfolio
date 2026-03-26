@@ -27,7 +27,7 @@
             margin: 0;
         }
 
-        /* --- HERO CON PARALLAX Y EFECTOS --- */
+        /* --- HERO PARALLAX MEJORADO --- */
         .hero-wrapper {
             position: relative;
             height: 100vh;
@@ -38,153 +38,117 @@
             background: #020205;
         }
 
-        /* Capa 1: Nebulosa de fondo */
         .parallax-bg {
             position: absolute;
             top: -10%; left: -10%; width: 120%; height: 120%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
             z-index: 1;
         }
 
-        /* Capa 2: Estrellas/Partículas (CSS Puro) */
         .stars {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png') repeat;
             z-index: 2;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-        }
+        .hero-content { position: relative; z-index: 10; text-align: center; }
 
         .main-title {
             font-size: clamp(3.5rem, 12vw, 6.5rem);
             font-weight: 900;
-            letter-spacing: -3px;
             background: linear-gradient(180deg, #fff 30%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
         }
 
-        /* --- CARDS BENTO MODERNAS --- */
+        /* --- STACK TECNOLÓGICO ICONOS --- */
+        .stack-category {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        .stack-category:hover { border-color: var(--accent); transform: translateY(-5px); }
+        
+        .stack img {
+            width: 45px;
+            margin: 10px;
+            transition: 0.3s;
+            filter: grayscale(20%);
+        }
+        .stack img:hover { transform: scale(1.2) rotate(5deg); filter: grayscale(0%); }
+
+        /* --- CARDS BENTO PROYECTOS --- */
         .project-card {
             background: var(--bg-card);
             backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: 2.5rem;
+            border-radius: 28px;
+            padding: 2.2rem;
             height: 100%;
-            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
-            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
         }
-
         .project-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-12px);
             border-color: var(--accent);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 15px var(--accent-glow);
         }
 
-        .project-icon {
-            width: 55px; height: 55px;
-            background: linear-gradient(135deg, var(--accent), #3b82f6);
-            border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.5rem; color: white; font-size: 1.4rem;
+        .project-icon-large {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
         }
 
-        /* --- TIMELINE REINTEGRADA --- */
-        .modern-timeline {
-            position: relative;
-            padding-left: 30px;
-            margin: 40px 0;
-        }
-
+        /* --- TIMELINE --- */
+        .modern-timeline { position: relative; padding-left: 20px; }
         .modern-timeline::before {
-            content: "";
-            position: absolute; left: 0; top: 0; width: 2px; height: 100%;
-            background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+            content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%;
+            background: linear-gradient(to bottom, var(--accent), transparent);
         }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 35px;
-            padding-bottom: 50px;
-        }
-
+        .timeline-item { position: relative; padding-left: 35px; padding-bottom: 45px; }
         .timeline-dot {
-            position: absolute; left: -40px; top: 0;
-            width: 20px; height: 20px;
-            background: var(--bg-dark);
-            border: 3px solid var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--accent);
-            z-index: 5;
+            position: absolute; left: -10px; top: 0; width: 20px; height: 20px;
+            background: var(--bg-dark); border: 3px solid var(--accent); border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
         }
 
-        .highlight-dot .timeline-dot {
-            background: var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(139, 92, 246, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
-        }
-
-        /* --- UTILS --- */
+        /* --- BOTONES --- */
         .btn-custom {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 14px;
-            font-weight: 600;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            background: transparent; border: 1px solid var(--accent); color: white;
+            padding: 10px 25px; border-radius: 12px; font-weight: 600;
+            text-decoration: none; transition: 0.3s; display: inline-block;
         }
-
-        .btn-custom:hover {
-            background: var(--accent);
-            box-shadow: 0 0 20px var(--accent);
-            color: white;
-        }
+        .btn-custom:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent); color: white; }
 
         .cv-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--accent); color: white;
-            border-radius: 50px; padding: 15px 30px;
-            z-index: 2000; font-weight: 800;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            text-decoration: none; transition: 0.3s;
+            position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white;
+            border-radius: 50px; padding: 15px 30px; z-index: 2000; font-weight: 800;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4); text-decoration: none; transition: 0.3s;
         }
-
-        .cv-float:hover { transform: scale(1.1); color: white; }
-
-        nav {
-            background: rgba(2, 2, 5, 0.8) !important;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glass-border);
-        }
+        .cv-float:hover { transform: scale(1.05) translateY(-5px); color: white; }
 
         .typed-text { color: var(--accent); font-weight: 700; }
+        .cursor { color: var(--accent); animation: blink 0.8s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-dark fixed-top">
+<nav class="navbar navbar-dark fixed-top" style="background: rgba(2,2,5,0.7); backdrop-filter: blur(15px);">
     <div class="container">
         <span class="navbar-brand fw-bold">IGNACIO EGOZCUE</span>
-        <div class="d-flex gap-3 fs-5">
+        <div class="d-flex gap-3">
             <a href="https://github.com/Nacho20dev" target="_blank" class="text-white"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-white"><i class="fab fa-linkedin"></i></a>
         </div>
@@ -192,7 +156,7 @@
 </nav>
 
 <a href="Cv.IgnacioEgozcueTech.pdf" download class="cv-float">
-    <i class="fa-solid fa-file-pdf me-2"></i>CV
+    <i class="fa-solid fa-file-arrow-down me-2"></i>Descargar CV
 </a>
 
 <header class="hero-wrapper">
@@ -200,21 +164,21 @@
     <div class="stars" id="stars"></div>
     <div class="hero-content container">
         <h1 class="main-title">Ignacio Egozcue</h1>
-        <div class="fs-3">
+        <div class="fs-3 text-secondary">
             Soy <span class="typed-text"></span><span class="cursor">|</span>
         </div>
         <div class="mt-5">
-            <a href="#proyectos" class="btn-custom">Explorar Proyectos</a>
+            <a href="#proyectos" class="btn-custom px-5">Explorar Proyectos</a>
         </div>
     </div>
 </header>
 
-<section class="container py-5 text-center mt-5">
-    <h2 class="fw-bold mb-5">Presentación Personal</h2>
+<section class="container py-5 mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-8">
-            <div style="border: 1px solid var(--glass-border); padding: 12px; border-radius: 42px; background: rgba(255,255,255,0.03);">
-                <div style="position:relative; padding-top:177%; border-radius:32px; overflow:hidden;">
+        <div class="col-lg-5 col-md-7 text-center">
+            <h2 class="mb-5">Presentación</h2>
+            <div style="border: 1px solid var(--glass-border); padding: 12px; border-radius: 40px; background: rgba(255,255,255,0.02);">
+                <div style="position:relative; padding-top:177%; border-radius:30px; overflow:hidden;">
                     <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" 
                             style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen>
                     </iframe>
@@ -224,34 +188,56 @@
     </div>
 </section>
 
+<section class="container py-5 text-center">
+    <h2 class="mb-5">Stack Tecnológico</h2>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+            <div class="stack-category">
+                <h5 class="text-white mb-4"><i class="fa-solid fa-code-branch me-2 text-accent"></i>Backend & DB</h5>
+                <div class="stack">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                    <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="stack-category">
+                <h5 class="text-white mb-4"><i class="fa-solid fa-mobile-screen me-2 text-accent"></i>Frontend & Mobile</h5>
+                <div class="stack">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="container py-5">
-    <h2 class="fw-bold mb-5 text-center">Trayectoria & Formación</h2>
+    <h2 class="mb-5 text-center">Formación e Hitos</h2>
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="modern-timeline">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <span class="text-accent fw-bold small">ACTUALIDAD</span>
-                    <h5 class="mt-2 text-white">Ingeniería & Algoritmos</h5>
-                    <p class="text-secondary">Enfoque en Java y optimización de procesos de software.</p>
+                    <span class="text-accent fw-bold small">2026</span>
+                    <h5 class="text-white">Ingeniería & Algoritmos</h5>
+                    <p class="text-secondary">Estructuras de datos en Java y lógica de software.</p>
                 </div>
-                <div class="timeline-item highlight-dot">
-                    <div class="timeline-dot"></div>
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background: var(--accent);"></div>
                     <span class="text-accent fw-bold small">MARZO 2026</span>
-                    <h5 class="mt-2 text-white">Mobile Dev Hito</h5>
-                    <p class="text-secondary">Despliegue de apps híbridas con Ionic, React y Capacitor.</p>
+                    <h5 class="text-white">Hito: Despliegue Mobile</h5>
+                    <p class="text-secondary">Apps híbridas con Ionic y React.</p>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <span class="text-accent fw-bold small">FUTURO CERCANO</span>
-                    <h5 class="mt-2 text-white">Genexus & Análisis</h5>
-                    <p class="text-secondary">Diseño de sistemas y arquitectura de datos.</p>
-                </div>
-                <div class="timeline-item mb-0">
-                    <div class="timeline-dot" style="background: var(--accent);"></div>
                     <span class="text-accent fw-bold small">2027</span>
-                    <h5 class="mt-2 text-white">Analista Programador</h5>
-                    <p class="text-secondary fw-bold">Titulación técnica prevista.</p>
+                    <h5 class="text-white">Titulación: Analista Programador</h5>
+                    <p class="text-secondary">Culminación prevista de formación técnica superior.</p>
                 </div>
             </div>
         </div>
@@ -259,50 +245,50 @@
 </section>
 
 <section id="proyectos" class="container py-5">
-    <h2 class="fw-bold mb-5 text-center">Proyectos Destacados</h2>
+    <h2 class="mb-5 text-center">Proyectos Destacados</h2>
     <div class="row g-4">
         <div class="col-md-4">
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-code"></i></div>
-                <h4 class="text-white fw-bold">Agencia Logística</h4>
-                <p class="text-secondary small mb-4">Backend robusto en .NET Core para gestión de inventarios y logística.</p>
-                <a href="proyecto-envios.html" class="btn-custom w-100 text-center">Detalle Técnico</a>
+                <i class="fa-solid fa-truck-fast project-icon-large"></i>
+                <h4 class="text-white fw-bold">Agencia de Envíos</h4>
+                <p class="text-secondary flex-grow-1">Sistema backend en C# / .NET para gestión logística con SQL Server.</p>
+                <a href="proyecto-envios.html" class="btn-custom text-center mt-3">Detalle Técnico</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                <h4 class="text-white fw-bold">Goalify: Salud</h4>
-                <p class="text-secondary small mb-4">App móvil para el seguimiento de hábitos con UI/UX de alto impacto.</p>
-                <a href="proyecto-goalify.html" class="btn-custom w-100 text-center">Detalle Técnico</a>
+                <i class="fa-solid fa-heart-pulse project-icon-large"></i>
+                <h4 class="text-white fw-bold">Goalify: Bienestar</h4>
+                <p class="text-secondary flex-grow-1">App móvil multiplataforma para seguimiento de hábitos y objetivos.</p>
+                <a href="proyecto-goalify.html" class="btn-custom text-center mt-3">Detalle Técnico</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="project-card">
-                <div class="project-icon"><i class="fa-solid fa-layer-group"></i></div>
-                <h4 class="text-white fw-bold">MovieList Redux</h4>
-                <p class="text-secondary small mb-4">Gestión de estado global con Redux Toolkit y visualización de datos.</p>
-                <a href="proyecto-movielist.html" class="btn-custom w-100 text-center">Detalle Técnico</a>
+                <i class="fa-solid fa-clapperboard project-icon-large"></i>
+                <h4 class="text-white fw-bold">MovieList: Redux</h4>
+                <p class="text-secondary flex-grow-1">SPA reactiva con Redux Toolkit y visualización de datos dinámica.</p>
+                <a href="proyecto-movielist.html" class="btn-custom text-center mt-3">Detalle Técnico</a>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="py-5 text-center border-top border-secondary mt-5" style="background: rgba(0,0,0,0.3);">
-    <p class="text-secondary small mb-0">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
+<footer class="text-center py-5 mt-5" style="border-top: 1px solid var(--glass-border);">
+    <p class="text-secondary small">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
 </footer>
 
 <script>
-    // --- PARALLAX SCRIPT ---
+    // --- PARALLAX ---
     window.addEventListener('scroll', () => {
         const scroll = window.pageYOffset;
-        document.getElementById('parallax-bg').style.transform = `translateY(${scroll * 0.4}px)`;
-        document.getElementById('stars').style.transform = `translateY(${scroll * 0.1}px)`;
+        document.getElementById('parallax-bg').style.transform = `translateY(${scroll * 0.45}px)`;
+        document.getElementById('stars').style.transform = `translateY(${scroll * 0.15}px)`;
     });
 
-    // --- TYPING SCRIPT ---
+    // --- TYPING ---
     const typedTextSpan = document.querySelector(".typed-text");
-    const textArray = ["Backend Developer", "Analista Programador", "Mobile Enthusiast"];
+    const textArray = ["Backend Developer (C#/Java)", "Analista Programador", "Mobile Tech Enthusiast"];
     let textArrayIndex = 0; let charIndex = 0;
 
     function type() {
@@ -311,7 +297,6 @@
             charIndex++; setTimeout(type, 100);
         } else { setTimeout(erase, 2000); }
     }
-
     function erase() {
         if (charIndex > 0) {
             typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
@@ -322,7 +307,6 @@
             setTimeout(type, 1000);
         }
     }
-
     document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
 </script>
 
