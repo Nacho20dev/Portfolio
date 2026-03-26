@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ignacio Egozcue | Software Dev</title>
+    <title>Ignacio Egozcue | Portfolio</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -11,9 +11,9 @@
     <style>
         :root {
             --bg-dark: #020205;
-            --bg-card: rgba(20, 20, 40, 0.6);
+            --bg-card: rgba(15, 15, 30, 0.7);
             --accent: #8b5cf6;
-            --accent-glow: rgba(139, 92, 246, 0.4);
+            --accent-glow: rgba(139, 92, 246, 0.3);
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
             --glass-border: rgba(255, 255, 255, 0.08);
@@ -23,11 +23,10 @@
             background: var(--bg-dark);
             color: var(--text-primary);
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            overflow-x: hidden;
             margin: 0;
         }
 
-        /* --- HERO & PARALLAX --- */
+        /* --- EFECTO PARALLAX FIXED --- */
         .hero-wrapper {
             position: relative;
             height: 100vh;
@@ -35,81 +34,105 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            /* El truco del background fixed */
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                var(--bg-dark);
+            background-attachment: fixed;
         }
 
-        .parallax-bg {
+        .stars-overlay {
             position: absolute;
-            top: -10%; left: -10%; width: 120%; height: 120%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png');
+            background-repeat: repeat;
+            background-attachment: fixed; /* Esto hace que las estrellas queden quietas al scrollear */
+            opacity: 0.4;
             z-index: 1;
         }
 
-        .stars {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png') repeat;
-            z-index: 2;
-            opacity: 0.3;
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
         }
 
-        /* --- NAVBAR REFINADA --- */
+        .main-title {
+            font-size: clamp(3.5rem, 12vw, 6.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            background: linear-gradient(180deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- NAVBAR --- */
         nav {
             background: rgba(2, 2, 5, 0.8) !important;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--glass-border);
             padding: 15px 0;
         }
 
-        .nav-link-custom {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: 0.3s;
-            margin-left: 20px;
-        }
-
-        .nav-link-custom:hover { color: var(--accent); transform: translateY(-2px); }
-
-        /* --- BOTONES Y CONTACTO --- */
-        .cv-float {
-            position: fixed; bottom: 30px; right: 30px; 
-            background: var(--accent); color: white;
-            border-radius: 50px; padding: 12px 28px; z-index: 2000; 
-            font-weight: 700; text-decoration: none; 
-            box-shadow: 0 10px 30px var(--accent-glow);
-            transition: 0.3s;
-        }
-        .cv-float:hover { transform: scale(1.05); color: white; box-shadow: 0 15px 40px var(--accent); }
-
-        /* --- STACK E ICONOS --- */
+        /* --- STACK --- */
         .stack-category {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 24px; padding: 2.5rem;
+            border-radius: 24px;
+            padding: 2.5rem;
             transition: 0.4s;
+            backdrop-filter: blur(10px);
         }
-        .stack-category:hover { border-color: var(--accent); background: rgba(20, 20, 45, 0.8); }
+        .stack img { width: 45px; margin: 12px; transition: 0.3s; filter: grayscale(30%); }
+        .stack img:hover { transform: scale(1.2); filter: grayscale(0%); }
 
-        .stack img { width: 45px; margin: 12px; transition: 0.3s; filter: grayscale(40%); }
-        .stack img:hover { transform: scale(1.2) rotate(3deg); filter: grayscale(0%); }
-
+        /* --- CARDS --- */
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 30px; padding: 2.5rem;
-            height: 100%; transition: 0.4s;
-            display: flex; flex-direction: column;
+            border-radius: 28px;
+            padding: 2.5rem;
+            height: 100%;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
         }
         .project-card:hover { transform: translateY(-10px); border-color: var(--accent); }
 
-        .btn-detail {
-            border: 1px solid var(--accent); color: white;
-            padding: 10px; border-radius: 12px; text-decoration: none;
-            text-align: center; margin-top: auto; transition: 0.3s;
+        .btn-custom {
+            border: 1px solid var(--accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: auto;
         }
-        .btn-detail:hover { background: var(--accent); }
+        .btn-custom:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+
+        /* --- CV FLOAT --- */
+        .cv-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--accent); color: white;
+            border-radius: 50px; padding: 12px 28px; z-index: 2000;
+            font-weight: 700; text-decoration: none;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            transition: 0.3s;
+        }
+        .cv-float:hover { transform: scale(1.05); color: white; }
+
+        /* --- FOOTER REDES --- */
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-link:hover { color: var(--accent); transform: translateY(-5px); }
 
         .typed-text { color: var(--accent); font-weight: 700; }
     </style>
@@ -119,12 +142,10 @@
 
 <nav class="navbar navbar-dark fixed-top">
     <div class="container">
-        <span class="navbar-brand fw-bold tracking-tighter">IGNACIO EGOZCUE</span>
-        <div class="d-none d-md-flex align-items-center">
-            <a href="https://wa.me/59893370197" target="_blank" class="nav-link-custom" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:ignacio.egozcue9@gmail.com" class="nav-link-custom" title="Email"><i class="fa-solid fa-envelope"></i></a>
-            <a href="https://linkedin.com/in/idet-uy" target="_blank" class="nav-link-custom"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Nacho20dev" target="_blank" class="nav-link-custom"><i class="fab fa-github"></i></a>
+        <span class="navbar-brand fw-bold">IGNACIO EGOZCUE</span>
+        <div class="d-flex gap-3">
+             <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-white opacity-75"><i class="fab fa-linkedin"></i></a>
+             <a href="https://github.com/Nacho20dev" target="_blank" class="text-white opacity-75"><i class="fab fa-github"></i></a>
         </div>
     </div>
 </nav>
@@ -134,28 +155,22 @@
 </a>
 
 <header class="hero-wrapper">
-    <div class="parallax-bg" id="parallax-bg"></div>
-    <div class="stars" id="stars"></div>
+    <div class="stars-overlay"></div>
     <div class="hero-content container">
-        <h1 class="main-title" style="font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; margin-bottom: 20px;">Ignacio Egozcue</h1>
+        <h1 class="main-title">Ignacio Egozcue</h1>
         <div class="fs-4 text-secondary">
             Soy <span class="typed-text"></span><span class="cursor">|</span>
         </div>
-        <div class="mt-5 d-flex justify-content-center gap-3">
-            <a href="https://wa.me/59893370197" target="_blank" class="btn btn-outline-light rounded-pill px-4 opacity-75">
-                <i class="fab fa-whatsapp me-2"></i>WhatsApp
-            </a>
-            <a href="mailto:ignacio.egozcue9@gmail.com" class="btn btn-outline-light rounded-pill px-4 opacity-75">
-                <i class="fa-solid fa-envelope me-2"></i>Email
-            </a>
+        <div class="mt-5">
+            <a href="#proyectos" class="btn-custom px-5 py-3">Explorar Proyectos</a>
         </div>
     </div>
 </header>
 
-<section class="container py-5 mt-5 text-center">
-    <h2 class="mb-5">Video Presentación</h2>
+<section class="container py-5 mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4 col-md-6 text-center">
+            <h2 class="mb-5">Presentación</h2>
             <div style="border: 1px solid var(--glass-border); padding: 10px; border-radius: 40px; background: rgba(255,255,255,0.02);">
                 <div style="position:relative; padding-top:177%; border-radius:30px; overflow:hidden;">
                     <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" 
@@ -167,12 +182,12 @@
     </div>
 </section>
 
-<section class="container py-5 text-center">
-    <h2 class="mb-5">Stack Tecnológico</h2>
+<section class="container py-5">
+    <h2 class="mb-5 text-center">Stack Tecnológico</h2>
     <div class="row g-4 justify-content-center">
-        <div class="col-md-5">
+        <div class="col-md-5 text-center">
             <div class="stack-category">
-                <h5 class="mb-4 text-accent"><i class="fa-solid fa-server me-2"></i>Backend & Data</h5>
+                <h5 class="mb-4 text-accent">Backend & Data</h5>
                 <div class="stack">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
@@ -180,9 +195,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-5 text-center">
             <div class="stack-category">
-                <h5 class="mb-4 text-accent"><i class="fa-solid fa-mobile-screen me-2"></i>Frontend & Mobile</h5>
+                <h5 class="mb-4 text-accent">Frontend & Mobile</h5>
                 <div class="stack">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
@@ -201,7 +216,7 @@
                 <i class="fa-solid fa-truck-fast fs-1 mb-4 text-accent"></i>
                 <h4 class="fw-bold">Agencia Logística</h4>
                 <p class="text-secondary small">Arquitectura .NET Core para gestión masiva de envíos y base de datos SQL.</p>
-                <a href="proyecto-envios.html" class="btn-detail">Ver Detalle</a>
+                <a href="proyecto-envios.html" class="btn-custom">Ver Detalle Técnico</a>
             </div>
         </div>
         <div class="col-md-4">
@@ -209,7 +224,7 @@
                 <i class="fa-solid fa-heart-pulse fs-1 mb-4 text-accent"></i>
                 <h4 class="fw-bold">Goalify: Salud</h4>
                 <p class="text-secondary small">App móvil con Ionic/React enfocada en el bienestar y seguimiento de hábitos.</p>
-                <a href="proyecto-goalify.html" class="btn-detail">Ver Detalle</a>
+                <a href="proyecto-goalify.html" class="btn-custom">Ver Detalle Técnico</a>
             </div>
         </div>
         <div class="col-md-4">
@@ -217,28 +232,35 @@
                 <i class="fa-solid fa-clapperboard fs-1 mb-4 text-accent"></i>
                 <h4 class="fw-bold">MovieList Redux</h4>
                 <p class="text-secondary small">Aplicación SPA con Redux Toolkit para una gestión eficiente del estado global.</p>
-                <a href="proyecto-movielist.html" class="btn-detail">Ver Detalle</a>
+                <a href="proyecto-movielist.html" class="btn-custom">Ver Detalle Técnico</a>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="text-center py-5 border-top border-secondary mt-5" style="background: rgba(0,0,0,0.5);">
-    <div class="d-flex justify-content-center gap-4 fs-4 mb-4">
-        <a href="https://wa.me/59893370197" target="_blank" class="text-secondary"><i class="fab fa-whatsapp"></i></a>
-        <a href="mailto:ignacio.egozcue9@gmail.com" class="text-secondary"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-secondary"><i class="fab fa-linkedin"></i></a>
+<footer class="text-center py-5 border-top border-secondary mt-5" style="background: rgba(0,0,0,0.4);">
+    <div class="container">
+        <h4 class="mb-4 text-white fw-bold">¡Hablemos!</h4>
+        <div class="d-flex justify-content-center gap-4 mb-4">
+            <a href="https://wa.me/59893370197" target="_blank" class="social-link" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:ignacio.egozcue9@gmail.com" class="social-link" title="Email">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="https://linkedin.com/in/idet-uy" target="_blank" class="social-link" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/Nacho20dev" target="_blank" class="social-link" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p class="text-secondary small opacity-50">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
     </div>
-    <p class="text-secondary small">© 2026 Ignacio Egozcue | Uruguay</p>
 </footer>
 
 <script>
-    window.addEventListener('scroll', () => {
-        const scroll = window.pageYOffset;
-        document.getElementById('parallax-bg').style.transform = `translateY(${scroll * 0.4}px)`;
-        document.getElementById('stars').style.transform = `translateY(${scroll * 0.1}px)`;
-    });
-
+    // Script simple de escritura
     const typedTextSpan = document.querySelector(".typed-text");
     const textArray = ["Backend Developer", "Analista Programador", "Mobile Tech Enthusiast"];
     let textArrayIndex = 0; let charIndex = 0;
