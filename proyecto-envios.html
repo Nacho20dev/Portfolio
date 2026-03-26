@@ -3,268 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logística Uruguay | Arquitectura .NET 8</title>
-    
+    <title>Agencia Logística | Arquitectura .NET Core</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <style>
         :root {
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121e;
-            --primary: #6366f1; /* Electric Indigo */
-            --secondary: #a855f7; /* Purple */
-            --accent: #06b6d4; /* Cyan */
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --border: #1e293b;
+            --logi-blue: #1e3a8a;
+            --logi-accent: #f59e0b;
+            --logi-dark: #0f172a;
+            --bg-canvas: #f1f5f9;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: var(--bg-canvas);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            color: #334155;
         }
 
-        /* Hero Section */
-        .hero-logistica {
-            padding: 10rem 0 6rem;
-            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent),
-                        radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.05), transparent);
-            text-align: center;
+        /* --- NAV --- */
+        .navbar-logi {
+            background: var(--logi-dark);
+            padding: 1rem 0;
         }
 
-        .navbar {
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
+        /* --- HERO --- */
+        .hero-logi {
+            background: linear-gradient(135deg, var(--logi-dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 0;
+            border-bottom: 5px solid var(--logi-accent);
         }
 
-        .tech-pill {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            color: var(--primary);
-            padding: 5px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin: 4px;
-            display: inline-block;
+        /* --- MOCKUP DE MONITOR (PC) --- */
+        .monitor-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: -100px auto 50px;
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            border: 4px solid #475569;
         }
 
-        /* --- NUEVA ESTÉTICA DE IMÁGENES (PLACEHOLDERS SEGUROS) --- */
-        .img-placeholder-logistica {
-            height: 250px;
-            border-radius: 20px;
-            background-color: var(--bg-card);
-            border: 2px dashed var(--border);
+        .monitor-screen {
+            background: #fff;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 4px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: var(--text-dim);
-            transition: 0.4s ease;
             position: relative;
-            overflow: hidden;
         }
 
-        .img-placeholder-logistica i {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            opacity: 0.8;
-        }
-
-        .img-placeholder-logistica:hover {
-            border-color: var(--accent);
-            color: var(--text-main);
-            transform: translateY(-5px);
-        }
-
-        /* Efecto de red sutil en el fondo del placeholder */
-        .img-placeholder-logistica::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.2;
-        }
-
-        /* --- CARDS DE REQUERIMIENTOS --- */
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 2.2rem;
-            border-radius: 24px;
+        /* Simulación de interfaz de Dashboard dentro del monitor */
+        .fake-dashboard {
+            width: 100%;
             height: 100%;
-            transition: 0.3s ease;
+            background: #f8fafc;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .feature-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 12px 40px -15px rgba(99, 102, 241, 0.25);
+        /* --- TECH CARDS --- */
+        .feature-card {
+            background: white;
+            border: none;
+            border-left: 4px solid var(--logi-blue);
+            border-radius: 8px;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
-        .step-number {
-            color: var(--accent);
-            font-weight: 800;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 0.7rem;
-        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
-        .uml-tag {
-            font-size: 0.75rem;
-            background: rgba(6, 182, 212, 0.15);
-            color: var(--accent);
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid rgba(6, 182, 212, 0.3);
+        .btn-logi {
+            background: var(--logi-accent);
+            color: var(--logi-dark) !important;
             font-weight: 700;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
         }
-
-        footer { padding: 5rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); }
-        
-        /* Animaciones */
-        .fade-in { opacity: 0; transform: translateY(25px); transition: 0.7s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-dark fixed-top">
+<nav class="navbar-logi">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html">
-            <i class="fa-solid fa-chevron-left me-2 small text-accent"></i> PROYECTO LOGÍSTICA
+        <a href="index.html" class="text-white text-decoration-none fw-bold small">
+            <i class="fa-solid fa-arrow-left me-2"></i> REGRESAR AL PANEL
         </a>
-        <span class="navbar-text d-none d-md-block text-dim">Ignacio Egozcue | Case Study</span>
     </div>
 </nav>
 
-<header class="hero-logistica">
-    <div class="container fade-in">
-        <div class="mb-3"><span class="uml-tag">DISEÑO PREVIO ASTAH UML</span></div>
-        <h1 class="display-3 fw-bold mb-3">Gestión Nacional de Envíos</h1>
-        <p class="lead text-dim mx-auto mb-4" style="max-width: 820px;">
-            Plataforma integral para la administración eficiente de múltiples agencias y sucursales en todo el Uruguay. 
-            Arquitectura escalable en <strong>.NET 8</strong> con persistencia optimizada mediante <strong>LINQ to Entities</strong>.
+<header class="hero-logi text-center">
+    <div class="container">
+        <i class="fa-solid fa-truck-fast mb-3" style="font-size: 3rem; color: var(--logi-accent);"></i>
+        <h1 class="display-4 fw-bold">Gestión de Logística Avanzada</h1>
+        <p class="lead opacity-75 mx-auto" style="max-width: 700px;">
+            Arquitectura de alta disponibilidad diseñada en <strong>.NET Core</strong> para la administración masiva de despachos, control de inventarios y optimización de rutas.
         </p>
-        <div class="d-flex justify-content-center flex-wrap gap-1">
-            <span class="tech-pill">Clean Architecture</span>
-            <span class="tech-pill">Entity Framework Code-First</span>
-            <span class="tech-pill">JWT Security</span>
-            <span class="tech-pill">REST API</span>
-            <span class="tech-pill">MVC</span>
-        </div>
     </div>
 </header>
 
 <main class="container">
-
-    <section class="row g-4 mb-5 fade-in">
-        <div class="col-md-4">
-            <div class="img-placeholder-logistica shadow-lg">
-                <i class="fa-solid fa-map-location-dot"></i>
-                <h6 class="fw-bold text-main mt-2">Red de Agencias Uruguay</h6>
-                <p class="small text-dim px-3 text-center mb-0">Mapa conectado con puntos de sucursales nacionales.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="img-placeholder-logistica shadow-lg">
-                <i class="fa-solid fa-truck-ramp-box"></i>
-                <h6 class="fw-bold text-main mt-2">Despacho y Entrega</h6>
-                <p class="small text-dim px-3 text-center mb-0">Repartidor finalizando la entrega de un paquete.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="img-placeholder-logistica shadow-lg">
-                <i class="fa-solid fa-route"></i>
-                <h6 class="fw-bold text-main mt-2">Trazabilidad Digital</h6>
-                <p class="small text-dim px-3 text-center mb-0">Seguimiento etapa a etapa del ciclo del envío.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="mb-5 fade-in">
-        <h2 class="fw-bold mb-5 text-center">Especificaciones Técnicas (RF)</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <span class="step-number">RF1 & RF2</span>
-                    <h5 class="fw-bold text-main">Acceso y Auditoría</h5>
-                    <p class="small text-dim">Login seguro por roles (Admin/Funcionario). Sistema de auditoría Code-First que registra Quién, Cuándo y Qué (Acción) en cada alta o baja de staff técnico.</p>
+    <div class="monitor-wrapper">
+        <div class="monitor-screen">
+            <div class="fake-dashboard">
+                <div style="height: 40px; background: #e2e8f0; border-radius: 4px; width: 100%;"></div>
+                <div class="d-flex gap-2 h-100">
+                    <div style="width: 25%; background: #1e3a8a; border-radius: 4px;"></div>
+                    <div class="flex-grow-1 d-flex flex-column gap-2">
+                        <div style="height: 60%; background: #fff; border: 1px solid #e2e8f0; border-radius: 4px;"></div>
+                        <div style="height: 35%; background: #fff; border: 1px solid #e2e8f0; border-radius: 4px;"></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <span class="step-number">RF3 & RF5</span>
-                    <h5 class="fw-bold text-main">Flujo del Envío</h5>
-                    <p class="small text-dim">Ingreso dinámico de paquetes (Email, Agencia Destino, Peso). Gestión de estados etapa a etapa mediante comentarios de seguimiento vinculados al tracking.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <span class="step-number">RF4 & RF6</span>
-                    <h5 class="fw-bold text-main">Control y Entrega</h5>
-                    <p class="small text-dim">Listado de envíos en proceso con cierre de ciclo mediante fecha de entrega real. Consulta profunda de detalles por número de seguimiento único.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="row g-5 align-items-center mb-5 fade-in">
-        <div class="col-lg-6">
-            <h3 class="fw-bold mb-4">Capa de Datos Optimizada</h3>
-            <p class="text-dim">
-                Para manejar la complejidad de múltiples agencias, implementé consultas avanzadas con <strong>LINQ to Entities</strong>, permitiendo un filtrado y agregación eficiente directamente en el motor de base de datos SQL Server.
-            </p>
-            <div class="p-4 rounded-4 mt-4" style="background: #05050a; border-left: 4px solid var(--primary); font-family: monospace;">
-                <code style="color: var(--secondary); font-size: 0.85rem;">
-                    // Ejemplo de consulta de seguimiento nacional<br>
-                    var tracking = await _context.Envios<br>
-                    .Include(e => e.SucursalDestino)<br>
-                    .Where(e => e.TrackingId == inputId)<br>
-                    .ToListAsync();
-                </code>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="p-5 rounded-5 border border-primary bg-gradient shadow-lg" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%);">
-                <h4 class="fw-bold mb-4 text-main"><i class="fa-solid fa-users-viewfinder me-3 text-accent"></i>Módulo Clientes públicos</h4>
-                <p class="small text-dim">Interfaz pública optimizada (sin login) enfocada en la UX del usuario final:</p>
-                <ul class="list-unstyled small text-dim">
-                    <li class="mb-2"><i class="fa-solid fa-circle-check text-accent me-2"></i> Seguimiento "Etapa a Etapa" estilo tracking moderno.</li>
-                    <li class="mb-2"><i class="fa-solid fa-circle-check text-accent me-2"></i> Búsqueda avanzada por texto y rango de fechas.</li>
-                    <li class="mb-2"><i class="fa-solid fa-circle-check text-accent me-2"></i> Historial de envíos propios vinculados por email.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <div class="container fade-in">
-        <p class="mb-4">Ignacio Egozcue | Maldonado, Uruguay</p>
-        <div class="d-flex justify-content-center gap-4 fs-3">
-            <a href="https://github.com/Nacho20dev" target="_blank" class="text-dim"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-dim"><i class="fab fa-linkedin"></i></a>
+            <div class="position-absolute text-dark fw-bold" style="z-index: 20;">PRÓXIMAMENTE VIDEO DEMO</div>
         </div>
     </div>
-</footer>
 
-<script>
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="feature-card p-4 h-100">
+                <i class="fa-solid fa-layer-group text-primary fs-3 mb-3"></i>
+                <h5 class="fw-bold">Arquitectura en Capas</h5>
+                <p class="small text-muted">Separación de responsabilidades mediante Repository Pattern y Unit of Work en .NET.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card p-4 h-100">
+                <i class="fa-solid fa-database text-primary fs-3 mb-3"></i>
+                <h5 class="fw-bold">SQL Server & Optimización</h5>
+                <p class="small text-muted">Modelado de datos complejo con procedimientos almacenados para el manejo de miles de registros.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card p-4 h-100">
+                <i class="fa-solid fa-shield-halved text-primary fs-3 mb-3"></i>
+                <h5 class="fw-bold">Seguridad Enterprise</h5>
+                <p class="small text-muted">Sistema de autenticación y autorización basado en roles (RBAC) para diferentes niveles de operarios.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center py-5">
+        <h4 class="fw-bold mb-4">¿Te interesa ver el núcleo del sistema?</h4>
+        <a href="https://github.com/Nacho20dev" target="_blank" class="btn btn-logi btn-lg">
+            <i class="fa-brands fa-github me-2"></i>EXPLORAR REPOSITORIO .NET
+        </a>
+    </div>
+</main>
+
+<footer class="py-4 text-center text-muted">
+    <p class="small">© 2026 Ignacio Egozcue | Especialista en Soluciones Backend & Frontend</p>
+</footer>
 
 </body>
 </html>
