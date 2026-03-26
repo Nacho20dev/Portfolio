@@ -3,166 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agencia Logística | Arquitectura .NET Core</title>
+    <title>Agencia Logística | Solución Enterprise .NET</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Public+Sans:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --logi-blue: #1e3a8a;
+            --logi-navy: #0f172a;
             --logi-accent: #f59e0b;
-            --logi-dark: #0f172a;
-            --bg-canvas: #f1f5f9;
+            --logi-blue: #2563eb;
+            --code-bg: #1e293b;
         }
 
         body {
-            background-color: var(--bg-canvas);
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8fafc;
+            font-family: 'Public Sans', sans-serif;
             color: #334155;
         }
 
-        /* --- NAV --- */
-        .navbar-logi {
-            background: var(--logi-dark);
-            padding: 1rem 0;
-        }
-
-        /* --- HERO --- */
+        /* --- HEADER & HERO --- */
         .hero-logi {
-            background: linear-gradient(135deg, var(--logi-dark) 0%, #1e293b 100%);
+            background: var(--logi-navy);
             color: white;
-            padding: 80px 0;
-            border-bottom: 5px solid var(--logi-accent);
-        }
-
-        /* --- MOCKUP DE MONITOR (PC) --- */
-        .monitor-wrapper {
+            padding: 100px 0 60px 0;
             position: relative;
-            max-width: 800px;
-            margin: -100px auto 50px;
-            background: #333;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-            border: 4px solid #475569;
+            overflow: hidden;
         }
 
-        .monitor-screen {
+        .hero-logi::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1;
+        }
+
+        .logi-logo-main {
+            width: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.5));
+        }
+
+        /* --- DASHBOARD MOCKUP (LAPTOP) --- */
+        .laptop-container {
+            max-width: 900px;
+            margin: -80px auto 50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .screen-frame {
+            background: #222;
+            padding: 12px;
+            border-radius: 20px 20px 0 0;
+            border: 3px solid #444;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.3);
+        }
+
+        .screen-content {
             background: #fff;
             aspect-ratio: 16 / 9;
+            border-radius: 5px;
             overflow: hidden;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            border: 1px solid #ddd;
         }
 
-        /* Simulación de interfaz de Dashboard dentro del monitor */
-        .fake-dashboard {
-            width: 100%;
-            height: 100%;
-            background: #f8fafc;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* --- TECH CARDS --- */
-        .feature-card {
-            background: white;
-            border: none;
-            border-left: 4px solid var(--logi-blue);
-            border-radius: 8px;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
-
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-
-        .btn-logi {
-            background: var(--logi-accent);
-            color: var(--logi-dark) !important;
+        /* --- REQUERIMIENTOS TÉCNICOS --- */
+        .spec-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--logi-blue);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
             font-weight: 700;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
+            border: 1px solid var(--logi-blue);
         }
+
+        .feature-box {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .feature-box:hover {
+            border-color: var(--logi-accent);
+            transform: translateY(-5px);
+        }
+
+        .code-snippet {
+            background: var(--code-bg);
+            color: #94a3b8;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            border-left: 4px solid var(--logi-accent);
+        }
+
+        .tracking-step {
+            border-left: 2px dashed #cbd5e1;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .tracking-step::before {
+            content: "";
+            position: absolute;
+            left: -7px; top: 0;
+            width: 12px; height: 12px;
+            background: var(--logi-accent);
+            border-radius: 50%;
+        }
+
     </style>
 </head>
 <body>
 
-<nav class="navbar-logi">
+<nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a href="index.html" class="text-white text-decoration-none fw-bold small">
-            <i class="fa-solid fa-arrow-left me-2"></i> REGRESAR AL PANEL
+        <a href="index.html" class="btn btn-sm btn-outline-warning rounded-pill px-3">
+            <i class="fa-solid fa-chevron-left me-1"></i> Dashboard Portfolio
         </a>
+        <span class="navbar-text text-uppercase fw-bold" style="letter-spacing: 2px;">Core Engine | v1.0</span>
     </div>
 </nav>
 
 <header class="hero-logi text-center">
     <div class="container">
-        <i class="fa-solid fa-truck-fast mb-3" style="font-size: 3rem; color: var(--logi-accent);"></i>
-        <h1 class="display-4 fw-bold">Gestión de Logística Avanzada</h1>
-        <p class="lead opacity-75 mx-auto" style="max-width: 700px;">
-            Arquitectura de alta disponibilidad diseñada en <strong>.NET Core</strong> para la administración masiva de despachos, control de inventarios y optimización de rutas.
-        </p>
+        <i class="fa-solid fa-boxes-packing logi-logo-main text-warning" style="font-size: 4rem;"></i>
+        <h1 class="display-4 fw-black">AGENCIA LOGÍSTICA</h1>
+        <p class="lead opacity-75 mb-5">Sistema Integral de Seguimiento y Gestión de Envíos en Tiempo Real</p>
+        
+        <div class="d-flex justify-content-center gap-2 flex-wrap mb-5">
+            <span class="spec-tag">.NET CORE 8</span>
+            <span class="spec-tag">ENTITY FRAMEWORK</span>
+            <span class="spec-tag">CLEAN ARCHITECTURE</span>
+            <span class="spec-tag">JWT SECURITY</span>
+            <span class="spec-tag">SQL SERVER</span>
+        </div>
     </div>
 </header>
 
 <main class="container">
-    <div class="monitor-wrapper">
-        <div class="monitor-screen">
-            <div class="fake-dashboard">
-                <div style="height: 40px; background: #e2e8f0; border-radius: 4px; width: 100%;"></div>
-                <div class="d-flex gap-2 h-100">
-                    <div style="width: 25%; background: #1e3a8a; border-radius: 4px;"></div>
-                    <div class="flex-grow-1 d-flex flex-column gap-2">
-                        <div style="height: 60%; background: #fff; border: 1px solid #e2e8f0; border-radius: 4px;"></div>
-                        <div style="height: 35%; background: #fff; border: 1px solid #e2e8f0; border-radius: 4px;"></div>
-                    </div>
+    <div class="laptop-container">
+        <div class="screen-frame">
+            <div class="screen-content">
+                <img src="https://images.unsplash.com/photo-1586769852044-692d6e3703f0?q=80&w=1200" alt="Dashboard Preview" class="img-fluid w-100 h-100" style="object-fit: cover; opacity: 0.8;">
+                <div class="position-absolute top-50 start-50 translate-middle text-center w-100">
+                    <h3 class="fw-bold text-dark bg-white d-inline-block px-4 py-2 shadow-lg rounded">INTERFACE FUNCIONARIO</h3>
                 </div>
             </div>
-            <div class="position-absolute text-dark fw-bold" style="z-index: 20;">PRÓXIMAMENTE VIDEO DEMO</div>
         </div>
+        <div class="bg-dark mx-auto" style="width: 100%; height: 20px; border-radius: 0 0 20px 20px;"></div>
     </div>
 
     <div class="row g-4 mb-5">
-        <div class="col-md-4">
-            <div class="feature-card p-4 h-100">
-                <i class="fa-solid fa-layer-group text-primary fs-3 mb-3"></i>
-                <h5 class="fw-bold">Arquitectura en Capas</h5>
-                <p class="small text-muted">Separación de responsabilidades mediante Repository Pattern y Unit of Work en .NET.</p>
+        <div class="col-lg-8">
+            <h3 class="fw-bold mb-4 border-bottom pb-2"><i class="fa-solid fa-gears me-2 text-primary"></i>Arquitectura y Lógica</h3>
+            <div class="code-snippet mb-4">
+                // Implementación de Tracking mediante Linq to Entities<br>
+                <span class="text-info">var</span> envio = _repository.GetByTracking(nroTracking)<br>
+                &nbsp;&nbsp;.Include(e => e.Seguimientos)<br>
+                &nbsp;&nbsp;.Select(e => <span class="text-warning">new</span> EnvioDTO { ... })<br>
+                &nbsp;&nbsp;.FirstOrDefault();
+            </div>
+            <p>Se implementó una <strong>Arquitectura Limpia</strong> separando las reglas de negocio de los detalles técnicos. El sistema utiliza <strong>JWT Tokens</strong> para asegurar las peticiones entre la App Cliente y la API de funcionarios.</p>
+            
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="feature-box">
+                        <h6 class="fw-bold"><i class="fa-solid fa-shield-check text-success me-2"></i>Seguridad & Auditoría</h6>
+                        <p class="small text-muted">Hasheo de contraseñas y registro auditable de cada acción realizada por el Administrador (RF2).</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-box">
+                        <h6 class="fw-bold"><i class="fa-solid fa-code-branch text-success me-2"></i>Enfoque Code-First</h6>
+                        <p class="small text-muted">Modelado de dominio robusto con Entity Framework para una base de datos SQL Server escalable.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="feature-card p-4 h-100">
-                <i class="fa-solid fa-database text-primary fs-3 mb-3"></i>
-                <h5 class="fw-bold">SQL Server & Optimización</h5>
-                <p class="small text-muted">Modelado de datos complejo con procedimientos almacenados para el manejo de miles de registros.</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="feature-card p-4 h-100">
-                <i class="fa-solid fa-shield-halved text-primary fs-3 mb-3"></i>
-                <h5 class="fw-bold">Seguridad Enterprise</h5>
-                <p class="small text-muted">Sistema de autenticación y autorización basado en roles (RBAC) para diferentes niveles de operarios.</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="text-center py-5">
-        <h4 class="fw-bold mb-4">¿Te interesa ver el núcleo del sistema?</h4>
-        <a href="https://github.com/Nacho20dev" target="_blank" class="btn btn-logi btn-lg">
-            <i class="fa-brands fa-github me-2"></i>EXPLORAR REPOSITORIO .NET
-        </a>
+        <div class="col-lg-4">
+            <div class="bg-white p-4 rounded-4 shadow-sm border">
+                <h5 class="fw-bold mb-4">Tracking del Cliente</h5>
+                <div class="tracking-step">
+                    <div class="small fw-bold">ENVÍO REGISTRADO</div>
+                    <div class="text-muted" style="font-size: 0.75rem;">RF3 - Alta de envío exitosa</div>
+                </div>
+                <div class="tracking-step">
+                    <div class="small fw-bold text-primary">EN PROCESO</div>
+                    <div class="text-muted" style="font-size: 0.75rem;">RF5 - Actualización de status</div>
+                </div>
+                <div class="tracking-step" style="border-left: 2px solid transparent;">
+                    <div class="small fw-bold">ENTREGADO</div>
+                    <div class="text-muted" style="font-size: 0.75rem;">RF4 - Finalización auditada</div>
+                </div>
+                <hr>
+                <a href="https://github.com/Nacho20dev" class="btn btn-dark w-100 rounded-pill fw-bold py-2">
+                    <i class="fa-brands fa-github me-2"></i> REPOSITORIO .NET
+                </a>
+            </div>
+        </div>
     </div>
 </main>
 
-<footer class="py-4 text-center text-muted">
-    <p class="small">© 2026 Ignacio Egozcue | Especialista en Soluciones Backend & Frontend</p>
+<footer class="py-5 text-center mt-5 bg-dark text-white-50">
+    <div class="container">
+        <p class="small mb-0">Ignacio Egozcue | Especialista en .NET Core & Clean Architecture</p>
+    </div>
 </footer>
 
 </body>
