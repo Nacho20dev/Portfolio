@@ -14,203 +14,188 @@
             --redux-purple: #764abc;
             --js-yellow: #f7df1e;
             --text-main: #ffffff;
-            --text-secondary: #f0f0f0; /* Blanco casi puro para máxima legibilidad */
+            --text-secondary: #a3a3a3;
             --bg-dark: #050505;
+            --card-inner: #121212;
         }
 
         body {
             background: var(--bg-dark) !important;
             color: var(--text-main) !important;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
+            overflow-x: hidden;
         }
 
-        /* Hero styling */
+        /* --- BOTÓN VOLVER --- */
+        .back-nav {
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
         .hero-title {
             font-weight: 900;
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             color: var(--netflix-red);
             text-transform: uppercase;
             letter-spacing: -2px;
-            margin-bottom: 1rem;
         }
 
-        /* Contenedores con alto contraste */
-        .tech-card {
-            background: rgba(25, 25, 25, 0.95);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 2rem;
+        /* --- MOCKUP DE CELULAR --- */
+        .phone-container {
+            position: relative;
+            width: 280px;
+            height: 580px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            border: 8px solid #333;
+            box-shadow: 0 0 50px rgba(229, 9, 20, 0.2);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* Notch del iPhone simulado */
+        .phone-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 120px; height: 25px;
+            background: #333;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        .phone-container video {
+            width: 100%;
             height: 100%;
-            transition: 0.3s;
+            object-fit: cover;
         }
 
-        .tech-card:hover {
-            border-color: var(--netflix-red);
-            transform: translateY(-5px);
+        /* --- TECH CARDS --- */
+        .tech-card {
+            background: var(--card-inner);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .text-description {
-            color: var(--text-secondary) !important;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
-        /* Badges de tecnologías */
         .badge-stack {
-            padding: 8px 16px;
-            border-radius: 6px;
+            padding: 6px 12px;
+            border-radius: 4px;
             font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            display: inline-block;
-            margin: 5px;
+            font-size: 0.7rem;
+            margin-right: 8px;
         }
 
         .bg-redux { background: var(--redux-purple); color: white; }
         .bg-js { background: var(--js-yellow); color: black; }
-        .bg-html { background: #e34f26; color: white; }
-
-        /* Dashboard de Métricas */
-        .mockup-box {
-            background: #111;
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid #333;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-
-        .progress-ui {
-            height: 14px;
-            background: #222;
-            border-radius: 20px;
-            margin: 10px 0 20px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--netflix-red);
-            box-shadow: 0 0 15px var(--netflix-red);
-        }
 
         .btn-main {
             background: var(--netflix-red);
             color: white !important;
             font-weight: 800;
-            padding: 15px 35px;
+            padding: 12px 30px;
             border-radius: 4px;
             text-decoration: none;
             transition: 0.3s;
             display: inline-block;
         }
+        
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(229, 9, 20, 0.4); }
 
-        .btn-main:hover {
-            opacity: 0.9;
-            transform: scale(1.03);
+        .redux-flow-box {
+            border-left: 2px solid var(--redux-purple);
+            padding-left: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-dark pt-4">
+<nav class="back-nav">
     <div class="container">
-        <a href="index.html" class="text-white text-decoration-none fw-bold">
-            <i class="fa-solid fa-arrow-left me-2 text-danger"></i> PORTFOLIO
+        <a href="index.html" class="text-white text-decoration-none fw-bold opacity-75">
+            <i class="fa-solid fa-arrow-left me-2"></i> VOLVER AL PORTFOLIO
         </a>
     </div>
 </nav>
 
-<header class="container text-center mt-5 mb-5">
-    <h1 class="hero-title">MovieList</h1>
-    <div class="mb-4">
-        <span class="badge-stack bg-redux">React Redux</span>
-        <span class="badge-stack bg-js">JS Vanilla</span>
-        <span class="badge-stack bg-html">HTML5</span>
-    </div>
-    <p class="text-description mx-auto" style="max-width: 700px;">
-        Un sistema de gestión cinematográfica que combina la semántica pura de <strong>HTML</strong>, la lógica algorítmica de <strong>JavaScript</strong> y la eficiencia de <strong>Redux</strong> para el manejo de datos globales.
-    </p>
-</header>
+<main class="container py-4">
+    <div class="row align-items-center g-5">
+        
+        <div class="col-lg-7">
+            <span class="text-danger fw-bold text-uppercase mb-2 d-block">Caso de Estudio</span>
+            <h1 class="hero-title mb-4">MovieList</h1>
+            
+            <div class="mb-4">
+                <span class="badge-stack bg-redux">REDUX TOOLKIT</span>
+                <span class="badge-stack bg-js">JAVASCRIPT ES6</span>
+                <span class="badge-stack bg-dark border border-secondary text-white">REACT UI</span>
+            </div>
 
-<main class="container">
-    <div class="row g-4 mb-5">
-        <div class="col-lg-6">
-            <div class="tech-card">
-                <h3 class="fw-bold mb-4 text-white">Ingeniería del Proyecto</h3>
-                <p class="text-description mb-4">
-                    La base del proyecto reside en <strong>JavaScript Vanilla</strong>, utilizado para manipular arrays de datos y realizar filtrados complejos por fecha y categoría. 
-                </p>
-                <div class="d-flex align-items-start mb-3">
-                    <i class="fa-solid fa-code text-danger me-3 mt-1 fs-4"></i>
-                    <div>
-                        <h6 class="fw-bold text-white">Lógica Pura</h6>
-                        <p class="small text-secondary">Uso de métodos funcionales de JS para procesar la información de la API.</p>
+            <p class="fs-5 text-secondary mb-5">
+                Desarrollé una arquitectura robusta para una Single Page Application (SPA) que consume la API de TMDb. El desafío principal fue gestionar el estado global de favoritos y filtros de forma eficiente.
+            </p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="tech-card">
+                        <i class="fa-solid fa-code-branch text-danger fs-3 mb-3"></i>
+                        <h5 class="text-white">Redux Toolkit</h5>
+                        <p class="small text-secondary">Implementación de <code>createAsyncThunk</code> para llamadas asíncronas limpias y manejo de estados (loading, success, error).</p>
                     </div>
                 </div>
-                <div class="d-flex align-items-start">
-                    <i class="fa-solid fa-database text-danger me-3 mt-1 fs-4"></i>
-                    <div>
-                        <h6 class="fw-bold text-white">Estado Global</h6>
-                        <p class="small text-secondary">Redux Toolkit actúa como la única fuente de verdad para el listado de películas.</p>
+                <div class="col-md-6">
+                    <div class="tech-card">
+                        <i class="fa-solid fa-bolt text-warning fs-3 mb-3"></i>
+                        <h5 class="text-white">Reactividad</h5>
+                        <p class="small text-secondary">Sincronización en tiempo real entre la barra de búsqueda y el listado de películas mediante hooks personalizados.</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-6">
-            <div class="mockup-box h-100">
-                <div class="d-flex justify-content-between mb-4">
-                    <span class="fw-bold small text-white text-uppercase">Métricas en Tiempo Real</span>
-                    <i class="fa-solid fa-microchip text-danger"></i>
-                </div>
-                
-                <div class="mb-4">
-                    <div class="d-flex justify-content-between small text-white mb-2">
-                        <span>Películas de Acción</span>
-                        <span class="fw-bold">85% del catálogo</span>
-                    </div>
-                    <div class="progress-ui">
-                        <div class="progress-fill" style="width: 85%;"></div>
-                    </div>
-                </div>
+            <div class="redux-flow-box mt-4">
+                <h6 class="text-purple fw-bold" style="color: var(--redux-purple);">FLUJO DE DATOS</h6>
+                <p class="small text-secondary italic">Action -> Middleware (Thunk) -> Slice Reducer -> UI Re-render</p>
+            </div>
 
-                <div class="row text-center mt-4">
-                    <div class="col-6">
-                        <div class="h3 fw-bold text-white mb-0">+100</div>
-                        <span class="text-uppercase text-muted fw-bold" style="font-size: 0.65rem;">Peticiones API</span>
-                    </div>
-                    <div class="col-6">
-                        <div class="h3 fw-bold text-white mb-0">100%</div>
-                        <span class="text-uppercase text-muted fw-bold" style="font-size: 0.65rem;">Reactividad Redux</span>
-                    </div>
-                </div>
+            <div class="mt-5 d-flex gap-3">
+                <a href="https://github.com/Nacho20dev" target="_blank" class="btn-main">
+                    <i class="fab fa-github me-2"></i>REPOSITORIO
+                </a>
+                <a href="https://documenter.getpostman.com/view/8171328/2sB3Hhs2dS" target="_blank" class="btn btn-outline-light px-4 py-2 fw-bold">
+                    POSTMAN DOCS
+                </a>
             </div>
         </div>
-    </div>
 
-    <div class="p-4 rounded-4 border border-secondary mb-5 text-center bg-dark">
-        <h4 class="fw-bold text-white mb-3">Testing de Endpoints</h4>
-        <p class="text-secondary mb-4">La estructura de datos HTML y los objetos JSON fueron validados íntegramente en Postman.</p>
-        <a href="https://documenter.getpostman.com/view/8171328/2sB3Hhs2dS" target="_blank" class="btn btn-outline-light px-5 fw-bold">
-            DOCUMENTACIÓN DE LA API
-        </a>
-    </div>
-
-    <div class="text-center py-5">
-        <h2 class="fw-bold text-white mb-4">Explora el Código</h2>
-        <div class="d-flex justify-content-center gap-3 flex-wrap">
-            <a href="https://drive.google.com/uc?export=download&id=1GTaQJWyI4MchsP3NmB-kpMxkScYIeFuu" class="btn-main">
-                <i class="fa-solid fa-file-arrow-down me-2"></i> OBTENER APK
-            </a>
-            <a href="https://github.com/Nacho20dev" target="_blank" class="btn btn-outline-danger px-4 fw-bold">
-                REPOSITORIO GITHUB
-            </a>
+        <div class="col-lg-5 text-center">
+            <div class="phone-container">
+                <video autoplay muted loop playsinline>
+                    <source src="mockupMovieList.mp4" type="video/mp4">
+                    Tu navegador no soporta videos.
+                </video>
+            </div>
+            <p class="text-muted mt-3 small"><i class="fa-solid fa-mobile-screen-button me-2"></i> Demo interactiva del proyecto</p>
         </div>
+
     </div>
 </main>
 
-<footer class="py-5 text-center mt-5" style="background: #000;">
-    <p class="text-white small mb-0">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
+<section class="container py-5 mt-5">
+    <div class="p-5 rounded-4 border border-secondary bg-dark text-center">
+        <h3 class="fw-bold mb-4">¿Querés probar la experiencia móvil?</h3>
+        <p class="text-secondary mb-4">He compilado una versión APK para que puedas testear el rendimiento y las animaciones directamente en tu dispositivo.</p>
+        <a href="https://drive.google.com/uc?export=download&id=1GTaQJWyI4MchsP3NmB-kpMxkScYIeFuu" class="btn btn-outline-danger btn-lg px-5 fw-bold">
+            <i class="fa-solid fa-download me-2"></i>DESCARGAR APK
+        </a>
+    </div>
+</section>
+
+<footer class="py-5 text-center mt-5" style="border-top: 1px solid #1a1a1a;">
+    <p class="text-secondary small">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
 </footer>
 
 </body>
