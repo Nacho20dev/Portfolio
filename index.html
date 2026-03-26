@@ -11,6 +11,7 @@
     <style>
         :root {
             --bg-dark: #020205;
+            --bg-card: rgba(15, 15, 30, 0.7);
             --accent: #8b5cf6;
             --accent-glow: rgba(139, 92, 246, 0.4);
             --text-primary: #ffffff;
@@ -33,7 +34,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 40%), var(--bg-dark);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                var(--bg-dark);
             background-attachment: fixed;
             padding: 120px 0 80px;
         }
@@ -43,75 +47,102 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png');
             opacity: 0.3; z-index: 1;
+            pointer-events: none;
         }
 
-        .hero-content { position: relative; z-index: 10; text-align: center; }
-        .main-title { font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 900; background: linear-gradient(180deg, #fff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-content { position: relative; z-index: 10; text-align: center; width: 100%; }
 
-        /* --- ORBITAL STACK SYSTEM --- */
-        .orbit-section {
-            padding: 100px 0;
-            perspective: 1000px;
-            overflow: hidden;
+        .main-title {
+            font-size: clamp(3rem, 10vw, 6.5rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            background: linear-gradient(180deg, #fff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
         }
 
-        .orbit-container {
+        /* --- TIMELINE HERO --- */
+        .academic-path {
             position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
-            transform-style: preserve-3d;
-            cursor: grab;
-            user-select: none;
+            max-width: 900px;
+            margin: 40px auto 0;
+            padding: 0 20px;
         }
-
-        .orbit-container:active { cursor: grabbing; }
-
-        .orbit-center {
+        .path-line {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px; height: 80px;
+            top: 12px; left: 50%;
+            width: 80%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+        .path-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+        }
+        .step { flex: 1; position: relative; text-align: center; }
+        .step-dot {
+            width: 12px; height: 12px;
             background: var(--accent);
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 50px var(--accent-glow);
-            z-index: 10;
+            margin: 0 auto 15px;
+            box-shadow: 0 0 15px var(--accent);
+            border: 2px solid white;
+            transition: 0.4s;
         }
+        .step:hover .step-dot { transform: scale(1.5); box-shadow: 0 0 25px var(--accent); }
+        .step-date { display: block; font-size: 0.65rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .step-label { font-size: 0.8rem; color: #fff; font-weight: 500; line-height: 1.2; opacity: 0.9; }
 
-        .orbit-center i { font-size: 2rem; color: white; }
-
-        .orbit-item {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 60px; height: 60px;
-            margin-top: -30px; margin-left: -30px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            display: flex; align-items: center; justify-content: center;
-            transition: transform 0.1s ease-out;
-            pointer-events: none; /* Evita que el icono bloquee el arrastre */
-        }
-
-        .orbit-item img { width: 35px; height: 35px; }
-
-        /* --- BOTONES --- */
+        /* --- BOTONES PREMIUM --- */
         .btn-hero {
             background: linear-gradient(45deg, var(--accent), #6366f1);
             color: white; padding: 16px 40px; border-radius: 50px; font-weight: 700;
             text-decoration: none; display: inline-block; transition: 0.4s;
             box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2);
+            border: none;
         }
         .btn-hero:hover { transform: translateY(-5px); box-shadow: 0 15px 30px var(--accent-glow); color: white; }
 
         .btn-custom {
             background: rgba(255, 255, 255, 0.03); border: 1px solid var(--accent);
             color: white; padding: 12px 24px; border-radius: 14px; text-decoration: none;
-            transition: 0.3s; font-weight: 600;
+            transition: 0.3s; font-weight: 600; display: inline-block; margin-top: auto;
         }
         .btn-custom:hover { background: var(--accent); color: white; box-shadow: 0 0 20px var(--accent-glow); }
+
+        /* --- ORBITAL STACK --- */
+        .orbit-section { padding: 80px 0; perspective: 1000px; }
+        .orbit-container {
+            position: relative; width: 300px; height: 250px; margin: 0 auto;
+            transform-style: preserve-3d; cursor: grab;
+        }
+        .orbit-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 70px; height: 70px; background: var(--accent); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 40px var(--accent-glow); z-index: 10;
+        }
+        .orbit-item {
+            position: absolute; top: 50%; left: 50%; width: 55px; height: 55px;
+            margin-top: -27px; margin-left: -27px;
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; pointer-events: none;
+        }
+        .orbit-item img { width: 32px; height: 32px; }
+
+        /* --- CARDS & OTROS --- */
+        .project-card {
+            background: var(--bg-card); border: 1px solid var(--glass-border);
+            border-radius: 28px; padding: 2.5rem; height: 100%; transition: 0.4s;
+            display: flex; flex-direction: column; backdrop-filter: blur(10px);
+        }
+        .project-card:hover { transform: translateY(-10px); border-color: var(--accent); }
 
         .cv-float {
             position: fixed; bottom: 30px; right: 30px;
@@ -121,14 +152,8 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.5);
         }
 
-        /* --- CARDS --- */
-        .project-card {
-            background: rgba(15, 15, 30, 0.7); border: 1px solid var(--glass-border);
-            border-radius: 28px; padding: 2.5rem; transition: 0.4s; backdrop-filter: blur(10px);
-        }
-        .project-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-
         .typed-text { color: var(--accent); font-weight: 700; }
+        nav { background: rgba(2, 2, 5, 0.8) !important; backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); padding: 15px 0; }
     </style>
 </head>
 
@@ -155,100 +180,152 @@
         <div class="fs-4 text-secondary mb-4">
             Soy <span class="typed-text"></span><span class="cursor">|</span>
         </div>
+        
+        <div class="academic-path">
+            <div class="path-line"></div>
+            <div class="path-steps">
+                <div class="step">
+                    <div class="step-dot"></div>
+                    <span class="step-date">Actualidad</span>
+                    <span class="step-label">Algoritmos 1 & Ing. Software</span>
+                </div>
+                <div class="step">
+                    <div class="step-dot"></div>
+                    <span class="step-date">Julio 2026</span>
+                    <span class="step-label">Taller GeneXus</span>
+                </div>
+                <div class="step">
+                    <div class="step-dot"></div>
+                    <span class="step-date">Agosto 2026</span>
+                    <span class="step-label">Algoritmos 2 & Diseño</span>
+                </div>
+                <div class="step">
+                    <div class="step-dot" style="background: white;"></div>
+                    <span class="step-date">Año 2027</span>
+                    <span class="step-label">Analista Programador</span>
+                </div>
+            </div>
+        </div>
+
         <div class="mt-5 pt-3">
             <a href="#proyectos" class="btn-hero">Explorar Proyectos</a>
         </div>
     </div>
 </header>
 
-<section class="orbit-section container">
-    <h2 class="text-center mb-5">Stack Tecnológico</h2>
-    <p class="text-center text-secondary small mb-5">Desliza para girar la órbita</p>
-    
-    <div class="orbit-container" id="orbitContainer">
-        <div class="orbit-center">
-            <i class="fa-solid fa-code"></i>
+<section class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 text-center">
+            <h2 class="mb-5">Presentación</h2>
+            <div style="border: 1px solid var(--glass-border); padding: 10px; border-radius: 40px; background: rgba(255,255,255,0.02); backdrop-filter: blur(10px);">
+                <div style="position:relative; padding-top:177%; border-radius:30px; overflow:hidden;">
+                    <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" 
+                            style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
         </div>
-        
-        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" title="C#"></div>
-        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" title="Java"></div>
-        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JS"></div>
-        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" title="React"></div>
-        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" title="Ionic"></div>
-        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" title="Redux"></div>
-        <div class="orbit-item"><img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" title="SQL"></div>
-        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" title=".NET"></div>
     </div>
 </section>
 
+<section class="orbit-section container">
+    <h2 class="text-center mb-5">Stack Tecnológico</h2>
+    <div class="orbit-container" id="orbitContainer">
+        <div class="orbit-center"><i class="fa-solid fa-layer-group text-white fs-4"></i></div>
+        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg"></div>
+        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"></div>
+        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"></div>
+        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"></div>
+        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg"></div>
+        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"></div>
+        <div class="orbit-item"><img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg"></div>
+        <div class="orbit-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg"></div>
+    </div>
+</section>
+
+<section id="proyectos" class="container py-5">
+    <h2 class="mb-5 text-center">Proyectos Destacados</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="project-card">
+                <i class="fa-solid fa-truck-fast fs-1 mb-4 text-accent"></i>
+                <h4 class="fw-bold">Agencia Logística</h4>
+                <p class="text-secondary small">Arquitectura .NET Core para gestión masiva de envíos y base de datos SQL.</p>
+                <a href="#" class="btn-custom">Ver Detalle Técnico</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="project-card">
+                <i class="fa-solid fa-heart-pulse fs-1 mb-4 text-accent"></i>
+                <h4 class="fw-bold">Goalify: Salud</h4>
+                <p class="text-secondary small">App móvil con Ionic/React enfocada en el bienestar y seguimiento de hábitos.</p>
+                <a href="#" class="btn-custom">Ver Detalle Técnico</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="project-card">
+                <i class="fa-solid fa-clapperboard fs-1 mb-4 text-accent"></i>
+                <h4 class="fw-bold">MovieList Redux</h4>
+                <p class="text-secondary small">Aplicación SPA con Redux Toolkit para una gestión eficiente del estado global.</p>
+                <a href="#" class="btn-custom">Ver Detalle Técnico</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="text-center py-5 border-top border-secondary mt-5" style="background: rgba(0,0,0,0.4);">
+    <div class="container">
+        <h4 class="mb-4 text-white fw-bold">¡Hablemos!</h4>
+        <div class="d-flex justify-content-center gap-4 mb-4">
+            <a href="https://wa.me/59893370197" target="_blank" class="text-white fs-2"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:ignacio.egozcue9@gmail.com" class="text-white fs-2"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-white fs-2"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p class="text-secondary small opacity-50">© 2026 Ignacio Egozcue | Uruguay</p>
+    </div>
+</footer>
+
 <script>
-    // --- Lógica de la Órbita ---
+    // --- Lógica Órbita ---
     const container = document.getElementById('orbitContainer');
     const items = document.querySelectorAll('.orbit-item');
-    let angle = 0;
-    let isDragging = false;
-    let startX = 0;
-    let velocity = 0.02; // Velocidad de rotación automática inicial
-
-    const radius = 150; // Radio de la órbita
+    let angle = 0, isDragging = false, startX = 0, velocity = 0.01;
+    const radius = 130;
 
     function updateOrbit() {
         if (!isDragging) angle += velocity;
-
         items.forEach((item, index) => {
             const itemAngle = angle + (index * (Math.PI * 2 / items.length));
             const x = Math.cos(itemAngle) * radius;
             const z = Math.sin(itemAngle) * radius;
-            
-            // Efecto de escala y opacidad para dar profundidad 3D
-            const scale = (z + radius) / (2 * radius) * 0.5 + 0.5;
-            const opacity = (z + radius) / (2 * radius) * 0.7 + 0.3;
-            
+            const scale = (z + radius) / (2 * radius) * 0.4 + 0.6;
+            const opacity = (z + radius) / (2 * radius) * 0.6 + 0.4;
             item.style.transform = `translate(${x}px, ${z*0.3}px) scale(${scale})`;
             item.style.opacity = opacity;
             item.style.zIndex = Math.round(z + radius);
         });
-
         requestAnimationFrame(updateOrbit);
     }
 
-    // Eventos de Mouse/Touch
-    container.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX;
-    });
-
+    container.addEventListener('mousedown', (e) => { isDragging = true; startX = e.clientX; });
     window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         const deltaX = e.clientX - startX;
-        angle += deltaX * 0.005;
-        startX = e.clientX;
-        velocity = deltaX * 0.005; // Guardamos la velocidad para la inercia
+        angle += deltaX * 0.005; startX = e.clientX; velocity = deltaX * 0.005;
     });
-
-    window.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
-
-    // Soporte para Mobile
-    container.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].clientX;
-    });
-
+    window.addEventListener('mouseup', () => isDragging = false);
+    
+    // Mobile Touch
+    container.addEventListener('touchstart', (e) => { isDragging = true; startX = e.touches[0].clientX; });
     window.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         const deltaX = e.touches[0].clientX - startX;
-        angle += deltaX * 0.01;
-        startX = e.touches[0].clientX;
-        velocity = deltaX * 0.01;
+        angle += deltaX * 0.008; startX = e.touches[0].clientX; velocity = deltaX * 0.008;
     });
-
-    window.addEventListener('touchend', () => { isDragging = false; });
-
+    window.addEventListener('touchend', () => isDragging = false);
     updateOrbit();
 
-    // --- Typed Text logic ---
+    // --- Typed Text ---
     const typedTextSpan = document.querySelector(".typed-text");
     const textArray = ["Backend Developer", "Analista Programador", "Mobile Tech Enthusiast"];
     let textArrayIndex = 0, charIndex = 0;
