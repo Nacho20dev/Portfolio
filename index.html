@@ -11,13 +11,12 @@
     <style>
         :root {
             --bg-dark: #020205;
-            --bg-card: rgba(15, 15, 35, 0.7);
+            --bg-card: rgba(20, 20, 40, 0.6);
             --accent: #8b5cf6;
             --accent-glow: rgba(139, 92, 246, 0.4);
             --text-primary: #ffffff;
-            --text-secondary: #cbd5e1;
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --wpp-green: #25d366;
+            --text-secondary: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         body {
@@ -28,7 +27,7 @@
             margin: 0;
         }
 
-        /* --- HERO PARALLAX --- */
+        /* --- HERO & PARALLAX --- */
         .hero-wrapper {
             position: relative;
             height: 100vh;
@@ -36,15 +35,14 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: #020205;
         }
 
         .parallax-bg {
             position: absolute;
             top: -10%; left: -10%; width: 120%; height: 120%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
             z-index: 1;
         }
 
@@ -53,164 +51,112 @@
             top: 0; left: 0; width: 100%; height: 100%;
             background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png') repeat;
             z-index: 2;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
-        .hero-content { position: relative; z-index: 10; text-align: center; }
-
-        .main-title {
-            font-size: clamp(3.5rem, 12vw, 6.5rem);
-            font-weight: 900;
-            background: linear-gradient(180deg, #fff 30%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
+        /* --- NAVBAR REFINADA --- */
+        nav {
+            background: rgba(2, 2, 5, 0.8) !important;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 0;
         }
 
-        /* --- CONTACTO FLOTANTE (NUEVO) --- */
-        .contact-sidebar {
-            position: fixed;
-            left: 20px;
-            bottom: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 2000;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
+        .nav-link-custom {
+            color: var(--text-secondary);
             text-decoration: none;
+            font-size: 1.2rem;
             transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            margin-left: 20px;
         }
 
-        .bg-wpp { background: var(--wpp-green); }
-        .bg-mail { background: #ea4335; }
-        
-        .contact-icon:hover { transform: scale(1.1) translateX(5px); color: white; }
+        .nav-link-custom:hover { color: var(--accent); transform: translateY(-2px); }
 
-        /* --- STACK TECNOLÓGICO --- */
+        /* --- BOTONES Y CONTACTO --- */
+        .cv-float {
+            position: fixed; bottom: 30px; right: 30px; 
+            background: var(--accent); color: white;
+            border-radius: 50px; padding: 12px 28px; z-index: 2000; 
+            font-weight: 700; text-decoration: none; 
+            box-shadow: 0 10px 30px var(--accent-glow);
+            transition: 0.3s;
+        }
+        .cv-float:hover { transform: scale(1.05); color: white; box-shadow: 0 15px 40px var(--accent); }
+
+        /* --- STACK E ICONOS --- */
         .stack-category {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2rem;
-            transition: 0.3s;
-            backdrop-filter: blur(10px);
+            border-radius: 24px; padding: 2.5rem;
+            transition: 0.4s;
         }
-        
-        .stack img {
-            width: 45px;
-            margin: 10px;
-            transition: 0.3s;
-            filter: grayscale(20%);
-        }
-        .stack img:hover { transform: scale(1.2) rotate(5deg); filter: grayscale(0%); }
+        .stack-category:hover { border-color: var(--accent); background: rgba(20, 20, 45, 0.8); }
 
-        /* --- CARDS PROYECTOS --- */
+        .stack img { width: 45px; margin: 12px; transition: 0.3s; filter: grayscale(40%); }
+        .stack img:hover { transform: scale(1.2) rotate(3deg); filter: grayscale(0%); }
+
         .project-card {
             background: var(--bg-card);
-            backdrop-filter: blur(15px);
             border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 2.2rem;
-            height: 100%;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
+            border-radius: 30px; padding: 2.5rem;
+            height: 100%; transition: 0.4s;
+            display: flex; flex-direction: column;
         }
-        .project-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 15px var(--accent-glow);
-        }
+        .project-card:hover { transform: translateY(-10px); border-color: var(--accent); }
 
-        /* --- TIMELINE --- */
-        .modern-timeline { position: relative; padding-left: 20px; }
-        .modern-timeline::before {
-            content: ""; position: absolute; left: 0; top: 0; width: 2px; height: 100%;
-            background: linear-gradient(to bottom, var(--accent), transparent);
+        .btn-detail {
+            border: 1px solid var(--accent); color: white;
+            padding: 10px; border-radius: 12px; text-decoration: none;
+            text-align: center; margin-top: auto; transition: 0.3s;
         }
-        .timeline-item { position: relative; padding-left: 35px; padding-bottom: 45px; }
-        .timeline-dot {
-            position: absolute; left: -10px; top: 0; width: 20px; height: 20px;
-            background: var(--bg-dark); border: 3px solid var(--accent); border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
-        }
-
-        /* --- BOTONES --- */
-        .btn-custom {
-            background: transparent; border: 1px solid var(--accent); color: white;
-            padding: 10px 25px; border-radius: 12px; font-weight: 600;
-            text-decoration: none; transition: 0.3s; display: inline-block;
-        }
-        .btn-custom:hover { background: var(--accent); color: white; }
-
-        .cv-float {
-            position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white;
-            border-radius: 50px; padding: 15px 30px; z-index: 2000; font-weight: 800;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4); text-decoration: none; transition: 0.3s;
-        }
-        .cv-float:hover { transform: scale(1.05); color: white; }
+        .btn-detail:hover { background: var(--accent); }
 
         .typed-text { color: var(--accent); font-weight: 700; }
-        .cursor { color: var(--accent); animation: blink 0.8s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 
 <body>
 
-<nav class="navbar navbar-dark fixed-top" style="background: rgba(2,2,5,0.7); backdrop-filter: blur(15px);">
+<nav class="navbar navbar-dark fixed-top">
     <div class="container">
-        <span class="navbar-brand fw-bold">IGNACIO EGOZCUE</span>
-        <div class="d-flex gap-3">
-            <a href="https://github.com/Nacho20dev" target="_blank" class="text-white fs-5"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-white fs-5"><i class="fab fa-linkedin"></i></a>
+        <span class="navbar-brand fw-bold tracking-tighter">IGNACIO EGOZCUE</span>
+        <div class="d-none d-md-flex align-items-center">
+            <a href="https://wa.me/59893370197" target="_blank" class="nav-link-custom" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:ignacio.egozcue9@gmail.com" class="nav-link-custom" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/idet-uy" target="_blank" class="nav-link-custom"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Nacho20dev" target="_blank" class="nav-link-custom"><i class="fab fa-github"></i></a>
         </div>
     </div>
 </nav>
 
-<div class="contact-sidebar">
-    <a href="https://wa.me/59892336332" target="_blank" class="contact-icon bg-wpp" title="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="mailto:ignacio.egozcue9@gmail.com" class="contact-icon bg-mail" title="Email">
-        <i class="fa-solid fa-envelope"></i>
-    </a>
-</div>
-
 <a href="Cv.IgnacioEgozcueTech.pdf" download class="cv-float">
-    <i class="fa-solid fa-file-arrow-down me-2"></i>Descargar CV
+    <i class="fa-solid fa-cloud-arrow-down me-2"></i>Descargar CV
 </a>
 
 <header class="hero-wrapper">
     <div class="parallax-bg" id="parallax-bg"></div>
     <div class="stars" id="stars"></div>
     <div class="hero-content container">
-        <h1 class="main-title">Ignacio Egozcue</h1>
-        <div class="fs-3 text-secondary">
+        <h1 class="main-title" style="font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; margin-bottom: 20px;">Ignacio Egozcue</h1>
+        <div class="fs-4 text-secondary">
             Soy <span class="typed-text"></span><span class="cursor">|</span>
         </div>
-        <div class="mt-5">
-            <a href="#proyectos" class="btn-custom px-5">Explorar Proyectos</a>
+        <div class="mt-5 d-flex justify-content-center gap-3">
+            <a href="https://wa.me/59893370197" target="_blank" class="btn btn-outline-light rounded-pill px-4 opacity-75">
+                <i class="fab fa-whatsapp me-2"></i>WhatsApp
+            </a>
+            <a href="mailto:ignacio.egozcue9@gmail.com" class="btn btn-outline-light rounded-pill px-4 opacity-75">
+                <i class="fa-solid fa-envelope me-2"></i>Email
+            </a>
         </div>
     </div>
 </header>
 
-<section class="container py-5 mt-5">
+<section class="container py-5 mt-5 text-center">
+    <h2 class="mb-5">Video Presentación</h2>
     <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7 text-center">
-            <h2 class="mb-5">Presentación</h2>
-            <div style="border: 1px solid var(--glass-border); padding: 12px; border-radius: 40px; background: rgba(255,255,255,0.02);">
+        <div class="col-lg-4 col-md-6">
+            <div style="border: 1px solid var(--glass-border); padding: 10px; border-radius: 40px; background: rgba(255,255,255,0.02);">
                 <div style="position:relative; padding-top:177%; border-radius:30px; overflow:hidden;">
                     <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" 
                             style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen>
@@ -226,51 +172,21 @@
     <div class="row g-4 justify-content-center">
         <div class="col-md-5">
             <div class="stack-category">
-                <h5 class="text-white mb-4"><i class="fa-solid fa-code-branch me-2 text-accent"></i>Backend & DB</h5>
+                <h5 class="mb-4 text-accent"><i class="fa-solid fa-server me-2"></i>Backend & Data</h5>
                 <div class="stack">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-                    <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL Server">
+                    <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL">
                 </div>
             </div>
         </div>
         <div class="col-md-5">
             <div class="stack-category">
-                <h5 class="text-white mb-4"><i class="fa-solid fa-mobile-screen me-2 text-accent"></i>Frontend & Mobile</h5>
+                <h5 class="mb-4 text-accent"><i class="fa-solid fa-mobile-screen me-2"></i>Frontend & Mobile</h5>
                 <div class="stack">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container py-5">
-    <h2 class="mb-5 text-center">Formación e Hitos</h2>
-    <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="modern-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <span class="text-accent fw-bold small">2026</span>
-                    <h5 class="text-white">Ingeniería & Algoritmos</h5>
-                    <p class="text-secondary">Estructuras de datos en Java y lógica de software.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background: var(--accent);"></div>
-                    <span class="text-accent fw-bold small">MARZO 2026</span>
-                    <h5 class="text-white">Hito: Despliegue Mobile</h5>
-                    <p class="text-secondary">Apps híbridas con Ionic y React.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <span class="text-accent fw-bold small">2027</span>
-                    <h5 class="text-white">Titulación: Analista Programador</h5>
-                    <p class="text-secondary">Culminación prevista de formación técnica superior.</p>
                 </div>
             </div>
         </div>
@@ -282,52 +198,49 @@
     <div class="row g-4">
         <div class="col-md-4">
             <div class="project-card">
-                <i class="fa-solid fa-truck-fast fs-1 text-accent mb-4"></i>
-                <h4 class="text-white fw-bold">Agencia de Envíos</h4>
-                <p class="text-secondary flex-grow-1">Sistema backend en C# / .NET para gestión logística con SQL Server.</p>
-                <a href="proyecto-envios.html" class="btn-custom text-center mt-3">Detalle Técnico</a>
+                <i class="fa-solid fa-truck-fast fs-1 mb-4 text-accent"></i>
+                <h4 class="fw-bold">Agencia Logística</h4>
+                <p class="text-secondary small">Arquitectura .NET Core para gestión masiva de envíos y base de datos SQL.</p>
+                <a href="proyecto-envios.html" class="btn-detail">Ver Detalle</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="project-card">
-                <i class="fa-solid fa-heart-pulse fs-1 text-accent mb-4"></i>
-                <h4 class="text-white fw-bold">Goalify: Bienestar</h4>
-                <p class="text-secondary flex-grow-1">App móvil multiplataforma para seguimiento de hábitos y objetivos.</p>
-                <a href="proyecto-goalify.html" class="btn-custom text-center mt-3">Detalle Técnico</a>
+                <i class="fa-solid fa-heart-pulse fs-1 mb-4 text-accent"></i>
+                <h4 class="fw-bold">Goalify: Salud</h4>
+                <p class="text-secondary small">App móvil con Ionic/React enfocada en el bienestar y seguimiento de hábitos.</p>
+                <a href="proyecto-goalify.html" class="btn-detail">Ver Detalle</a>
             </div>
         </div>
         <div class="col-md-4">
             <div class="project-card">
-                <i class="fa-solid fa-clapperboard fs-1 text-accent mb-4"></i>
-                <h4 class="text-white fw-bold">MovieList: Redux</h4>
-                <p class="text-secondary flex-grow-1">SPA reactiva con Redux Toolkit y visualización de datos dinámica.</p>
-                <a href="proyecto-movielist.html" class="btn-custom text-center mt-3">Detalle Técnico</a>
+                <i class="fa-solid fa-clapperboard fs-1 mb-4 text-accent"></i>
+                <h4 class="fw-bold">MovieList Redux</h4>
+                <p class="text-secondary small">Aplicación SPA con Redux Toolkit para una gestión eficiente del estado global.</p>
+                <a href="proyecto-movielist.html" class="btn-detail">Ver Detalle</a>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="text-center py-5 mt-5" style="border-top: 1px solid var(--glass-border);">
-    <div class="mb-4 d-flex justify-content-center gap-4 fs-3">
-        <a href="https://wa.me/59892336332" target="_blank" class="text-secondary"><i class="fab fa-whatsapp"></i></a>
+<footer class="text-center py-5 border-top border-secondary mt-5" style="background: rgba(0,0,0,0.5);">
+    <div class="d-flex justify-content-center gap-4 fs-4 mb-4">
+        <a href="https://wa.me/59893370197" target="_blank" class="text-secondary"><i class="fab fa-whatsapp"></i></a>
         <a href="mailto:ignacio.egozcue9@gmail.com" class="text-secondary"><i class="fa-solid fa-envelope"></i></a>
         <a href="https://linkedin.com/in/idet-uy" target="_blank" class="text-secondary"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/Nacho20dev" target="_blank" class="text-secondary"><i class="fab fa-github"></i></a>
     </div>
-    <p class="text-secondary small">© 2026 Ignacio Egozcue | Maldonado, Uruguay</p>
+    <p class="text-secondary small">© 2026 Ignacio Egozcue | Uruguay</p>
 </footer>
 
 <script>
-    // Parallax
     window.addEventListener('scroll', () => {
         const scroll = window.pageYOffset;
-        document.getElementById('parallax-bg').style.transform = `translateY(${scroll * 0.45}px)`;
-        document.getElementById('stars').style.transform = `translateY(${scroll * 0.15}px)`;
+        document.getElementById('parallax-bg').style.transform = `translateY(${scroll * 0.4}px)`;
+        document.getElementById('stars').style.transform = `translateY(${scroll * 0.1}px)`;
     });
 
-    // Typing
     const typedTextSpan = document.querySelector(".typed-text");
-    const textArray = ["Backend Developer (C#/Java)", "Analista Programador", "Mobile Tech Enthusiast"];
+    const textArray = ["Backend Developer", "Analista Programador", "Mobile Tech Enthusiast"];
     let textArrayIndex = 0; let charIndex = 0;
 
     function type() {
