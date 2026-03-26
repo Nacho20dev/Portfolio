@@ -64,7 +64,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* --- TIMELINE LINEAL Y ETÉREA --- */
+        /* --- TIMELINE LINEAL --- */
         .academic-path {
             position: relative;
             max-width: 900px;
@@ -83,18 +83,14 @@
 
         .path-steps {
             display: flex;
-            justify-content:间-between;
+            justify-content: space-between;
             align-items: flex-start;
             position: relative;
             z-index: 2;
             gap: 20px;
         }
 
-        .step {
-            flex: 1;
-            position: relative;
-            text-align: center;
-        }
+        .step { flex: 1; position: relative; text-align: center; }
 
         .step-dot {
             width: 12px; height: 12px;
@@ -109,21 +105,90 @@
         .step:hover .step-dot { transform: scale(1.5); box-shadow: 0 0 25px var(--accent); }
 
         .step-date {
-            display: block;
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
+            display: block; font-size: 0.7rem; font-weight: 800;
+            color: var(--accent); text-transform: uppercase;
+            letter-spacing: 1.5px; margin-bottom: 8px;
         }
 
-        .step-label {
-            font-size: 0.85rem;
-            color: #fff;
-            font-weight: 500;
-            line-height: 1.4;
-            opacity: 0.9;
+        .step-label { font-size: 0.85rem; color: #fff; font-weight: 500; line-height: 1.4; opacity: 0.9; }
+
+        /* --- BOTONES PREMIUM --- */
+        /* Botón Hero Principal */
+        .btn-hero {
+            background: linear-gradient(45deg, var(--accent), #6366f1);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px var(--accent-glow);
+            color: white;
+        }
+
+        .btn-hero::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: 0.6s;
+            pointer-events: none;
+        }
+
+        .btn-hero:hover::after { left: 120%; }
+
+        /* Botón de Proyecto (Outline Glass) */
+        .btn-custom {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: auto;
+            text-align: center;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-custom:hover {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Botón Flotante CV */
+        .cv-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: rgba(139, 92, 246, 0.9);
+            color: white;
+            border-radius: 50px; padding: 14px 28px; z-index: 2000;
+            font-weight: 700; text-decoration: none;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s ease;
+        }
+
+        .cv-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 12px 40px var(--accent-glow);
         }
 
         /* --- NAVBAR --- */
@@ -138,8 +203,7 @@
         .stack-category {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2.5rem;
+            border-radius: 24px; padding: 2.5rem;
             backdrop-filter: blur(10px);
         }
         .stack img { width: 45px; margin: 12px; transition: 0.3s; filter: grayscale(30%); }
@@ -149,30 +213,12 @@
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
-            border-radius: 28px;
-            padding: 2.5rem;
-            height: 100%;
-            transition: 0.4s;
+            border-radius: 28px; padding: 2.5rem;
+            height: 100%; transition: 0.4s;
             display: flex; flex-direction: column;
             backdrop-filter: blur(10px);
         }
         .project-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-
-        .btn-custom {
-            border: 1px solid var(--accent);
-            color: white; padding: 10px 20px; border-radius: 12px;
-            text-decoration: none; transition: 0.3s;
-            display: inline-block; margin-top: auto;
-        }
-        .btn-custom:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
-
-        .cv-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: var(--accent); color: white;
-            border-radius: 50px; padding: 12px 28px; z-index: 2000;
-            font-weight: 700; text-decoration: none;
-            box-shadow: 0 10px 30px var(--accent-glow);
-        }
 
         .social-link {
             color: var(--text-secondary); font-size: 1.8rem;
@@ -235,7 +281,7 @@
         </div>
 
         <div class="mt-5 pt-3">
-            <a href="#proyectos" class="btn-custom px-5 py-3">Explorar Proyectos</a>
+            <a href="#proyectos" class="btn-hero">Explorar Proyectos</a>
         </div>
     </div>
 </header>
@@ -244,7 +290,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-4 col-md-6 text-center">
             <h2 class="mb-5">Presentación</h2>
-            <div style="border: 1px solid var(--glass-border); padding: 10px; border-radius: 40px; background: rgba(255,255,255,0.02);">
+            <div style="border: 1px solid var(--glass-border); padding: 10px; border-radius: 40px; background: rgba(255,255,255,0.02); backdrop-filter: blur(10px);">
                 <div style="position:relative; padding-top:177%; border-radius:30px; overflow:hidden;">
                     <iframe src="https://www.youtube.com/embed/0E5piiMhuZM" 
                             style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allowfullscreen>
