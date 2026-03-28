@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIVIP DUAL-EXPERIENCE | Ignacio Egozcue</title>
+    <title>LOGIVIP Case Study | Ignacio Egozcue</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,181 +11,174 @@
 
     <style>
         :root { 
-            --vip-blue: #00d2ff; 
-            --vip-purple: #9d50bb; /* Color para diferenciar la cara de Cliente */
-            --vip-deep: #05070a; 
-            --vip-gradient-blue: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-            --vip-gradient-purple: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
-            --vip-border: rgba(0, 210, 255, 0.15);
+            --vip-blue: #00d2ff; --vip-purple: #9d50bb; --vip-deep: #05070a; 
+            --vip-border: rgba(0, 210, 255, 0.1);
         }
 
-        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; margin: 0; }
-        .app-shell { width: 100%; min-height: 100vh; background: radial-gradient(circle at center, #0a0c12 0%, #050505 100%); position: relative; }
-
-        /* --- SELECTOR DE ROL (INICIO) --- */
-        #view-selector { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .role-card {
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; }
+        
+        /* --- ESTILO CARTILLA DE PRESENTACIÓN --- */
+        .tech-card {
             background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 40px;
-            transition: 0.4s;
-            cursor: pointer;
-            text-align: center;
-        }
-        .role-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255,255,255,0.07);
-            border-color: var(--vip-blue);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
+            border-left: 4px solid var(--current-color, var(--vip-blue));
+            border-radius: 0 15px 15px 0;
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        /* --- LOGIN & DASHBOARD --- */
-        .view-section { display: none; min-height: 100vh; }
-        .login-card {
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(20px);
+        .badge-tech {
+            background: rgba(255,255,255,0.1);
+            color: var(--vip-blue);
+            font-size: 0.6rem;
+            padding: 4px 8px;
+            margin-right: 5px;
+            border-radius: 4px;
+            font-weight: 800;
+        }
+
+        /* --- SIMULADOR WRAPPER --- */
+        #simulador-container {
+            display: none;
             border: 1px solid var(--vip-border);
-            border-radius: 24px;
-            padding: 3rem;
-            width: 100%; max-width: 420px;
-            margin: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--vip-deep);
+            min-height: 600px;
         }
 
-        /* Estilos Dinámicos por Rol */
-        .theme-funcionario { --current-color: var(--vip-blue); --current-grad: var(--vip-gradient-blue); }
-        .theme-cliente { --current-color: var(--vip-purple); --current-grad: var(--vip-gradient-purple); }
-
-        .btn-vip {
-            background: var(--current-grad);
-            color: #fff; border: none; font-weight: 800; border-radius: 12px; transition: 0.3s;
+        .btn-selector {
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.02);
         }
-        .btn-vip:hover { box-shadow: 0 0 20px var(--current-color); color: #fff; }
-        .text-accent { color: var(--current-color) !important; }
+        .btn-selector:hover { border-color: var(--vip-blue); transform: translateY(-5px); }
 
-        .navbar-vip {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--vip-border);
-        }
-
-        .vip-card {
-            background: rgba(255,255,255,0.02); border: 1px solid var(--vip-border);
-            border-radius: 16px; transition: 0.3s;
-        }
-
-        .x-small { font-size: 0.65rem; text-transform: uppercase; opacity: 0.5; font-weight: 700; letter-spacing: 2px; }
-        .footer-tag { position: fixed; bottom: 20px; width: 100%; text-align: center; font-size: 0.6rem; opacity: 0.3; letter-spacing: 3px; pointer-events: none; }
+        .x-small { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
     </style>
 </head>
-<body class="theme-funcionario"> <div class="app-shell">
+<body>
+
+<div class="container py-5">
+    
+    <header class="text-center mb-5 animate__animated animate__fadeIn">
+        <h1 class="fw-black mb-0">LOGI<span class="text-info">VIP</span> GLOBAL</h1>
+        <p class="x-small">Ecosistema Logístico End-to-End // .NET Core 8 & SQL Server</p>
+    </header>
+
+    <div class="row g-5">
         
-        <section id="view-selector" class="animate__animated animate__fadeIn">
-            <div class="container text-center">
-                <h1 class="fw-black mb-5 animate__animated animate__slideInDown">LOGIVIP <span class="opacity-50">ECOSYSTEM</span></h1>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-5">
-                        <div class="role-card" onclick="startApp('funcionario')">
-                            <i class="fa-solid fa-user-gear fs-1 text-info mb-3"></i>
-                            <h3 class="fw-bold">FUNCIONARIOS</h3>
-                            <p class="x-small">Gestión de Cargas, Auditoría y Rastreo Satelital</p>
-                            <span class="btn btn-outline-info btn-sm rounded-pill mt-3 px-4">Entrar al Nodo</span>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="role-card" onclick="startApp('cliente')" style="border-color: rgba(157, 80, 187, 0.3);">
-                            <i class="fa-solid fa-box-open fs-1 mb-3" style="color: var(--vip-purple);"></i>
-                            <h3 class="fw-bold">CLIENTE FINAL</h3>
-                            <p class="x-small">Consulta de Estado, Mis Pedidos y Soporte VIP</p>
-                            <span class="btn btn-outline-primary btn-sm rounded-pill mt-3 px-4" style="color: var(--vip-purple); border-color: var(--vip-purple);">Acceso Cliente</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="view-login" class="view-section">
-            <div class="d-flex align-items-center justify-content-center min-height-100vh">
-                <div class="login-card text-center animate__animated animate__zoomIn">
-                    <i class="fa-solid fa-key text-accent fs-1 mb-4"></i>
-                    <h2 class="fw-black mb-1">LOGI<span class="text-accent">VIP</span></h2>
-                    <p id="login-subtitle" class="x-small mb-5"></p>
-                    <div class="text-start">
-                        <input type="text" class="form-control bg-dark border-0 text-white mb-3" placeholder="ID de Usuario" readonly value="demo_user">
-                        <button onclick="showDashboard()" class="btn btn-vip w-100 py-3">ACCEDER AL SISTEMA</button>
-                    </div>
-                    <button onclick="location.reload()" class="btn btn-link btn-sm text-white-50 mt-4 text-decoration-none x-small">← VOLVER AL SELECTOR</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="view-dashboard" class="view-section">
-            <nav class="navbar-vip py-3">
-                <div class="container d-flex justify-content-between">
-                    <span class="fw-bold"><i class="fa-solid fa-satellite text-accent me-2"></i><span id="nav-title"></span></span>
-                    <button onclick="location.reload()" class="btn btn-outline-light btn-sm rounded-pill">SALIR</button>
-                </div>
-            </nav>
-
-            <div class="container py-5 mt-5">
-                <div id="dashboard-content">
-                    </div>
-            </div>
-        </section>
-
-        <div class="footer-tag">IGNACIO EGOZCUE // PROYECTO FULL-STACK .NET CORE 8</div>
-    </div>
-
-    <script>
-        let currentRole = '';
-
-        function startApp(role) {
-            currentRole = role;
-            document.body.className = `theme-${role}`;
-            document.getElementById('view-selector').style.display = 'none';
-            document.getElementById('view-login').style.display = 'block';
-            document.getElementById('login-subtitle').innerText = role === 'funcionario' ? 'TERMINAL DE CONTROL INTERNO' : 'PORTAL DE AUTOGESTIÓN CLIENTE';
-        }
-
-        function showDashboard() {
-            document.getElementById('view-login').style.display = 'none';
-            const dash = document.getElementById('view-dashboard');
-            dash.style.display = 'block';
+        <div class="col-lg-5 animate__animated animate__fadeInLeft">
+            <h4 class="mb-4 fw-bold"><i class="fa-solid fa-microchip me-2 text-info"></i>Ficha de Proyecto</h4>
             
-            const title = document.getElementById('nav-title');
-            const content = document.getElementById('dashboard-content');
+            <div class="tech-card" style="--current-color: var(--vip-blue);">
+                <h6 class="fw-bold mb-1 text-info">CARA A: GESTIÓN INTERNA</h6>
+                <p class="small opacity-75">Panel administrativo para funcionarios. Control de auditoría, estados de carga y reportes satelitales por fecha.</p>
+                <div>
+                    <span class="badge-tech">CRUD AVANZADO</span>
+                    <span class="badge-tech">ROLES/AUTH</span>
+                    <span class="badge-tech">LINQ</span>
+                </div>
+            </div>
 
-            if(currentRole === 'funcionario') {
-                title.innerText = "SISTEMA OPERATIVO";
-                content.innerHTML = `
-                    <div class="row animate__animated animate__fadeInUp">
-                        <div class="col-md-8"><h3>Gestión de Flota Global</h3><p class="x-small text-accent">24 Cargas en tránsito detectadas</p></div>
-                        <div class="col-12 mt-4">
-                            <div class="vip-card p-4 mb-3"><div class="row align-items-center">
-                                <div class="col-md-4"><span class="x-small">ID TRACKING</span><h5 class="mb-0">#MVD-992-VIP</h5></div>
-                                <div class="col-md-4 text-center"><span class="badge bg-info text-dark">AUDITORÍA PENDIENTE</span></div>
-                                <div class="col-md-4 text-end"><button class="btn btn-sm btn-outline-info">GESTIONAR</button></div>
-                            </div></div>
-                        </div>
-                    </div>`;
-            } else {
-                title.innerText = "MIS PEDIDOS VIP";
-                content.innerHTML = `
-                    <div class="row animate__animated animate__fadeInUp">
-                        <div class="col-md-8"><h3>¡Hola, Cliente VIP!</h3><p class="x-small text-accent">Tu paquete está cruzando el peaje de Pando</p></div>
-                        <div class="col-12 mt-4 text-center">
-                            <div class="vip-card p-5" style="border-color: var(--vip-purple);">
-                                <i class="fa-solid fa-truck-fast fs-1 mb-3" style="color: var(--vip-purple);"></i>
-                                <h4>Pedido #WEB-7721</h4>
-                                <div class="progress bg-dark mt-4" style="height: 10px;">
-                                    <div class="progress-bar" style="width: 75%; background: var(--vip-gradient-purple);"></div>
-                                </div>
-                                <p class="x-small mt-3">Llegada estimada: Hoy 18:30hs</p>
-                            </div>
-                        </div>
-                    </div>`;
-            }
+            <div class="tech-card" style="--current-color: var(--vip-purple);">
+                <h6 class="fw-bold mb-1" style="color: var(--vip-purple);">CARA B: PORTAL CLIENTE</h6>
+                <p class="small opacity-75">Interfaz de autogestión. Seguimiento visual de pedidos, buscador por ID y notificaciones de arribo.</p>
+                <div>
+                    <span class="badge-tech">UX/UI VIP</span>
+                    <span class="badge-tech">API REST</span>
+                    <span class="badge-tech">RAZOR</span>
+                </div>
+            </div>
+
+            <div class="mt-5 p-4 bg-dark rounded-4 border border-white border-opacity-5">
+                <p class="x-small mb-2">Instrucciones</p>
+                <p class="small m-0">Selecciona una experiencia a la derecha para iniciar la <strong>Inmersión Funcional</strong> del sistema.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            
+            <div id="selector-box" class="row g-3 animate__animated animate__fadeInRight">
+                <div class="col-6">
+                    <div class="btn-selector p-4 rounded-4 h-100 text-center cursor-pointer" onclick="openSim('funcionario')">
+                        <i class="fa-solid fa-user-shield fs-2 text-info mb-3"></i>
+                        <p class="fw-bold mb-0">Modo Empresa</p>
+                        <span class="x-small">Auditoría & Control</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="btn-selector p-4 rounded-4 h-100 text-center cursor-pointer" onclick="openSim('cliente')">
+                        <i class="fa-solid fa-box-open fs-2 mb-3" style="color: var(--vip-purple);"></i>
+                        <p class="fw-bold mb-0">Modo Cliente</p>
+                        <span class="x-small">Tracking & Pedidos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="simulador-container" class="animate__animated animate__zoomIn">
+                <div id="sim-content"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function openSim(type) {
+        document.getElementById('selector-box').style.display = 'none';
+        const container = document.getElementById('simulador-container');
+        container.style.display = 'block';
+        
+        const content = document.getElementById('sim-content');
+        
+        if(type === 'funcionario') {
+            content.innerHTML = `
+                <nav class="p-3 border-bottom border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                    <span class="x-small fw-bold text-info"><i class="fa-solid fa-terminal me-2"></i>NODO CONTROL</span>
+                    <button class="btn btn-sm btn-outline-danger" onclick="closeSim()">X</button>
+                </nav>
+                <div class="p-4">
+                    <h5 class="fw-black mb-4">GESTIÓN DE ENVÍOS <span class="badge bg-info text-dark ms-2" style="font-size: 0.5rem">ADMIN</span></h5>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover small">
+                            <thead><tr class="opacity-50"><th>ID</th><th>ESTADO</th><th>ACCIÓN</th></tr></thead>
+                            <tbody>
+                                <tr><td>#MV-901</td><td><span class="text-info">AUDITADO</span></td><td><button class="btn btn-xs btn-outline-info">EDIT</button></td></tr>
+                                <tr><td>#MV-772</td><td><span class="text-warning">PENDIENTE</span></td><td><button class="btn btn-xs btn-outline-info">EDIT</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-4 row g-2">
+                        <div class="col-6"><button class="btn btn-dark w-100 x-small py-2 border border-info border-opacity-25">Reporte Fechas</button></div>
+                        <div class="col-6"><button class="btn btn-dark w-100 x-small py-2 border border-info border-opacity-25">Buscador Global</button></div>
+                    </div>
+                </div>`;
+        } else {
+            content.innerHTML = `
+                <nav class="p-3 border-bottom border-white border-opacity-10 d-flex justify-content-between align-items-center" style="border-color: var(--vip-purple) !important">
+                    <span class="x-small fw-bold" style="color: var(--vip-purple)"><i class="fa-solid fa-house-user me-2"></i>PORTAL CLIENTE VIP</span>
+                    <button class="btn btn-sm btn-outline-danger" onclick="closeSim()">X</button>
+                </nav>
+                <div class="p-4 text-center">
+                    <div class="mb-4">
+                        <i class="fa-solid fa-truck-ramp-box fs-1" style="color: var(--vip-purple)"></i>
+                    </div>
+                    <h6>HOLA, IGNACIO</h6>
+                    <p class="x-small">Tienes 1 envío en curso</p>
+                    <div class="p-3 rounded-4 bg-black bg-opacity-50 border border-white border-opacity-10 mb-3">
+                        <div class="d-flex justify-content-between mb-2"><span class="x-small">Status</span><span class="text-success small">EN REPARTO</span></div>
+                        <div class="progress bg-dark" style="height: 6px;"><div class="progress-bar" style="width: 85%; background: var(--vip-purple)"></div></div>
+                    </div>
+                    <button class="btn w-100 text-white x-small py-3" style="background: var(--vip-purple)">RASTREAR POR ID</button>
+                </div>`;
         }
-    </script>
+    }
+
+    function closeSim() {
+        document.getElementById('simulador-container').style.display = 'none';
+        document.getElementById('selector-box').style.display = 'flex';
+    }
+</script>
+
 </body>
 </html>
