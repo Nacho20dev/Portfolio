@@ -1,74 +1,267 @@
-<div id="app-container" class="logivip-wrapper">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIVIP - Hub de Logística Satelital</title>
     
-    <section id="view-login" class="app-view">
-        <div class="login-box animate__animated animate__zoomIn">
-            <div class="text-center mb-4">
-                <i class="fa-solid fa-boxes-packing text-info fs-1"></i>
-                <h2 class="text-white fw-black">LOGI<span class="opacity-50">VIP</span></h2>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        /* MOTOR DE DISEÑO MONTEVIDEO BLUE VIP */
+        :root { 
+            --vip-blue: #00d2ff; 
+            --vip-deep: #05070a; 
+            --vip-gradient: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            --vip-glass: rgba(0, 210, 255, 0.03);
+            --vip-border: rgba(0, 210, 255, 0.15);
+        }
+
+        body { 
+            background-color: #000; 
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor Principal del Simulador */
+        .app-shell {
+            width: 100%;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #0a0c12 0%, #050505 100%);
+            position: relative;
+        }
+
+        /* --- PANTALLA DE LOGIN --- */
+        #view-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .login-card {
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--vip-border);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* --- PANTALLA DASHBOARD --- */
+        #view-dashboard {
+            display: none; /* Se activa vía JS */
+            padding-top: 80px;
+        }
+
+        .navbar-vip {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 7, 10, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--vip-border);
+            z-index: 1000;
+        }
+
+        /* --- COMPONENTES UI --- */
+        .vip-card {
+            background: var(--vip-glass);
+            border: 1px solid var(--vip-border);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .vip-card:hover {
+            border-color: var(--vip-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
+        }
+
+        .btn-vip {
+            background: var(--vip-gradient);
+            color: #fff;
+            border: none;
+            font-weight: 800;
+            letter-spacing: 1px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        .btn-vip:hover {
+            box-shadow: 0 0 20px var(--vip-blue);
+            transform: scale(1.02);
+            color: #fff;
+        }
+
+        .status-badge {
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 5px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .text-info-vip { color: var(--vip-blue) !important; }
+        .x-small { font-size: 0.7rem; text-transform: uppercase; opacity: 0.5; font-weight: 700; }
+
+        /* Animaciones */
+        .fade-in-custom { animation: fadeIn 0.8s ease forwards; }
+
+        /* Footer Portfolio */
+        .footer-tag {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-shell">
+        
+        <section id="view-login" class="animate__animated animate__fadeIn">
+            <div class="login-card text-center">
+                <div class="mb-4">
+                    <i class="fa-solid fa-tower-broadcast text-info-vip fs-1 animate__animated animate__pulse animate__infinite"></i>
+                </div>
+                <h2 class="fw-black mb-1">LOGI<span class="text-info-vip">VIP</span></h2>
+                <p class="x-small mb-5" style="letter-spacing: 3px;">Acceso Nodo Montevideo</p>
+                
+                <div class="text-start">
+                    <div class="mb-3">
+                        <label class="x-small ms-1">Operador ID</label>
+                        <input type="text" class="form-control bg-dark border-0 text-white rounded-3 py-2" placeholder="admin_egozcue" readonly>
+                    </div>
+                    <div class="mb-4">
+                        <label class="x-small ms-1">Security Key</label>
+                        <input type="password" class="form-control bg-dark border-0 text-white rounded-3 py-2" value="********" readonly>
+                    </div>
+                    <button onclick="navigateTo('view-dashboard')" class="btn btn-vip w-100 py-3">
+                        INICIAR CONEXIÓN <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+                <p class="mt-4 x-small opacity-25">Simulador de Proyecto .NET Core 8</p>
             </div>
-            <form id="fake-login-form">
-                <input type="text" class="form-control mb-3" placeholder="Usuario Operador">
-                <input type="password" class="form-control mb-4" placeholder="Password">
-                <button type="button" onclick="showView('view-dashboard')" class="btn btn-warning w-100 fw-bold">
-                    INICIAR SESIÓN
-                </button>
-            </form>
-        </div>
-    </section>
+        </section>
 
-    <section id="view-dashboard" class="app-view d-none">
-        <nav class="navbar-vip py-3 px-4 d-flex justify-content-between align-items-center">
-            <span class="fw-black text-white"><i class="fa-solid fa-satellite text-info me-2"></i>LOGIVIP HUB</span>
-            <button onclick="showView('view-login')" class="btn btn-outline-info btn-sm rounded-pill">LOGOUT</button>
-        </nav>
+        <section id="view-dashboard">
+            <nav class="navbar-vip py-3">
+                <div class="container d-flex justify-content-between align-items-center">
+                    <span class="fw-bold"><i class="fa-solid fa-satellite text-info-vip me-2"></i>HUB CENTRAL</span>
+                    <button onclick="navigateTo('view-login')" class="btn btn-outline-info btn-sm rounded-pill px-3">LOGOUT</button>
+                </div>
+            </nav>
 
-        <div class="container py-5">
-            <h3 class="text-white fw-black mb-4">ESTADO DE OPERACIONES</h3>
-            <div class="card bg-black bg-opacity-40 border-info border-opacity-10 p-4 rounded-4">
-                <div class="row align-items-center">
-                    <div class="col-md-4">
-                        <span class="x-small text-info opacity-50">TRACKING</span>
-                        <h5 class="text-white mb-0">#MVD-9928-VIP</h5>
+            <div class="container py-5">
+                <div class="row mb-5 animate__animated animate__fadeInDown">
+                    <div class="col-md-8">
+                        <h2 class="fw-black text-white mb-1">MONITOR DE CARGAS</h2>
+                        <p class="text-info-vip x-small mb-0">Rastreo activo de inteligencia en tiempo real</p>
                     </div>
-                    <div class="col-md-4">
-                        <span class="badge bg-info text-dark rounded-pill">EN TRÁNSITO</span>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <div class="bg-glass p-2 rounded-3 border border-info border-opacity-10 d-inline-block">
+                            <span class="x-small">Status: </span> <span class="badge bg-success small rounded-pill">ONLINE</span>
+                        </div>
                     </div>
-                    <div class="col-md-4 text-end">
-                        <button class="btn btn-sm btn-outline-info">DETALLES</button>
+                </div>
+
+                <div class="row g-4 animate__animated animate__fadeInUp">
+                    
+                    <div class="col-12">
+                        <div class="vip-card p-4">
+                            <div class="row align-items-center text-center text-md-start">
+                                <div class="col-md-3 mb-3 mb-md-0 border-end border-white border-opacity-10">
+                                    <span class="x-small d-block">Tracking ID</span>
+                                    <h5 class="text-white fw-bold mb-0">#MVD-2026-X99</h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="x-small d-block">Origen / Destino</span>
+                                    <p class="small mb-0">Montevideo <i class="fa-solid fa-arrow-right mx-2 text-info-vip"></i> Maldonado</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="x-small d-block">Estado Satelital</span>
+                                    <span class="status-badge bg-info text-dark">EN TRÁNSITO</span>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <button class="btn btn-outline-info btn-sm rounded-pill px-4">VER RUTA</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="vip-card p-4">
+                            <div class="row align-items-center text-center text-md-start">
+                                <div class="col-md-3 mb-3 mb-md-0 border-end border-white border-opacity-10">
+                                    <span class="x-small d-block">Tracking ID</span>
+                                    <h5 class="text-white fw-bold mb-0">#MVD-2026-B12</h5>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="x-small d-block">Origen / Destino</span>
+                                    <p class="small mb-0">Canelones <i class="fa-solid fa-arrow-right mx-2 text-info-vip"></i> Rivera</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="x-small d-block">Estado Satelital</span>
+                                    <span class="status-badge bg-success text-dark">ENTREGADO</span>
+                                </div>
+                                <div class="col-md-3 text-md-end">
+                                    <button class="btn btn-outline-info btn-sm rounded-pill px-4">DETALLES</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-3">
+                        <div class="vip-card p-3 text-center border-dashed" style="border-style: dashed !important;">
+                            <i class="fa-solid fa-calendar-days text-info-vip mb-2 d-block fs-4"></i>
+                            <span class="x-small">Filtrar por Fechas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="vip-card p-3 text-center border-dashed" style="border-style: dashed !important;">
+                            <i class="fa-solid fa-magnifying-glass text-info-vip mb-2 d-block fs-4"></i>
+                            <span class="x-small">Buscador Inteligente</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="vip-card p-3 text-center border-dashed" style="border-style: dashed !important;">
+                            <i class="fa-solid fa-shield-halved text-info-vip mb-2 d-block fs-4"></i>
+                            <span class="x-small">Cambiar Seguridad</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <div class="footer-tag">
+            DESIGNED BY IGNACIO EGOZCUE // MONTEVIDEO NODE
         </div>
-    </section>
+    </div>
 
-</div>
-
-<style>
-    /* INTEGRAMOS EL MOTOR BLUE VIP AQUÍ */
-    .logivip-wrapper {
-        background: radial-gradient(circle at center, #0a0c12 0%, #050505 100%);
-        min-height: 800px; /* Tamaño tipo ventana de App */
-        position: relative;
-        overflow: hidden;
-        border-radius: 20px;
-        border: 1px solid rgba(0, 210, 255, 0.2);
-    }
-    
-    .app-view {
-        transition: all 0.5s ease;
-        min-height: 800px;
-    }
-
-    .d-none { display: none; }
-    /* (Copiá aquí el resto de los estilos Blue VIP que ya tenemos) */
-</style>
-
-<script>
-    // Lógica simple para cambiar de "cara" sin recargar la página
-    function showView(viewId) {
-        document.querySelectorAll('.app-view').forEach(v => v.classList.add('d-none'));
-        const nextView = document.getElementById(viewId);
-        nextView.classList.remove('d-none');
-        nextView.classList.add('animate__animated', 'animate__fadeIn');
-    }
-</script>
+    <script>
+        function navigateTo(viewId) {
+            // Ocultar todas las secciones
+            document.getElementById('view-login').style.display = 'none';
+            document.getElementById('view-dashboard').style.display = 'none';
+            
+            // Mostrar la sección seleccionada con animación
+            const target = document.getElementById(viewId);
+            target.style.display = (viewId === 'view-login') ? 'flex' : 'block';
+            target.classList.add('animate__animated', 'animate__fadeIn');
+        }
+    </script>
+</body>
+</html>
