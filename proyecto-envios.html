@@ -3,199 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIVIP - Documentación Técnica | Ignacio Egozcue</title>
-    
+    <title>LogiVIP - Ingeniería de Software | Ignacio Egozcue</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
     <style>
-        :root { 
-            --vip-blue: #00d2ff; 
-            --vip-deep: #05070a; 
-            --vip-border: rgba(0, 210, 255, 0.15);
-            --vip-glass: rgba(255, 255, 255, 0.03);
-        }
-
-        body { 
-            background: radial-gradient(circle at 0% 0%, #0a0c12 0%, #050505 100%);
-            color: #f8f9fa;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-        }
-
-        .hero-section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--vip-border);
-            background: linear-gradient(to bottom, rgba(0, 210, 255, 0.05), transparent);
-        }
-
-        .tech-tag {
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--vip-blue);
-            font-weight: 800;
-        }
-
-        .doc-card {
-            background: var(--vip-glass);
-            border: 1px solid var(--vip-border);
-            border-radius: 20px;
-            padding: 30px;
-            height: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .doc-card:hover {
-            border-color: var(--vip-blue);
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.1);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 210, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--vip-blue);
-            margin-bottom: 20px;
-        }
-
-        .uml-badge {
-            background: #1e1e1e;
-            border: 1px solid #333;
-            padding: 15px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-        }
-
-        .code-block {
-            background: #0d0d0d;
-            border-radius: 10px;
-            padding: 20px;
-            border-left: 3px solid var(--vip-blue);
-            font-family: 'Consolas', monospace;
-            font-size: 0.85rem;
-        }
-
-        .footer-line {
-            opacity: 0.4;
-            font-size: 0.7rem;
-            letter-spacing: 4px;
-            padding: 40px 0;
-        }
+        :root { --vip-blue: #00d2ff; --vip-dark: #0a0c12; }
+        body { background-color: var(--vip-dark); color: #e9ecef; font-family: 'Segoe UI', sans-serif; }
+        .header-box { border-bottom: 1px solid rgba(0,210,255,0.2); padding: 60px 0; background: linear-gradient(to bottom, #0f172a, #0a0c12); }
+        .badge-logic { background: rgba(0,210,255,0.1); color: var(--vip-blue); border: 1px solid var(--vip-blue); font-size: 0.7rem; padding: 5px 12px; }
+        .card-engineering { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; height: 100%; transition: 0.3s; }
+        .card-engineering:hover { border-color: var(--vip-blue); background: rgba(0,210,255,0.02); }
+        .text-accent { color: var(--vip-blue); }
+        .code-snippet { background: #000; padding: 15px; border-radius: 8px; border-left: 3px solid var(--vip-blue); font-family: 'Consolas', monospace; font-size: 0.85rem; color: #a5d6ff; }
+        h2 { font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <header class="hero-section text-center">
-        <div class="container animate__animated animate__fadeIn">
-            <span class="tech-tag">Engineering Case Study</span>
-            <h1 class="display-3 fw-black mt-3 mb-4">LOGI<span style="color: var(--vip-blue)">VIP</span></h1>
-            <p class="lead opacity-75 mx-auto" style="max-width: 700px;">
-                Ecosistema escalable para la gestión logística satelital. Una solución integral desarrollada bajo estándares de ingeniería de software, modelado UML y arquitectura robusta en .NET Core 8.
-            </p>
-            <div class="mt-5">
-                <span class="badge rounded-pill bg-dark border border-info text-info px-3 py-2 me-2">ASP.NET MVC</span>
-                <span class="badge rounded-pill bg-dark border border-info text-info px-3 py-2 me-2">SQL SERVER</span>
-                <span class="badge rounded-pill bg-dark border border-info text-info px-3 py-2">ENTITY FRAMEWORK</span>
+<header class="header-box text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">LOGI<span class="text-accent">VIP</span></h1>
+        <p class="lead opacity-75">Sistema de Gestión Logística con Arquitectura Distribuida (Web API + Cliente MVC)</p>
+        <div class="d-flex justify-content-center gap-2 mt-4">
+            <span class="badge-logic">.NET CORE 8</span>
+            <span class="badge-logic">WEB API RESTFUL</span>
+            <span class="badge-logic">JWT AUTH</span>
+            <span class="badge-logic">ENTITY FRAMEWORK</span>
+        </div>
+    </div>
+</header>
+
+<main class="container py-5">
+    
+    <section class="row g-4 mb-5">
+        <div class="col-lg-6">
+            <h2 class="h4 mb-4 border-bottom border-secondary pb-2">Respaldo Documental</h2>
+            <p>El sistema fue diseñado bajo un proceso de análisis riguroso, documentado en una <strong>memoria técnica de 140 páginas</strong> que detalla:</p>
+            <ul class="list-unstyled">
+                <li class="mb-2"><i class="fa-solid fa-circle-check text-accent me-2"></i><strong>Modelo UML:</strong> Diagramas de clases (archivo .asta) con lógica de herencia para Envíos Comunes y Urgentes.</li>
+                <li class="mb-2"><i class="fa-solid fa-circle-check text-accent me-2"></i><strong>Trazabilidad:</strong> Implementación de etapas de seguimiento (Seguimientos) con comentarios y auditoría de empleados.</li>
+                <li class="mb-2"><i class="fa-solid fa-circle-check text-accent me-2"></i><strong>Persistencia:</strong> DER normalizado con registro de acciones para auditoría de Administradores (RF2).</li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <div class="card-engineering">
+                <h5 class="text-accent mb-3"><i class="fa-solid fa-code-branch me-2"></i>Lógica de Negocio Crítica</h5>
+                <p class="small">Implementación de la funcionalidad de <strong>Finalización de Envío</strong>:</p>
+                <div class="code-snippet">
+                    // Polimorfismo en el dominio<br>
+                    if (envio is Urgente urgente) {<br>
+                    &nbsp;&nbsp;urgente.CalcularEficiencia(fechaEntrega);<br>
+                    }<br>
+                    envio.Estado = Estado.FINALIZADO;
+                </div>
+                <p class="x-small mt-3 opacity-50">Cálculo de eficiencia automático para entregas < 24hs (Requerimiento de Letra).</p>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container py-5">
-        
-        <div class="row g-4 mb-5">
-            <div class="col-md-6 animate__animated animate__fadeInLeft">
-                <div class="doc-card">
-                    <div class="feature-icon"><i class="fa-solid fa-file-contract fs-4"></i></div>
-                    <h3>Documentación de Análisis</h3>
-                    <p class="opacity-75">
-                        El proyecto está sustentado por una memoria técnica de **140 páginas** que detalla el ciclo de vida de desarrollo. No es solo código; es una arquitectura planificada.
-                    </p>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i>+50 Casos de Uso detallados.</li>
-                        <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i>Especificación de Requerimientos Funcionales y No Funcionales.</li>
-                        <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i>Planificación de seguridad y matriz de roles.</li>
+    <section class="mb-5">
+        <h2 class="h4 mb-4 text-center">Funcionalidades Implementadas</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card-engineering">
+                    <h6 class="text-accent">ETAPA 1: GESTIÓN INTERNA (BACKOFFICE)</h6>
+                    <ul class="small opacity-75 mt-3">
+                        <li><strong>Login por Roles:</strong> Acceso diferenciado para Administradores y Funcionarios.</li>
+                        <li><strong>CRUD de Empleados:</strong> Gestión completa con auditoría obligatoria en base de datos.</li>
+                        <li><strong>Operativa de Carga:</strong> Alta de envíos y actualización de estados con comentarios de seguimiento.</li>
+                        <li><strong>Tracking Público:</strong> Búsqueda de detalles sin necesidad de autenticación.</li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-6 animate__animated animate__fadeInRight">
-                <div class="doc-card">
-                    <div class="feature-icon"><i class="fa-solid fa-sitemap fs-4"></i></div>
-                    <h3>Modelado UML & Arquitectura</h3>
-                    <p class="opacity-75">
-                        Diseño estructural mediante **Diagrama de Clases y Diagramas de Secuencia** para garantizar la integridad de los datos en el rastreo de envíos.
-                    </p>
-                    <div class="uml-badge mt-3">
-                        <i class="fa-solid fa-file-code fs-2 text-info me-3"></i>
-                        <div>
-                            <p class="mb-0 fw-bold">DiagramaUML2.asta</p>
-                            <p class="x-small mb-0 opacity-50">Archivo de modelado Astah UML incluido en la documentación oficial.</p>
-                        </div>
-                    </div>
+            <div class="col-md-6">
+                <div class="card-engineering">
+                    <h6 class="text-accent">ETAPA 2: CLIENTE HTTP & WEB API</h6>
+                    <ul class="small opacity-75 mt-3">
+                        <li><strong>Consumo Distribuido:</strong> Aplicación MVC independiente que consume la Web API vía <code>HttpClient</code>.</li>
+                        <li><strong>Seguridad JWT:</strong> Endpoints protegidos mediante Tokens para acciones del cliente.</li>
+                        <li><strong>Consultas Avanzadas:</strong> Filtrado de envíos por rango de fechas y búsqueda por contenido de comentarios (comportamiento "Contiene").</li>
+                        <li><strong>Perfil de Usuario:</strong> Cambio de contraseña con validación de credencial actual.</li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </section>
 
-        <h2 class="text-center mb-5 animate__animated animate__fadeIn">Módulos del Sistema</h2>
-        <div class="row g-4 mb-5">
-            <div class="col-lg-4">
-                <div class="doc-card text-center">
-                    <i class="fa-solid fa-user-shield text-info fs-2 mb-3"></i>
-                    <h5>Gestión Interna</h5>
-                    <p class="small opacity-70">Panel para funcionarios con auditoría de cargas, gestión de estados y filtrado avanzado por parámetros técnicos.</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="doc-card text-center">
-                    <i class="fa-solid fa-satellite-dish text-info fs-2 mb-3"></i>
-                    <h5>Rastreo en Tiempo Real</h5>
-                    <p class="small opacity-70">Integración de lógica satelital para el seguimiento de paquetes mediante ID de Tracking único por cliente.</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="doc-card text-center">
-                    <i class="fa-solid fa-database text-info fs-2 mb-3"></i>
-                    <h5>Persistencia de Datos</h5>
-                    <p class="small opacity-70">Base de datos SQL Server normalizada con Entity Framework Core para una manipulación eficiente de la información.</p>
-                </div>
-            </div>
+    <section class="row align-items-center bg-dark p-4 rounded-4 border border-secondary border-opacity-20">
+        <div class="col-md-2 text-center">
+            <i class="fa-solid fa-file-pdf display-4 text-danger"></i>
         </div>
-
-        <div class="row align-items-center mb-5 py-5">
-            <div class="col-md-5 mb-4 mb-md-0 animate__animated animate__fadeInLeft">
-                <h2 class="fw-bold text-info">Código de Alta Fidelidad</h2>
-                <p>Implementación de controladores dinámicos y vistas Razor optimizadas. El sistema utiliza **ViewModels** para desacoplar la capa de datos de la presentación, asegurando un código limpio y mantenible.</p>
-                <div class="mt-4">
-                    <a href="#" class="btn btn-outline-info rounded-pill px-4">Ver Repositorio Completo</a>
-                </div>
-            </div>
-            <div class="col-md-7 animate__animated animate__fadeInRight">
-                <div class="code-block">
-                    <span class="text-secondary small d-block mb-2">// Acción de Filtrado por Fecha en EnvioController</span>
-                    <span class="text-primary">public</span> <span class="text-warning">IActionResult</span> DetallesPorFecha(<span class="text-info">DateTime</span> f1, <span class="text-info">DateTime</span> f2) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-secondary small">// Lógica de negocio auditada...</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-primary">var</span> resultados = _service.GetEnviosBetween(f1, f2);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-primary">return</span> View(resultados);<br>
-                    }
-                </div>
-            </div>
+        <div class="col-md-7">
+            <h5 class="mb-1">Memoria Técnica y Análisis UML</h5>
+            <p class="small mb-0 opacity-75">Documento de 140 páginas + DiagramaUML2EcharteaEgozcue.asta (Astah UML).</p>
         </div>
-
-    </main>
-
-    <footer class="text-center container">
-        <hr class="border-secondary opacity-10">
-        <div class="footer-line">
-            DISEÑO Y DESARROLLO POR IGNACIO EGOZCUE | MONTEVIDEO, URUGUAY | @DateTime.Now.Year
+        <div class="col-md-3 text-md-end mt-3 mt-md-0">
+            <span class="badge bg-secondary">DOCUMENTO OFICIAL</span>
         </div>
-    </footer>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</main>
+
+<footer class="container text-center footer-line">
+    <p class="x-small opacity-50">LOGIVIP - PROYECTO OBLIGATORIO PROGRAMACIÓN 3 & 4 | IGNACIO EGOZCUE</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
